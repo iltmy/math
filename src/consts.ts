@@ -32,18 +32,11 @@ export const menuItems = [
   { id: "about", text: "关于我", href: "/about", svg: "about", target: "_self" }, // About page
   {
     id: "blog",
-    text: "所有博客",
+    text: "数学博客",
     href: "/blog",
     svg: "blog",
     target: "_self",
     subItems: [
-      {
-        id: "all",
-        text: "所有内容",
-        href: "/blog",
-        svg: "post",
-        target: "_self",
-      }, // All blog
       {
         id: "黎曼几何",
         text: "黎曼几何",
@@ -74,13 +67,7 @@ export const menuItems = [
         svg: "heart",
         target: "_self",
       }, 
-      {
-        id: "其他",
-        text: "其他",
-        href: "/blog/categories/其他",
-        svg: "heart",
-        target: "_self",
-      }, 
+
 
 
 
@@ -88,20 +75,19 @@ export const menuItems = [
     ],
   }, // Blog page with sub-items
   {
-    id: "project",
-    text: "代码",
-    href: "/project",
-    svg: "project",
+    id: "其他",
+    text: "其他",
+    href: "/blog/categories/其他",
+    svg: "heart",
     target: "_self",
-  }, // Projects page
+  }, 
   {
-    id: "friend",
-    text: "友链",
-    href: "/friend",
-    svg: "friend",
+    id: "all",
+    text: "所有内容",
+    href: "/blog",
+    svg: "post",
     target: "_self",
-  }, // Friends page
-
+  }, // All blog
     //{
     //  id: "contact",
     //  text: "Contact",
