@@ -1,0 +1,270 @@
+---
+
+title: 矩阵1
+description: 矩阵的基本习题
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+
+  - 高等代数
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+
+
+## 做一个简单介绍
+
+### 上三角矩阵
+
+> 已知 $A, B$ 都是上三角矩阵, 且设 $A$ 的主对角元素分别为 $a_{11}, \cdots, a_{n n}, B$ 的主对角元素分别为 $b_{11}, \cdots, b_{n n}$, 则
+> (1) $A^{\prime}, B^{\prime}$ 都是下三角矩阵;
+> (2) $A B$ 仍然是上三角矩阵, 并且 $A B$ 的主对角元素分别为 $a_{11} b_{11}, \cdots, a_{n n} b_{n n}$;
+> (3) $A$ 可逆时, 那么 $A^{-1}$ 也是上三角矩阵, 并且 $A^{-1}$ 的主对角元素分别为 $a_{11}^{-1}, \cdots, a_{n n}^{-1}$;
+> (4) $A^*$ 也是上三角矩阵，并且 $A^*$ 的主对角元素分别为 $a_{22} a_{33} \cdots a_{n n}, a_{11} a_{33} \cdots a_{n n}, \cdots, a_{11} a_{22} \cdots a_{n-1, n-1}$ (它们也就是 $A^*$ 的 $n$ 个特征值).
+
+### 正交矩阵
+
+> 对于实方阵 $T$, 如果 $T^{\prime} T=E$, 则称 $T$ 是一个正交矩阵. 给定 $n$ 级实矩阵 $A, B$, 若存在 $n$ 级正交矩阵 $T$使得 $T^{\prime} A T=T^{-1} A T=B$, 则称 $A, B$ 正交相似.
+>
+> $A, B$ 是两个 $n$ 级正交矩阵, 则
+>
+> 1. $A^{\prime}=A^{-1}$, 所以正交矩阵的逆是好求的, 并且正交矩阵的元素往往带有根号;
+> 2. $A^{\prime}, A^{-1}, A B$ 都是正交矩阵。即：正交矩阵的转置与逆都是正交矩阵，正交矩阵的乘积也是正交矩阵;
+> 3.  $\left(\begin{array}{ll}A & O \\ O & B\end{array}\right)$ 仍然是正交矩阵, 并且这里 $A, B$ 可以是不同阶的正交矩阵.
+> 4. $A$ 的每一行(列)都是一个单位向量, 所以如果 $A$ 中有一个元素为 $\pm 1$, 则 $\pm 1$ 所在的行列的其他元素一定为零;
+> 5. 如果 $A$ 还是一个上(下)三角矩阵, 则 $A$ 就是一个对角矩阵, 主对角元素为 $\pm 1$;
+> 6. 如果 $A=\left(\begin{array}{cc}A_1 & A_2 \\ O & A_4\end{array}\right)$, 其中 $A_1$ 为 $s$ 级方阵, 则必有 $A_2=O$, 且 $A_1, A_4$ 均为正交矩阵.
+>
+> 5.6可以由4推出来，而4时显然的
+
+###  正定矩阵
+
+1. 正定二次型: 对任意不全为零的 $x_1, \cdots, x_n$, 二次型 $f\left(x_1, \cdots, x_n\right)>0$. 对应矩阵: 实对称矩阵 $A$ 满足对任意非零实列向量 $X$ 都有 $X^{\prime} A X>0$ ，则称 $A$ 是正定矩阵。
+
+这里强调一下, 矩阵 $A$ 正定的前提是 $A$ 实对称. 不对称矩阵正定就无从谈起.
+
+2. 和单位矩阵合同的实对称矩阵称为正定矩阵，显然正定矩阵与正定二次型对应.
+3. 非退化线性替换保持正定性不变. 对应矩阵：与正定矩阵合同的矩阵仍是正定矩阵.
+4. $n$ 元二次型正定的充要条件是它的正惯性指数为 $n$. 对应矩阵：一个实对称矩阵正定的充要条件是其合同于一个主对角元素全为正的对角矩阵。
+5. (极其重要) $n$ 级实矩阵 $A$ 正定的充要条件是: 存在可逆矩阵 $C$ 使得 $A=C C^{\prime}$ (或 $C^{\prime} C$ ). 当然，我们也可以把 $C^{\prime} C$ 强制写成
+
+$$
+A=C^{\prime} C=\left(\begin{array}{cc}
+C^{\prime} & O^{\prime}
+\end{array}\right)\binom{C}{O}
+$$
+
+### 矩阵的迹
+
+.已知 $A, B$ 是两个 $n$ 级矩阵, $k$ 是一个常数, 则
+
+1.  $\operatorname{tr}(k A)=k \operatorname{tr}(A)$;
+2.  $\operatorname{tr}(A+B)=\operatorname{tr}(A)+\operatorname{tr}(B)$;
+3.  $\operatorname{tr}(A B)=\operatorname{tr}(B A)$;
+4.  如果 $A$ 是一个实方阵, 则 $A=O \Longleftrightarrow \operatorname{tr}\left(A^{\prime} A\right)=0$.
+
+这些证明只需要完整写出来对应元素就行
+
+
+
+
+
+
+
+
+
+
+
+## 矩阵的第一个问题交换
+
+1. 设对角矩阵 $A=\operatorname{diag}\left\{\lambda_1, \lambda_2, \cdots, \lambda_n\right\}$ 的对角元素两两互异，则与 $A$ 可交换的方阵只能是对角矩阵;
+2. (极其重要) 设 $A=\operatorname{diag}\left\{\lambda_1 E_1, \lambda_2 E_2, \cdots, \lambda_s E_s\right\}$ 是一个 $n$ 级准对角矩阵, 其中 $\lambda_1, \lambda_2, \cdots, \lambda_s$ 两两互异, $E_1, E_2, \cdots, E_s$ 分别为 $r_1, r_2, \cdots, r_s$ 级单位矩阵 $\left(r_1+r_2+\cdots+r_s=n\right)$, 则与 $A$ 可交换的矩阵只能是准对角矩阵
+
+$$
+\operatorname{diag}\left\{B_1, B_2, \cdots, B_s\right\}
+$$
+
+其中 $B_1, B_2, \cdots, B_s$ 分别为任意的 $r_1, r_2, \cdots, r_s$ 级方阵;
+
+3. 与所有 $n$ 级可逆矩阵可交换的矩阵为数量矩阵, 即 $k E$ 的形式;
+4. 与所有 $n$ 级矩阵可交换的矩阵为数量矩阵.
+
+## 无人不知的打洞原理
+
+> 1.设
+> $$
+> M=\left(\begin{array}{ll}
+> A & B \\
+> C & D
+> \end{array}\right)
+> $$
+>
+>
+> 是一个方阵, 其中 $A$ 是可逆的子方阵, 那么
+>
+> $$
+> |M|=|A| \cdot\left|D-C A^{-1} B\right| .
+> $$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**应用**1：设 $A$ 是 $n \times m$ 矩阵, $B$ 是 $m \times n$ 矩阵, 则 $A B$ 和 $B A$ 的特征多项式只差
+一个因子 $\lambda^{n-m}$, 即
+$$
+\lambda^m\left|\lambda I_n-A B\right|=\lambda^n\left|\lambda I_m-B A\right|
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+打洞有很多重要的应用, 特别是当 $M$ 是对称矩阵的时候, 如果你用 $A$ 打两次洞干掉 $B$ 和 $B^{\prime}$ 就会发现这恰好是一个合同变换：
+
+$$
+\left(\begin{array}{cc}
+I_n & 0 \\
+-A^{-1} B & I_m
+\end{array}\right)^{\prime}\left(\begin{array}{cc}
+A & B \\
+B^{\prime} & D
+\end{array}\right)\left(\begin{array}{cc}
+I_n & -A^{-1} B \\
+0 & I_m
+\end{array}\right)=\left(\begin{array}{cc}
+A & 0 \\
+0 & D-B^{\prime} A^{-1} B
+\end{array}\right)
+$$
+
+
+特别强调的是，对称矩阵的打洞有特别重要的意义：由于 $M$ 可以看作一个 "内积" 的度量矩阵，所以两边打洞实际上就是在这个 "内积" 下做 Schmidt 正交化，化二次型为标准形的配方法和矩阵法都源自于此。
+
+**应用**2：(化二次型为标准形的算法). 设 $A=\left(a_{i j}\right)$ 是一个 $n$ 阶对称矩阵, 现在要把它合同为对角形。
+
+- 如果 $a_{11} \neq 0$, 那就用 $a_{11}$ 两次打洞合同掉第一行和第一列的其它元素, 把 $A$ 变成
+
+$$
+\left(\begin{array}{cc}
+a_{11} & 0 \\
+0 & *
+\end{array}\right)
+$$
+
+
+然后考虑右下角的 $n-1$ 阶的矩阵 $*$ 。
+- 如果 $a_{11}=0$ 但是某个 $a_{i i} \neq 0$, 那就交换第 $i$ 行和第 1 行, 交换第 $i$ 列和第 1 列,把 $a_{i i}$ 变到 $a_{11}$ 的位置上来, 然后返回上一步。
+- 如果 $A$ 的对角线上都是 0 , 但是某个 $a_{i j}$ 不是 0 , 那就把第 $j$ 行加到第 $i$ 行, 第 $j$列加到第 $i$ 列, 这样 $a_{i i}$ 的位置上就出现了 $2 a_{i j}$, 然后返回上一步。
+
+这样经过有限步以后就可以把 $A$ 变成对角形。
+
+剩下的问题我们等会放到正定里面讨论
+
+## 等价标准型
+
+ 设 $A$ 是一个秩为 $r$ 的 $s \times n$ 矩阵, 则存在 $s$ 级可逆矩阵 $P$ 与 $n$ 级可逆矩阵 $Q$使得
+
+$$
+A=P\left(\begin{array}{cc}
+E_r & O \\
+O & O
+\end{array}\right) Q
+$$
+这个好处是可以直接看出来矩阵的秩，所以一般用在只知道秩的情况下
+
+
+
+**应用1**.设 $B_1, B_2$ 都是数域 $P$ 上的 $s \times n$ 的列满秩矩阵, 证明: 存在数域 $P$ 上的 $s$ 级可逆矩阵 $C$ 使得 $B_2=C B_1$.
+
+**应用2**.已知 $A$ 是一个秩为 $r$ 的 $s \times n$ 矩阵, 求矩阵方程 $A X A=A$ 的通解.
+
+**应用3**. 证明以下矩阵秩的基本公式:
+
+1. $r\left(\begin{array}{ll}A & O \\ O & B\end{array}\right)=r(A)+r(B)$ ；
+2. $r\left(\begin{array}{ll}A & O \\ C & B\end{array}\right) \geq r(A)+r(B), r\left(\begin{array}{ll}A & D \\ O & B\end{array}\right) \geq r(A)+r(B)$.
+
+## $A B-B A$ 类问题
+
+1. 已知数域 $K$ 上的两个 $n$ 级矩阵 $A, B$ 满足 $A B-B A=A$, 则 $A$ 不可逆.
+
+2. 已知数域 $K$ 上的两个 $n$ 级矩阵 $A, B$ 满足 $A B-B A=A$, 则对任意的正整数 $k$, 都有 $\operatorname{tr}\left(A^k\right)=0$ (即 $A$ 是幂零矩阵).
+
+3. 已知数域 $K$ 上的两个 2 级矩阵 $A, B$ 满足 $A B-B A=A$, 则 $A^2=O$.
+
+4. 在数域 $P$ 上的矩阵空间 $P^{n \times n}$ 中定义线性变换
+
+   $$
+   \mathscr{A}(X)=A X-X A, X \in P^{n \times n}
+   $$
+
+
+   其中 $A \in P^{n \times n}$ 为幂零矩阵, 证明: $\mathscr{A}$ 为幂零变换.
+
+点评一下这个题，我发现他跟我最近学的李代数有很强的关系，这个线性变换在李代数里面是一个非常重要的其实就是X对应到X的李括号积，当然如果他等于0的话，证明他和A是可交换的那么它们可以有公共的特征向量，以及可以同时对角化，这些就是李定理的简单版本，接下来我们会讲这些，当然都是高代内容
+
+5. 若 $A, B$ 没有共同的特征值, 则矩阵方程 $A X=X B$ 只有零解。
+
+## 在论正定（半正定）矩阵
+
+1. 设 $A$ 是一个 $m \times n$ 的实矩阵, 则 $r\left(A^{\prime} A\right)=r(A)$.
+
+2. 证明: 对实数域上的任意 $s \times n$ 实矩阵 $A$, 都有
+
+   $$
+   r\left(A A^{\prime} A\right)=r(A)
+   $$
+
+3. 任意一个实可逆矩阵都可以分解成一个正交矩阵与一个主对角元都为正数的上三角矩阵的乘积, 并且这种分解是唯一的.
+
+4. 对任意正定矩阵 $A$, 都存在可迸的上三角矩阵 $Q$ 使得 $A=Q^{\prime} Q$.
+
+5. 任意实对称矩阵 $A$ 的特征值都是实数.（这个非常有用在后续课程）从而一定可以对角化
+
+6. 已知 $A_1, A_2$ 均为 $n$ 级正定矩阵, $B_1, B_2$ 均为 $n$ 级实对称矩阵, 证明: 存在可逆矩阵 $C$ 使得
+
+   $$
+   C^{\prime} A_1 C=A_2, \quad C^{\prime} B_1 C=B_2
+   $$
+
+   的充要条件是 $\left|\lambda A_1-B_1\right|=0$ 与 $\left|\lambda A_2-B_2\right|=0$ 有完全相同的根.
+
+   

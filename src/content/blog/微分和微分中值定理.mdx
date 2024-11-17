@@ -1,0 +1,585 @@
+---
+
+title: 微分中值定理
+description: 介绍一些微分中值定理的技巧
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+
+  - 数学分析
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+## 一些关于微分的问题
+
+> **第一题**. 设 $f(x)$ 在 $(-1,+\infty)$ 上可导, 且有
+> $$
+> f^{\prime}(x)+f(x)-\frac{1}{1+x} \int_0^x f(t) d t=0, f(0)=1
+> $$
+>
+> 求 $f^{\prime}(x)$, 并证明 $x \geq 0$ 时, 有 $e^{-x} \leq f(x) \leq 1$.
+
+解答：
+
+
+
+
+
+
+
+
+
+这里我们补充一点组合数的知识，当然你可以回去自己证明
+
+> - $C_n^k+C_n^{k+1}=C_{n+1}^{k+1}$
+> - $k C_n^k=n C_{n-1}^{k-1}$
+> - $\left(C_n^0\right)^2+\left(C_n^1\right)^2+\left(C_n^2\right)^2+\cdots+\left(C_n^n\right)^2=C_{2 n}^n$
+
+##  微分中值定理 
+
+### 费马定理 
+
+**定理1**.若 $x_0$ 是 $f(x)$ 的极值点, 且导数 $f^{\prime}\left(x_0\right)$ 存在, 则有 $f^{\prime}\left(x_0\right)=0$.
+
+这个定理目前看来好像是废话一样哈哈哈哈哈，但是他特别有用。
+
+### 罗尔中值定理
+
+**定理 2**.若 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可微, 且 $f(a)=f(b)$, 则存在点 $\xi \in(a, b)$,使得
+$$
+f^{\prime}(\xi)=0
+$$
+这个定理我们经常使用例如
+
+>  已知 $f(x)$ 在区间 $I$ 上 $n$ 阶可导, 若 $f(x)$ 在 $I$ 上有 $n+1$ 个互异的实根, 则 $f^{(n)}(x)$ 在 $I$ 上至少有一个实根。
+
+
+
+
+
+
+
+
+
+
+
+
+
+> 设 $f(x)$ 在 $[0,+\infty)$ 可微, 且对任意的 $x \in[0,+\infty)$, 均有 $0 \leq f(x) \leq \ln \frac{2 x+1}{x+\sqrt{1+x^2}}$, 证明存在 $\xi \in(0,+\infty)$, 使得
+>
+> $$
+> f^{\prime}(\xi)=\frac{2}{2 \xi+1}-\frac{1}{\sqrt{1+\xi^2}}
+> $$
+
+这个题注意到对上面那个求导就是下面这个
+
+
+
+
+
+
+
+### 拉格朗日中值定理
+
+**定理 3**.若 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可微, 则存在 $\xi \in(a, b)$ 使得
+$$
+f^{\prime}(\xi)=\frac{f(b)-f(a)}{b-a}
+$$
+这个证明其实就是两边作差积分套罗尔中值定理
+
+> 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 证明存在 $\xi \in(a, b)$, 使得
+>
+> $$
+> \frac{b f(b)-a f(a)}{b-a}=f(\xi)+\xi f^{\prime}(\xi)
+> $$
+
+
+
+
+
+
+
+
+
+
+
+### 柯西中值定理 
+
+**定理 4**.  若 $f(x), g(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可微, $g(a) \neq g(b)$, 且对任意的 $x \in(a, b)$, 均有 $g^{\prime}(x) \neq 0$, 则存在 $\xi \in(a, b)$, 使得
+$$
+\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f^{\prime}(\xi)}{g^{\prime}(\xi)}
+$$
+注意到这个证明不能上下去拉格朗日，因为得到的中值点可能不是同一个
+
+> 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 且 $a b>0$, 证明存在 $\xi \in(a, b)$, 使得
+>
+> $$
+> \frac{1}{a-b}\left|\begin{array}{cc}
+> a & b \\
+> f(a) & f(b)
+> \end{array}\right|=f(\xi)-\xi f^{\prime}(\xi) .
+> $$
+
+
+
+
+
+
+
+
+
+### Taylor中值定理 
+
+**定理 5**.(1) 若 $f(x)$ 在点 $x_0$ 存在 $n$ 阶导数, 则有
+$$
+f(x)=f\left(x_0\right)+f^{\prime}\left(x_0\right)\left(x-x_0\right)+\cdots+\frac{f^{(n)}\left(x_0\right)}{n!}\left(x-x_0\right)^n+o\left(\left(x-x_0\right)^n\right) .
+$$
+
+(2) 若 $f(x)$ 在区间 $(a, b)$ 有 $n+1$ 阶导数, $x_0 \in(a, b)$, 则对每个 $x \in(a, b)$, 在 $x_0$ 和 $x$ 之间存在 $\xi$, 使得
+
+$$
+f(x)=f\left(x_0\right)+f^{\prime}\left(x_0\right)\left(x-x_0\right)+\cdots+\frac{f^{(n)}\left(x_0\right)}{n!}\left(x-x_0\right)^n+\frac{f^{(n+1)}(\xi)}{(n+1)!}\left(x-x_0\right)^{n+1}
+$$
+
+
+其中 $\xi$ 属于 $\left(x, x_0\right)$ 或 $\left(x_0, x\right)$.
+
+这个定理其实就是用多项式去拟合原来的函数，当然有了级数的知识我们知道这个其实是有一个收敛范围的，并不是所有的都会收敛到原来的函数的，例子的话可以看一看函数项级数课本上面有一个（我记得是）
+
+> 1. 设 $f(x)$ 在 $a$ 处存在二阶导数, 证明
+>
+> $$
+> \lim _{h \rightarrow 0} \frac{f(a+h)+f(a-h)-2 f(a)}{h^2}=f^{\prime \prime}(a)
+> $$
+>
+> 2. 设 $f(x)$ 在 $a$ 的某邻域二阶可导, 证明对充分小的 $h$, 存在 $\theta \in(0,1)$, 使得
+>
+> $$
+> \frac{f(a+h)+f(a-h)-2 f(a)}{h^2}=\frac{f^{\prime \prime}(a+\theta h)+f^{\prime \prime}(a-\theta h)}{2}
+> $$
+
+
+
+
+
+
+
+
+
+当然微分中值定理一般都得用到导数的极限定理以及达布定理
+
+### 达布定理和极限定理
+
+#### 极限定理
+
+1. 若 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b]$ 可导, 且 $\lim _{x \rightarrow a^{+}} f^{\prime}(x)$ 存在, 则 $f(x)$ 在 $x=a$ 处存在右导数, 并且 $f_{+}^{\prime}(a)=\lim _{x \rightarrow a^{+}} f^{\prime}(x)$;
+2. 若 $f(x)$ 在 $[a, b]$ 连续, 在 $[a, b)$ 可导, 且 $\lim _{x \rightarrow b^{-}} f^{\prime}(x)$ 存在, 则 $f(x)$ 在 $x=b$ 处存在左导数, 并且 $f_{-}^{\prime}(b)=\lim _{x \rightarrow b^{-}} f^{\prime}(x)$;
+3.  若 $f(x)$ 在 $x_0$ 的某邻域 $U\left(x_0\right)$ 连续, 在 $U^{\circ}\left(x_0\right)$ 可导, 且 $\lim _{x \rightarrow x_0} f^{\prime}(x)$ 存在, 则 $f(x)$ 在 $x_0$ 处可导, 且 $f^{\prime}\left(x_0\right)=\lim _{x \rightarrow x_0} f^{\prime}(x)$
+
+#### 达布定理
+
+**定理 6**. $f(x)$ 在 $[a, b]$ 可导, 且 $f_{+}^{\prime}(a) \neq f_{-}^{\prime}(b), k$ 是介于 $f_{+}^{\prime}(a)$ 与 $f_{-}^{\prime}(b)$ 之间的任一实数, 则至少存在 $\xi \in(a, b)$ 使 $f^{\prime}(\xi)=k$.
+
+这个定理主要是用来捏合系数，我记得我们之前在连续的时候有个例题这里有一个他的平推版本
+
+> 设 $f(x)$ 在区间 $I$ 可微, $\xi_1<\xi_2<\cdots<\xi_n$ 是 $I$ 中 $n$ 个点, 设 $\lambda_1, \cdots, \lambda_n$ 是正数. 则一定存在 $\xi \in I$ ，使得
+>
+> $$
+> \lambda_1 f^{\prime}\left(\xi_1\right)+\lambda_2 f^{\prime}\left(\xi_2\right)+\cdots+\lambda_n f^{\prime}\left(\xi_n\right)=\left(\lambda_1+\cdots+\lambda_n\right) f^{\prime}(\xi)
+> $$
+
+当然回到我们定理，为什么这里导数没有连续就有介值定理成立呢？想一想。原因出现在哪里，当然证明的时候我们构造一个使用费马定理就可以，我个人觉得这里最核心的问题是导数没有第二类间断点
+
+
+
+## 下面我们总结一下中值定理的题
+
+1. 看到 $m f(\xi)+n f^{\prime}(\xi)$, 应想到 $f(x) e^{\frac{2 m}{n} x}$, 因为
+
+$$
+\left[f(x) e^{\frac{m}{n} x}\right]^{\prime}=\left[f^{\prime}(x)+\frac{m}{n} f(x)\right] e^{\frac{m}{n} x}=\frac{1}{n}\left[m f(x)+n f^{\prime}(x)\right] e^{\frac{m}{n} x}
+$$
+
+2. 看到 $m f(\xi)+n \xi f^{\prime}(\xi)$ ，应想到 $x^m f^n(x)$ ，因为
+
+$$
+\left[x^m f^n(x)\right]^{\prime}=\left[\underline{m f(x)+n x f^{\prime}(x)}\right] x^{m-1} f^{n-1}(x)
+$$
+
+3. 看到 $m f(\xi)-n \xi f^{\prime}(\xi)$, 应该想到 $\frac{f^n(x)}{x^m}$ 或 $\frac{x^m}{f^n(x)}$, 因为
+
+$$
+\left[\frac{f^n(x)}{x^m}\right]^{\prime}=\frac{f^{n-1}(x)}{x^{m+1}}\left[n x f^{\prime}(x)-m f(x)\right],\left[\frac{x^m}{f^n(x)}\right]^{\prime}=\frac{x^{m-1}}{f^{n+1}(x)}\left[m f(x)-n x f^{\prime}(x)\right]
+$$
+
+4. 看到 $n f^{\prime}(\xi) f(1-\xi)-m f(\xi) f^{\prime}(1-\xi)$, 应该想到 $f^n(x) f^m(1-x)$, 因为
+
+$$
+\left[f^n(x) f^m(1-x)\right]^{\prime}=\left[n f^{\prime}(x) f(1-x)-m f(x) f^{\prime}(1-x)\right] f^{n-1}(x) f^{m-1}(1-x)
+$$
+
+5. 看到 $m f^{\prime}(\xi) g(\xi)+n f(\xi) g^{\prime}(\xi)$, 应该想到 $f^m(x) g^n(x)$, 因为
+
+$$
+\left[f^m(x) g^n(x)\right]^{\prime}=\left[\underline{m f^{\prime}(x) g(x)+n f(x) g^{\prime}(x)}\right] f^{m-1}(x) g^{n-1}(x)
+$$
+
+6. 看到 $m f^{\prime}(\xi) g(\xi)-n f(\xi) g^{\prime}(\xi)$, 应该想到 $\frac{f^m(x)}{g^n(x)}$, 因为
+
+$$
+\left[\frac{f^m(x)}{g^n(x)}\right]^{\prime}=\frac{f^{m-1}(x)}{g^{n+1}(x)}\left[m f^{\prime}(x) g(x)-n f(x) g^{\prime}(x)\right]
+$$
+
+7. 看到 $f(\xi) g^{\prime \prime}(\xi)-g(\xi) f^{\prime \prime}(\xi)$, 应该想到 $f^{\prime}(x) g(x)-f(x) g^{\prime}(x)$, 因为
+
+$$
+\left[f^{\prime}(x) g(x)-f(x) g^{\prime}(x)\right]^{\prime}=f^{\prime \prime}(x) g(x)-f(x) g^{\prime \prime}(x) .
+$$
+
+当然这些一般都注意不到哈哈哈哈哈，不是因为我菜。
+
+>  设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 且 $f(a)<0, f(b)<0$, 同时存在 $c \in(a, b)$, 使得 $f(c)>0$, 证明存在 $\xi \in(a, b)$, 使得 $f(\xi)+f^{\prime}(\xi)=0$.
+
+
+
+
+
+
+
+
+
+> 设 $f(x)$ 在 $[0,1]$ 连续, 在 $(0,1)$ 可导, 且 $f(0)=f(1)=0, f\left(\frac{1}{2}\right)=1$, 证明对任意的 $\lambda>0$,存在 $\xi \in(0,1)$, 使得 $f^{\prime}(\xi)-\lambda[f(\xi)-\xi]=1$.
+
+
+
+
+
+
+
+
+
+
+
+常数变易法
+
+>  设 $f(x)$ 在 $[1,2]$ 上连续, 在 $(1,2)$ 可微, 证明存在 $\xi \in(1,2)$, 使得 $f(2)-f(1)=\frac{1}{2} \xi^2 f^{\prime}(\xi)$.
+
+
+
+
+
+
+
+> 设 $f(x)$ 在 $[0,1]$ 上二阶可导, 且 $f(0)=f(1)$, 证明存在 $\xi \in(0,1)$, 使得 $f^{\prime \prime}(\xi)=\frac{3 f^{\prime}(\xi)}{1-\xi}$.
+
+这个证明首先我们用求解出$f^{\prime}\left( x \right) =\frac{1}{\left( 1-x \right) ^3}$然后再乘过去可以得到$1=(1-x)^3 f^{\prime}(x)$这样我们令$F(x)=(1-x)^3 f^{\prime}(x)$.然后我们求导就会发现得到的刚好的是我们要求的（这是一个细节）
+
+
+
+
+
+
+
+
+
+> 设 $f(x)$ 在 $R$ 上二阶可导, 且 $f(0)=0$, 证明: 存在 $\xi \in\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, 使得
+>
+> $$
+> f^{\prime \prime}(\xi)=3 f^{\prime}(\xi) \tan \xi+2 f(\xi)
+> $$
+
+这里我们求解出，发现超级难解~~于是我们放弃~~哈哈哈哈，这里我们先把他作差然后积分试一试反过来找我们要构造的函数
+$$
+G(\xi)=f^{\prime \prime}(\xi) \cos \xi-3 f^{\prime}(\xi) \sin \xi-2 f^{\prime}(\xi) \cos \xi=0
+$$
+然后求积分发现为
+$$
+f^{\prime}\left(\xi\right) \cos \xi-2 f\left(\xi\right) \sin \xi=0
+$$
+
+
+这个方程我算不出来，但是我们发现他两边乘以cos后能算出来。
+
+于是我们令$F=f\cos^2x$.
+
+**华师经常考的**
+
+> 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可微, 其中 $0<a<b$, 证明
+>
+> 1. 存在 $\xi, \eta \in(a, b)$, 使得 $f^{\prime}(\xi)=\frac{a+b}{2 \eta} f^{\prime}(\eta)$;
+>
+> 2) 存在 $x_1, x_2, x_3 \in(a, b)$, 使得 $\frac{f^{\prime}\left(x_1\right)}{2 x_1}=\frac{f^{\prime}\left(x_2\right)}{4 x_2^3}\left(b^2+a^2\right)=\frac{\ln b-\ln a}{b^2-a^2} x_3 f^{\prime}\left(x_3\right)$;
+> 3) 存在 $\xi_1, \xi_2, \xi_3 \in(a, b)$, 使得 $f^{\prime}\left(\xi_1\right)=(a+b) \frac{f^{\prime}\left(\xi_2\right)}{2 \xi_2}=\left(a^2+a b+b^2\right) \frac{f^{\prime}\left(\xi_3\right)}{3 \xi_3^2}$.
+
+我们知道
+$$
+\frac{f(b)-f(a)}{b^2-a^2}=\left\{\begin{array}{l}
+\frac{f(b)-f(a)}{(b-a)(b+a)}=\frac{1}{a+b} \cdot \frac{f(b)-f(a)}{b-a}=\frac{f^{\prime}(\xi)}{a+b} ; \\
+\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f^{\prime}(\eta)}{g^{\prime}(\eta)}=\frac{f^{\prime}(\eta)}{2 \eta} .
+\end{array}\right.
+$$
+令 $g(x)=x^2$就可以
+
+下面两个同理
+
+这个有一定的几何意义
+
+>  设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, $f(0)=0, f(1)=1, \lambda_1, \lambda_2, \cdots, \lambda_n$ 为 $n$ 个正数, 满足 $\sum_{i=1}^n \lambda_i=1$. 证明在 $[0,1]$ 内存在一组互不相同的点 $x_1, x_2, \cdots, x_n$, 使得 $\sum_{i=1}^n \frac{\lambda_i}{f^{\prime}\left(x_i\right)}=1$.
+
+这里把拉姆达看成y然后发现懂的都懂，然后再去解答发现很简单
+
+解答. 由于 $f(0)=0, f(1)=1$, 所以由连续函数的介值性定理可知存在 $c_1 \in(0,1)$, 使得 $f\left(c_1\right)=\lambda_1$, 再由 $f\left(c_1\right)=\lambda_1<\lambda_1+\lambda_2<1=f(1)$ 可知存在 $c_2 \in\left(c_1, 1\right)$, 使得 $f\left(c_2\right)=\lambda_1+\lambda_2$, 以此类推, 可知存在点
+
+$$
+0<c_1<c_2<\cdots<c_n=1
+$$
+
+
+满足 $f\left(c_i\right)=\sum_{k=1}^i \lambda_k(i=1,2, \cdots, n)$, 记 $c_0=0$, 在每个 $\left[c_{i-1}, c_i\right]$ 上应用拉格朗日中值定理, 存在 $x_i \in$ $\left(c_{i-1}, c_i\right) \subseteq(0,1)$, 使得
+
+$$
+f^{\prime}\left(x_i\right)=\frac{f\left(c_i\right)+f\left(c_{i-1}\right)}{c_i-c_{i-1}}=\frac{\lambda_i}{c_i-c_{i-1}}(i=1,2, \cdots, n)
+$$
+
+
+即有 $\frac{\lambda_i}{f^{\prime}\left(x_i\right)}=c_i-c_{i-1}$, 从而
+
+$$
+\sum_{i=1}^n \frac{\lambda_i}{f^{\prime}\left(x_i\right)}=\sum_{i=1}^n\left(c_i-c_{i-1}\right)=c_n-c_0=1
+$$
+给出一个应用
+
+> 设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, 且 $f(0)=0, f(1)=1, a, b$ 为正实数, 证明
+>
+> (1) 存在 $\xi \in(0,1)$, 使得 $f(\xi)=\frac{a}{a+b}$ ；
+> (2) 存在互异的 $\eta_1, \eta_2 \in(0,1)$, 使得 $\frac{a}{f^{\prime}\left(\eta_1\right)}+\frac{b}{f^{\prime}\left(\eta_2\right)}=a+b$.
+
+
+
+
+
+
+
+
+
+> 设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, 且 $f(0)=0, f(1)=1$, 证明
+>
+> (1) 存在 $\xi \in(0,1)$, 使得 $f(\xi)=1-\xi$;
+> (2) 存在两个互异的点 $\eta_1, \eta_2 \in(0,1)$, 使得 $f^{\prime}\left(\eta_1\right) f^{\prime}\left(\eta_2\right)=1$.
+
+
+
+分析. 先设定一个中值点 $\xi$ 满足葉种性质, 然后由拉格朗日中值定理可知存在 $\xi_1 \in[0, \xi], \xi_2 \in[\xi, 1]$, 使得
+
+$$
+f^{\prime}\left(\xi_1\right)=\frac{f(\xi)-f(0)}{\xi}=\frac{f(\xi)}{\xi}, \quad f^{\prime}\left(\xi_2\right)=\frac{f(1)-f(\xi)}{1-\xi}=\frac{1-f(\xi)}{1-\xi}
+$$
+
+
+此时 $f^{\prime}\left(\xi_1\right) f^{\prime}\left(\xi_2\right)=\frac{f(\xi)[1-f(\xi)]}{\xi(1-\xi)}=1$ 等价于
+
+$$
+f(\xi)[1-f(\xi)]=\xi(1-\xi)
+$$
+
+
+为此我们自然想 $f(\xi)=\xi$ 或者 $f(\xi)=1-\xi$, 上式即可成立, 但是通过已知我们并不说明存在 $\xi \in(0,1)$, 使得 $f(\xi)=\xi$, 而通过构造辅助函数 $F(x)=f(x)-(1-x)$ 可知存在 $\xi \in(0,1)$ 使得 $f(\xi)=1-\xi$.
+
+### 中值点的极限
+
+这类题目关键是用拉格朗日把中值点求出来
+
+>  设 $f(x)$ 在 $U(a ; \delta)$ 上 $n+2$ 阶连续可徽, 且 $f^{(n+2)}(a) \neq 0$, 已知对任意的 $h \in(0, \delta), f(a+h)$在 $U(a ; \delta)$ 的泰勒公式为
+>
+> $$
+> f(a+h)=f(a)+f^{\prime}(a) h+\cdots+\frac{f^{(n)}(a)}{n!} h^n+\frac{f^{(n+1)}(a+\theta h)}{(n+1)!} h^{n+1}(0<\theta<1) .
+> $$
+>
+>
+> 证明 $\lim _{h \rightarrow 0} \theta=\frac{1}{n+2}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+>  设 $f(x)$ 在 $\left(x_0-\delta, x_0+\delta\right)$ 上 $n$ 阶连续可微, 已知 $f^{(2)}\left(x_0\right)=f^{(3)}\left(x_0\right)=\cdots=f^{(n-1)}\left(x_0\right)=0$,但 $f^{(n)}\left(x_0\right) \neq 0$, 若 $0 \neq|h|<\delta$ 时, 有
+>
+> $$
+> \frac{f\left(x_0+h\right)-f\left(x_0\right)}{h}=f^{\prime}\left(x_0+\theta h\right)
+> $$
+>
+>
+> 证明 $\lim _{h \rightarrow 0} \theta=\sqrt[n-2]{\frac{1}{n}}$.
+
+
+
+
+
+
+
+
+
+> 设 $f(x)$ 在点 $a$ 处二阶可导, 且 $f^{\prime \prime}(a) \neq 0$, 证明当 $h$ 充分小时, 有等式
+>
+> $$
+> f(a+h)-f(a)=f^{\prime}(a+\theta h) h
+> $$
+>
+>
+> 成立, 其中 $\theta \in(0,1)$, 并且 $\lim _{h \rightarrow 0} \theta=\frac{1}{2}$.
+
+
+
+
+
+
+
+
+
+### 大K法
+
+> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, 且 $f(a)=f(b)=0$, 证明对每个 $x \in(a, b)$, 都存在对应的 $\xi \in(a, b)$, 使得 $f(x)=\frac{f^{\prime \prime}(\xi)}{2}(x-a)(x-b)$.
+
+
+
+
+
+
+
+
+
+> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, $a<c<b$, 证明: 存在 $\xi \in(a, b)$, 使得
+>
+> $$
+> \frac{f(b)-f(a)}{b-a}-\frac{f(c)-f(a)}{c-a}=\frac{1}{2} f^{\prime \prime}(\xi)(b-c)
+> $$
+
+
+
+
+
+
+
+
+
+> 设 $f(x)$ 在 $[a, b]$ 上三阶可导, 证明存在 $\xi \in(a, b)$, 使得
+>
+> $$
+> f(b)=f(a)+\frac{1}{2}(b-a)\left[f^{\prime}(a)+f^{\prime}(b)\right]-\frac{1}{12}(b-a)^3 f^{\prime \prime \prime}(\xi)
+> $$
+
+
+
+
+
+
+
+
+
+
+
+### 带积分的问题
+
+> 设 $f(x)$ 是 $[0,1]$ 上的连续函数, 证明: 存在 $c \in(0,1)$ 使得
+>
+> $$
+> \int_0^c f(x) d x=(1-c) f(c)
+> $$
+>
+> 
+>
+> 
+>
+> 
+>
+> 
+>
+> 提示. 构造函数 $F(x)=(1-x) \int_0^x f(t) d t$, 然后使用罗尔中值定理.
+
+
+
+> 设 $f(x)$ 在 $[0,+\infty)$ 可微, $f(0)=0$, 且庚在 $A>0$, 满足 $\left|f^{\prime}(x)\right| \leq A|f(x)|$, 证明 $f(x) \equiv 0$.
+
+**解答**. 显然 $|f(x)|$ 在 $\left[0, \frac{1}{2 A}\right]$ 连续, 设其最大值为 $|f(c)|$, 其中 $c \in\left[0, \frac{1}{2 A}\right]$, 则由泰勒定理可知存在 $\xi \in\left(0, \frac{1}{2 A}\right)$, 使得
+$$
+|f(c)|=\left|f(0)+f^{\prime}(\xi) c\right|=\left|f^{\prime}(\xi)\right| c \leq A|f(\xi)| c \leq A|f(c)| \cdot \frac{1}{2 A}=\frac{|f(c)|}{2}
+$$
+
+从而 $|f(c)|=0$, 进而 $f(x) \equiv 0, x \in\left[0, \frac{1}{2 A}\right]$.
+
+以此类推,（此时我们选取的点由上面证明可知为0） 可知 $f(x)$ 在每一个区间 $\left[\frac{k-1}{2 A}, \frac{k}{2 A}\right](k=1,2, \cdots)$ 上均恒为零, 故 $f(x) \equiv 0, x \in[0,+\infty)$.
+
+
+
+
+
+> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, 证明存在 $\xi \in(a, b)$, 使得
+>
+> $$
+> \int_a^b f(x) d x=(b-a) f\left(\frac{a+b}{2}\right)+\frac{1}{24}(b-a)^3 f^{\prime \prime}(\xi)
+> $$
+
+
+
+
+
+
+
+### 中值与不等式
+
+> 设 $f(x)$ 在 $[a, b]$ 二阶可导, $f(a)=f(b)=0$, 记
+>
+> $$
+> \max _{x \in[a, b]} f(x)=M, \min _{x \in[a, b]} f(x)=m, \max _{x \in[a, b]} f^{\prime \prime}(x)=S, \min _{x \in[a, b]} f^{\prime \prime}(x)=s
+> $$
+>
+> 证明
+> (1) 若 $M>0$, 则 $s \leq-\frac{8 M}{(b-a)^2} \leq S$;
+> (2) 若 $m<0$, 則 $s \leq-\frac{8 m}{(b-a)^2} \leq S$.
+
+
+
+注意到s也可以控制M
+
+
+
+> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, $f(a)=f(b)=0$, 且 $\left|f^{\prime \prime}(x)\right| \geq A>0$, 证明
+>
+> $$
+> \max _{x \in[a, b]}|f(x)| \geq \frac{A}{8}(b-a)^2
+> $$
+
+
+
+
+
+
+
+
+
+
+
+>  $f(x)$ 在 $[a, b]$ 二阶可导, $f^{\prime}(a)=f^{\prime}(b)=0$, 证明存在 $\xi \in(a, b)$, 使得
+>
+> $$
+> \left|f^{\prime \prime}(\xi)\right| \geq \frac{4}{(b-a)^2}|f(b)-f(a)|
+> $$

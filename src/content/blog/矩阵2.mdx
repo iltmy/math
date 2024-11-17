@@ -1,0 +1,244 @@
+---
+
+title: 矩阵2
+description: 矩阵的基本习题
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+
+  - 高等代数
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+
+
+
+## 在论正交矩阵
+
+1. 证明如下结论:
+   (1) 一个实对称矩阵 $A$ 的所有特征值都为 $\pm 1$, 那么这个矩阵一定是正交矩阵;
+   (2) 设 $\alpha$ 是一个实 $n$ 维单位列向量, 则 $E_n-2 \alpha \alpha^{\prime}$ 是一个对称正交矩阵.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.   设 $A$ 是一个 2 级正交矩阵, 则
+   (1) 如果 $|A|=1$, 则 $A$ 正交相似于以下形式的矩阵:
+
+$$
+\left(\begin{array}{cc}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right)
+$$
+
+ 	其中 $0 \leq \theta \leq \pi$;
+	(2) 如果 $|A|=-1$, 则 $A$ 正交相似于以下的对角矩阵:
+$$
+\left(\begin{array}{cc}
+-1 & 0 \\
+0 & 1
+\end{array}\right)
+$$
+
+
+
+
+
+
+
+
+3. 正交矩阵虚特征值的特征向量的实部向量与虚部向量模长相等且相互正交.
+
+
+
+
+
+
+
+4. 已知 $A$ 是一个 $n$ 级正交矩阵, 则 $A$ 正交相似于以下的准对角矩阵
+
+$$
+\operatorname{diag}\left\{\lambda_1, \cdots, \lambda_r,\left(\begin{array}{cc}
+\cos \theta_1 & -\sin \theta_1 \\
+\sin \theta_1 & \cos \theta_1
+\end{array}\right), \cdots,\left(\begin{array}{cc}
+\cos \theta_m & -\sin \theta_m \\
+\sin \theta_m & \cos \theta_m
+\end{array}\right)\right\}
+$$
+
+
+其中 $\lambda_i=1$ 或 $-1(i=1,2, \cdots, r) ; 0<\theta_j<\pi \quad(j=1,2, \cdots, m) ; r+2 m=n$.
+
+
+
+## 对称矩阵
+
+1. 任意一个实数域上的二次型, 经过一适当的非退化线性替换可以变成规范形, 并且规范形是唯一的.
+2. 
+
+- 设 $A$ 是 $n$ 级实对称矩阵, 且 $|A|<0$, 证明: 必存在实 $n$ 维列向量 $X$ 使得 $X^{\prime} A X<0$;
+- 设 $f(X)=X^{\prime} A X$ 是一实二次型, 并且存在 $X_1, X_2$ 使得
+
+$$
+X_1^{\prime} A X_1>0, \quad X_2^{\prime} A X_2<0
+$$
+
+
+证明: 必存在 $X_0 \neq 0$ 使得 $X_0^{\prime} A X_0=0$.
+
+3. 设 $n$ 级实对称矩阵 $A$ 的全部特征值按大小顺序排列成 $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$, 证明:
+
+   $$
+   \max _{X \in \mathbb{R}^n, X \neq 0} \frac{X^{\prime} A X}{X^{\prime} X}=\lambda_1, \min _{X \in \mathbb{R}^n, X \neq 0} \frac{X^{\prime} A X}{X^{\prime} X}=\lambda_n
+   $$
+
+
+
+
+
+## 反对称矩阵
+
+1. 设 $A$ 为实反称阵, 证明属于 $A$ 的非零特征值的任意特征向量的实部向量与虚部向量相互正交且模长相等。
+
+2. 设 $A$ 为 $n$ 级实反称矩阵, 证明 $A$ 正交相似于如下形式的准对角矩阵
+
+   $$
+   \operatorname{diag}\left\{\left(\begin{array}{cc}
+   0 & b_1 \\
+   -b_1 & 0
+   \end{array}\right), \cdots,\left(\begin{array}{cc}
+   0 & b_s \\
+   -b_s & 0
+   \end{array}\right), 0, \cdots, 0\right\}
+   $$
+
+
+   其中 $b_1, \cdots, b_s$ 均为非零实数.
+
+3. 设 $A$ 是数域 $P$ 上的一个反称矩阵, 则 $A$ 合同于准对角矩阵
+
+   $$
+   \operatorname{diag}\left\{\left(\begin{array}{cc}
+   0 & 1 \\
+   -1 & 0
+   \end{array}\right), \cdots,\left(\begin{array}{cc}
+   0 & 1 \\
+   -1 & 0
+   \end{array}\right), 0, \cdots, 0\right\}
+   $$
+
+4. $A$ 是每个元素都为整数的反称矩阵, 证明 $A$ 的行列式或者为零, 或者为一个整数的平方.
+
+## 可对角化
+
+1.  设 $A$ 是数域 $K$ 上的一个 $n$ 级矩阵, 则 $A$ 可对角化的充要条件是 $A$ 有 $n$ 个线性无关的特征向量.
+
+2.  已知 $A, B$ 都是 $n$ 级方阵, $A B=B A$, 且 $A, B$ 都可以对角化, 证明 $A, B$ 可以同时对角化,即存在可逆矩阵 $T$, 使得 $T^{-1} A T, T^{-1} B T$ 同时为对角矩阵.
+
+## 综合问题
+
+设 $A$ 为 $n$ 级正定矩阵, $B$ 为 $n$ 级实对称矩阵, 则存在可逆矩阵 $C$, 使得 $A=C C^{\prime}$, 于是
+
+$$
+A B=C C^{\prime} B=C C^{\prime} B C C^{-1} \sim C^{\prime} B C \simeq B .
+$$
+
+所以由 $B$ 实对称可得 $C^{\prime} B C$ 实对称, 其特征值均为实数, 进而 $A B$ 的特征值均为实数, 更进一步, 有
+(1) $B$ 正定 $\Longleftrightarrow C^{\prime} B C$ 正定 $\Longleftrightarrow C^{\prime} B C$ 特征值均大于零 $\Longleftrightarrow A B$ 特征值均大于零;
+(2) $B$ 半正定 $\Longleftrightarrow C^{\prime} B C$ 半正定 $\Longleftrightarrow C^{\prime} B C$ 特征值均大于等于零 $\Longleftrightarrow A B$ 特征值均大于等于零.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+设 $A, B, C$ 均为 $n$ 级正定矩阵, 若 $A B C$ 是实对称矩阵, 证明 $A B C$ 是正定矩阵.（这个问题我当时完全背不会）
+
+
+
+
+
+
+
+
+
+
+
+
+
+设 $A$ 是 $n$ 阶正定矩阵, 求证 $|A| \leq a_{11} a_{22} \cdots a_{n n}$, 等号成立当且仅当 $A$ 是对角矩阵。
+
+
+
+
+
+
+
+已知 $A$ 是一个 $n$ 级实对称矩阵, 则存在 $n$ 级实对称矩阵 $B$ 使得 $A=B^3$.
+
+
+
+
+
+
+
+
+
+已知 $A$ 是一个 $n$ 级正定矩阵. 则
+(1) 存在实可送矩阵 $C_1$ 使得 $A=C_1^{\prime} C_1$;
+(2) 存在实对称矩阵 $C_2$ 使得 $A=C_2^2$;
+(3) 存在正定矩阵 $C$ 使得 $A=C^2$, 并且这里的 $C$ 是唯一的.
+
+
+
+
+
+
+
+
+
+
+
+
+
+设 $A_1, A_2, \cdots, A_m$ 为 $n$ 级方阵，满足 $A_1+A_2+\cdots+A_m=E_n$ ，则以下三个条件等价：
+(1) $A_1, A_2, \cdots, A_m$ 都是幂等矩阵;
+(2) $r\left(A_1\right)+r\left(A_2\right)+\cdots+r\left(A_m\right)=n$ ；
+(3) 对任意 $i \neq j(i, j=1,2, \cdots, m)$ 都有 $A_i A_j=0$.
