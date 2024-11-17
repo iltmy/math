@@ -1,0 +1,120 @@
+---
+title: 2.The maximum principle for heat-type equations
+description: 热方程的极值原理在里奇流上的应用
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+  - Ricci flow
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+
+## The maximum principle 
+
+**Proposition**: (Maximum principle for supersolutions of the heat equation). Let $g(t)$ be a family of metrics on a closed manifold $M^{n}$ and let $u: M^{n} \times[0, T) \rightarrow \mathbb{R}$ satisfy
+$$
+\frac{\partial}{\partial t} u \geq \Delta_{g(t)} u
+$$
+
+Then if $u \geq c$ at $t=0$ for some $c \in \mathbb{R}$, then $u \geq c$ for all $t \geq 0$.
+
+**Proof：**
+
+**Corollary :** (Lower bound of scalar curvature is preserved under RF). If $g(t), t \in[0, T)$, is a solution to the Ricci flow on a closed manifold with $R \geq c$ at $t=0$ for some $c \in \mathbb{R}$, then
+$$
+R \geq c
+$$
+for all $t \in[0, T)$. In particular, nonnegative (positive) scalar curvature is preserved under the Ricci flow.
+
+**Proof:**
+
+
+
+**Lemma:**(Maximum principle comparing with the ODE). Suppose $g(t)$ is a family of metrics on a closed manifold $M^{n}$ and $u: M^{n} \times[0, T) \rightarrow \mathbb{R}$ satisfies
+$$
+\frac{\partial}{\partial t} u \leq \Delta_{g(t)} u+\langle X(t), \nabla u\rangle+F(u)
+$$
+where $X(t)$ is a time-dependent vector field and $F$ is a Lipschitz function. If $u \leq c$ at $t=0$ for some $c \in \mathbb{R}$, then $u(x, t) \leq U(t)$ for all $x \in M^{n}$ and $t \geq 0$, where $U(t)$ is the solution to the ODE
+$$
+\frac{d U}{d t}=F(U)
+$$
+with $U(0)=c$.
+
+**Proof:**
+
+##  evolution equation for the scalar curvature
+
+Let $\left(M^{n}, g(t)\right), t \in[0, T)$, be a solution to the Ricci flow on a closed manifold  Since $|\mathrm{Rc}|^{2} \geq \frac{1}{n} R^{2}$ , equation (2.2) implies
+$$
+\begin{equation*}
+\frac{\partial}{\partial t} R \geq \Delta R+\frac{2}{n} R^{2} \tag{2.8}
+\end{equation*}
+$$
+
+Since the solutions to the ODE $\frac{d \rho}{d t}=\frac{2}{n} \rho^{2}$ are $\rho(t)=\frac{n}{n \rho(0)^{-1}-2 t}$, by the maximum principle one has
+$$
+\begin{equation*}
+R(x, t) \geq \frac{n}{n\left(\inf _{t=0} R\right)^{-1}-2 t} \tag{2.9}
+\end{equation*}
+$$
+for all $x \in M^{n}$ and $t \geq 0$. It $\rho(0)>0$, then $\rho(t)$ tends to infinity in finite time. When $M$ is closed, let $R_{\text {min }}(0) \doteqdot \inf _{t=0} R$. 
+
+
+
+ **Corollary:**(Finite singularity time for positive scalar curvature). If $\left(M^{n}, g_{0}\right)$ is a closed Riemannian manifold with positive scalar curvature, then for any solution $g(t), t \in[0, T)$, to the Ricci flow with $g(0)=g_{0}$ we have
+$$
+T \leq \frac{n}{2 R_{\min }(0)}<\infty
+$$
+
+
+
+ **Definition:** (Complete solution). A solution $g(t), t \in \mathcal{I}$, of the Ricci flow is said to be complete if for each $t \in \mathcal{I}$, the Riemannian metric $g(t)$ is complete.
+
+ **Lemma**  (Ancient solutions have nonnegative scalar curvature). If $\left(M^{n}, g(t)\right), t \in(-\infty, 0]$, is a complete solution to the Ricci flow with bounded curvature on compact time intervals, then either $R(g(t))>0$ for all $t \in$ $(-\infty, 0]$ or $\operatorname{Rc}(g(t)) \equiv 0$ for all $t \in(-\infty, 0]$.
+
+**Proof:**
+
+
+
+
+
+1. **EX1** Let $u$ be a solution to the heat equation with respect to a metric $g(t)$ evolving by the Ricci flow:
+   $$
+   \frac{\partial u}{\partial t}=\Delta_{g(t)} u
+   $$
+
+   Recall from Exercise 1.40 that
+   $$
+   \frac{\partial}{\partial t}|\nabla u|^{2}=\Delta|\nabla u|^{2}-2|\nabla \nabla u|^{2}
+   $$
+   - From this deduce
+
+   $$
+   \left(\frac{\partial}{\partial t}-\Delta\right)\left(t|\nabla u|^{2}+\frac{1}{2} u^{2}\right) \leq 0
+   $$
+   - Apply the maximum principle to conclude that if $M^{n}$ is closed, then
+
+   $$
+   \begin{equation*}
+   |\nabla u| \leq \frac{U}{\sqrt{2} t^{1 / 2}} \tag{2.10}
+   \end{equation*}
+   $$
+   where $U \doteqdot \max _{t=0}|u|$.
+
+2. **Ex2** Let $u$ be a solution to the heat equation on a Riemannian manifold $\left(M^{n}, g\right)$. Show that
+   $$
+   \frac{\partial}{\partial t}|\nabla u|^{2}=\Delta|\nabla u|^{2}-2|\nabla \nabla u|^{2}-2 R_{i j} \nabla_{i} u \nabla_{j} u
+   $$
+
+   What estimate, analogous to the previous exercise, for $|\nabla u|$ do you get assuming $\mathrm{Rc} \geq 0$ ? How about the case where $\mathrm{Rc} \geq-(n-1) K$ for some constant $K$ ? Which curvature condition do you need to get decay of $|\nabla u|$ as $t \rightarrow \infty$ ?
