@@ -1,0 +1,223 @@
+---
+title: 3. 黎曼几何中的基本公式和恒等式
+description: Bianchi恒等式
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+曲率的微分同胚不变性在黎曼几何和Ricci流中非常重要。正如我们将在本节中看到的，Bianchi恒等式反映了这种微分同胚不变性。当讨论微分同胚不变性或规范变换（在物理学语言中）时，Lie导数会进入讨论。我们将回顾一些关于Lie导数和对易协变导数的基本公式。
+
+## 3.1 Bianchi恒等式
+
+除了(1.11)之外，黎曼曲率张量还满足其他对称性。第一和第二Bianchi恒等式为
+$$
+\begin{align*}
+R_{i j k \ell} + R_{j k i \ell} + R_{k i j \ell} & = 0 \tag{1.17}\\
+\nabla_{i} R_{j k \ell m} + \nabla_{j} R_{k i \ell m} + \nabla_{k} R_{i j \ell m} & = 0 \tag{1.18}
+\end{align*}
+$$
+
+**练习1.17.** 证明Bianchi恒等式。提示：先计算不变形式，然后将答案转换为局部坐标表示。
+
+(第二次)收缩的第二Bianchi恒等式为
+$$
+\begin{equation*}
+2 g^{i j} \nabla_{i} R_{j k} = \nabla_{k} R \tag{1.19}
+\end{equation*}
+$$
+
+这等价于爱因斯坦张量$$\mathrm{Rc} - \frac{1}{2} \mathrm{Rg}$$是无散度的：
+$$
+\operatorname{div}\left(\operatorname{Rc} - \frac{1}{2} R g\right) = 0
+$$
+（参见下文公式(1.35)以了解散度的定义）。公式(1.19)由将第二Bianchi恒等式(1.18)乘以$$g^{i m} g^{j \ell}$$得出。
+
+**练习1.18 (一次收缩的第二Bianchi恒等式)。** 通过将(1.18)乘以$$g^{i m}$$并求和（即进行一次收缩），证明：
+$$
+\begin{equation*}
+g^{i m} \nabla_{i} R_{j k \ell m} = \nabla_{j} R_{k \ell} - \nabla_{k} R_{j \ell} \tag{1.20}
+\end{equation*}
+$$
+
+也就是说，Rm的散度是将Rc视为在切丛中取值的1-形式的外协变导数${ }^{5}$。正如我们将在下一小节中看到的，Bianchi恒等式与曲率的微分同胚不变性有关。
+
+**练习1.19 (Schur定理)**
+1. 使用公式(1.19)，证明如果$$g$$是爱因斯坦度量（即$$R_{i j} = \frac{1}{n} R g_{i j}$$）且$$n \geq 3$$，那么$$R$$是一个常数。注意，条件$$R_{i j} = \frac{1}{n} R g_{i j}$$表明Ricci曲率仅依赖于点而不依赖于该点的方向。此练习的结果表明在这种情况下，如果$$n \geq 3$$，那么Ricci曲率也不依赖于点。
+2. 使用第二Bianchi恒等式(1.18)，证明如果$$n \geq 3$$且每个点处的截面曲率与2-平面无关，即
+$$
+R_{i j k \ell} = \frac{R}{n(n-1)}\left(g_{i \ell} g_{j k} - g_{i k} g_{j \ell}\right)
+$$
+那么$$R$$是一个常数。
+
+## 3.2. Lie导数
+
+回顾一下，如果一个向量场$$X$$是完备的，那么存在由$$X$$生成的微分同胚的1参数群$$\{\varphi_{t}\}_{t \in \mathbb{R}}$$。如果$$M^n$$是闭的，那么任何光滑向量场都是完备的。设$$\alpha$$是类型为$$(r, s)$$的张量，$$X$$是一个完备向量场，生成一个全局的1参数微分同胚群$$\varphi_{t}$$（以下定义可以推广到$$X$$不是完备的情形，此时$$X$$只定义局部的1参数微分同胚群）。$$\alpha$$关于$$X$$的Lie导数定义为
+$$
+\begin{equation*}
+\mathcal{L}_{X} \alpha \doteqdot \lim _{t \rightarrow 0} \frac{1}{t}\left(\alpha - \left(\varphi_{t}\right)_{*} \alpha\right) \tag{1.21}
+\end{equation*}
+$$
+
+其中$$\left(\varphi_{t}\right)_{*}: T_{p} M^{n} \rightarrow T_{\varphi_{t}(p)} M^{n}$$是$$\varphi_{t}$$的微分。它作用于余切丛的方式为$$\left(\varphi_{t}\right)_{*} = \left(\varphi_{t}^{-1}\right)^{*}: T_{p}^{*} M^{n} \rightarrow T_{\varphi_{t}(p)}^{*} M^{n}$$。然后我们可以自然地将$$\left(\varphi_{t}\right)_{*}$$的作用扩展到$$M^{n}$$的张量丛，这在公式(1.21)中得以应用。
+
+Lie导数测量了由向量场生成的微分同胚1参数群相对于张量的微分同胚不变性的微小偏差。它具有以下性质：
+
+1. 如果$$f$$是一个函数，那么$$\mathcal{L}_{X} f = X f$$。
+2. 如果$$Y$$是一个向量场，那么$$\mathcal{L}_{X} Y = [X, Y]$$。
+3. 如果$$\alpha$$和$$\beta$$是张量，那么$$\mathcal{L}_{X}(\alpha \otimes \beta) = \left(\mathcal{L}_{X} \alpha\right) \otimes \beta + \alpha \otimes \left(\mathcal{L}_{X} \beta\right)$$。
+4. 如果$$\alpha$$是一个$$(r, 0)$$-张量，那么对于任意向量场$$X, Y_{1}, \ldots, Y_{r}$$，有
+   $$
+   \left(\mathcal{L}_{X} \alpha\right)\left(Y_{1}, \ldots, Y_{r}\right) = X\left(\alpha\left(Y_{1}, \ldots, Y_{r}\right)\right)
+   $$
+   $$
+   \begin{aligned}
+   & -\sum_{i=1}^{n} \alpha\left(Y_{1}, \ldots, Y_{i-1},\left[X, Y_{i}\right], Y_{i+1}, \ldots, Y_{r}\right) \\
+   & = \left(\nabla_{X} \alpha\right)\left(Y_{1}, \ldots, Y_{r}\right) \\
+   & +\sum_{i=1}^{n} \alpha\left(Y_{1}, \ldots, Y_{i-1}, \nabla_{Y_{i}} X, Y_{i+1}, \ldots, Y_{r}\right)
+   \end{aligned}\tag{1.22}
+   $$
+
+例如，如果$$\alpha$$是一个2-张量，那么
+$$
+\left(\mathcal{L}_{X} \alpha\right)_{i j} = \nabla_{X} \alpha_{i j} + g^{k \ell}\left(\nabla_{i} X_{k} \alpha_{\ell j} + \nabla_{j} X_{k} \alpha_{i \ell}\right)
+$$
+
+ **练习 1.20 **给定一个微分同胚 $$\varphi: M^{n} \rightarrow M^{n}$$，我们有 $$\varphi^{*} : T_{\varphi(p)}^{*} M^{n} \rightarrow T_{p}^{*} M^{n}$$。拉回作用于切丛上为 $$\varphi^{*} \doteqdot \left(\varphi^{-1}\right)_{*}: T_{\varphi(p)} M^{n} \rightarrow T_{p} M^{n}$$。这些作用可以扩展到 $$M^{n}$$ 的张量丛。证明定义 (1.21) 等价于
+$$
+\mathcal{L}_{X} \alpha = \lim _{t \rightarrow 0} \frac{1}{t}\left(\varphi_{t}^{*} \alpha - \alpha\right) = \left.\frac{d}{d t}\right|_{t=0} \varphi_{t}^{*} \alpha
+$$
+
+回顾一下，一个函数 $$f$$ 关于度量 $$g$$ 的梯度定义为
+$$
+g\left(\operatorname{grad}_{g} f, X\right) \doteqdot X f = d f(X)
+$$
+
+换句话说，$$\operatorname{grad}_{g} f$$ 是 1-形式 $$d f$$ 的度量对偶。在本书中，我们还将使用符号 $$\nabla f$$ 来表示 $$d f$$ 和 $$\operatorname{grad}_{g} f$$。
+ **练习 1.21（度量的 Lie 导数）**
+使用 (1.22)，证明度量的 Lie 导数由下式给出
+$$
+\begin{equation*}
+\left(\mathcal{L}_{X} g\right)\left(Y_{1}, Y_{2}\right) = g\left(\nabla_{Y_{1}} X, Y_{2}\right) + g\left(Y_{1}, \nabla_{Y_{2}} X\right) \tag{1.23}
+\end{equation*}
+$$
+并且在局部坐标中这意味着
+$$
+\left(\mathcal{L}_{X} g\right)_{i j} = \nabla_{i} X_{j} + \nabla_{j} X_{i}
+$$
+特别地，如果 $$f$$ 是一个函数，那么
+$$
+\begin{equation*}
+\left(\mathcal{L}_{\text {grad }_{g} f} g\right)_{i j} = 2 \nabla_{i} \nabla_{j} f \tag{1.24}
+\end{equation*}
+$$
+
+
+**注释 1.22** 公式 (1.24) 在考虑梯度 Ricci 流形时非常有用。
+
+**练习 1.23 **证明对于任意微分同胚 $$\varphi: M^{n} \rightarrow M^{n}$$，张量 $$\boldsymbol{\alpha}$$ 和向量场 $$X$$，有
+$$
+ \begin{equation*}
+ \varphi^{*}\left(\mathcal{L}_{X} \alpha\right) = \mathcal{L}_{\varphi^{*} X}\left(\varphi^{*} \alpha\right) \tag{1.25}
+ \end{equation*}
+$$
+ 并且如果 $$f: M^{n} \rightarrow \mathbb{R}$$，那么
+$$
+ \begin{equation*}
+ \varphi^{*}\left(\operatorname{grad}_{g} f\right) = \operatorname{grad}_{\varphi^{*} g}(f \circ \varphi) \tag{1.26}
+ \end{equation*}
+$$
+
+ 
+
+**注释 1.24 **如果 $$\varphi(t): M^{n} \rightarrow M^{n}$$ 是 1 参数微分同胚族，且 $$\alpha$$ 是一个张量，那么
+$$
+ \begin{equation*}
+ \frac{\partial}{\partial t}\left(\varphi(t)^{*} \alpha\right) = \mathcal{L}_{X(t)} \varphi(t)^{*} \alpha \tag{1.27}
+ \end{equation*}
+$$
+ 其中
+$$
+ \left. X\left(t_{0}\right) \doteqdot \frac{\partial}{\partial t}\right|_{t=t_{0}}\left(\varphi\left(t_{0}\right)^{-1} \circ \varphi(t)\right) = \left.\left(\varphi\left(t_{0}\right)^{-1}\right)_{*} \frac{\partial}{\partial t}\right|_{t=t_{0}} \varphi(t)
+$$
+
+ 这里我们没有假设 $$\varphi(t)$$ 是一个群。
+
+ **定义 1.25** 如果一个微分同胚 $$\psi:\left(M^{n}, g\right) \rightarrow \left(N^{n}, h\right)$$ 是一个等距映射，那么有 $$\psi^{*} h = g$$。如果我们不要求 $$\psi$$ 是一个微分同胚，那么 $$\psi$$ 被称为局部等距映射。如果存在一个等距映射将两个黎曼流形联系起来，则称它们是等距的。在几何上，这样的度量是不可区分的。我们称 $$\left(M^{n}, g\right)$$ 上的一个向量场 $$X$$ 是 Killing 向量场，如果 $$\mathcal{L}_{X} g = 0$$。如果 $$X$$ 是一个完备的 Killing 向量场，那么它生成的 1 参数微分同胚群 $$\varphi_{t}$$ 是 $$\left(M^{n}, g\right)$$ 的 1 参数等距映射群。
+
+  **练习 1.26（从曲率的微分同胚不变性中推导第二 Bianchi 恒等式）**
+
+ 1. 证明 Jacobi 恒等式
+$$
+[X,[Y, Z]] + [Y,[Z, X]] + [Z,[X, Y]] = 0
+$$
+对于向量场 $$X, Y, Z$$，证明方法如下。令 $$\varphi_{t}: M^{n} \rightarrow M^{n}$$ 是由 $$X$$ 生成的 1 参数微分同胚群，并对 $$t = 0$$ 时的“微分同胚下 Lie 括号的不变性”方程取时间导数：
+$$
+    \varphi_{t}^{*}[Y, Z] = \left[\varphi_{t}^{*} Y, \varphi_{t}^{*} Z\right]
+$$
+
+ 2. （Hilbert, Kazdan [334]）类似地，通过考虑标量曲率和黎曼曲率张量的微分同胚不变性，证明（收缩的）第二 Bianchi 恒等式。
+      (a) 更准确地说，为了获得收缩的第二 Bianchi 恒等式 (1.19)，将 (2.4) 应用于以下方程：
+$$
+\begin{equation*}
+    D R_{g}\left(\mathcal{L}_{X} g\right) = \mathcal{L}_{X} R = \nabla_{i} R X^{i} \tag{1.28}
+    \end{equation*}
+$$
+其中 $$D R_{g}\left(\mathcal{L}_{X} g\right)$$ 表示 $$R_{g}$$ 在方向 $$\mathcal{L}_{X} g$$ 上的线性化。
+    (b) 为了证明第二 Bianchi 恒等式 (1.18)，将 (2.66) 应用于
+$$
+    \begin{equation*}
+    D \operatorname{Rm}_{g}\left(\mathcal{L}_{X} g\right) = \mathcal{L}_{X} \mathrm{Rm} \tag{1.29}
+    \end{equation*}
+$$
+
+ 
+
+## 3.3. 协变导数的对易性
+
+由于作用于向量场上的协变导数的对易性定义了黎曼曲率张量，因此作用于张量上的协变导数的对易性可以用曲率来表达。我们将特别关注标准的对易公式（Ricci 恒等式）：
+$$
+\begin{equation*}
+\left(\nabla_{i} \nabla_{j}-\nabla_{j} \nabla_{i}\right) \alpha_{k_{1} \cdots k_{r}}=-\sum_{\ell=1}^{r} R_{i j k_{\ell}}^{m} \alpha_{k_{1} \cdots k_{\ell-1} m k_{\ell+1} \cdots k_{r}} \tag{1.30}
+\end{equation*}
+$$
+
+特别地，如果 $$\alpha$$ 是一个 1-形式，那么
+$$
+\left(\nabla_{i} \nabla_{j}-\nabla_{j} \nabla_{i}\right) \alpha_{k}=-R_{i j k}^{\ell} \alpha_{\ell}
+$$
+
+如果 $$\beta$$ 是一个 $$(2,0)$$-张量，那么
+$$
+\begin{equation*}
+\nabla_{i} \nabla_{j} \beta_{k \ell}-\nabla_{j} \nabla_{i} \beta_{k \ell}=-R_{i j k}^{p} \beta_{p \ell}-R_{i j \ell}^{p} \beta_{k p} \tag{1.31}
+\end{equation*}
+$$
+
+在本书的大部分内容中，我们将发现使用局部坐标计算比使用正交（运动）标架更为方便。原因是，在 Ricci 流的作用下，度量在演化，我们可以选择一个固定的（时间不变的）坐标系，而为了保持相对于 $$g(t)$$ 的正交性，正交标架必须演化。一个例外是 Uhlenbeck 的技巧，我们将在引理 2.58 之后讨论。
+
+ **练习 1.27 **直接利用 Killing 向量场方程证明 Killing 向量场的向量空间是一个 Lie 代数。
+
+ **注释 1.28 **Bianchi 恒等式和协变微分的对易公式常用于 Ricci 流下几何量演化方程的计算中。
+
+ **练习 1.29**
+$$
+ \begin{align*}
+ \nabla_{i} \nabla_{j} \alpha_{k_{1} \cdots k_{r}}^{\ell_{1} \cdots \ell_{s}}-\nabla_{j} \nabla_{i} \alpha_{k_{1} \cdots k_{r}}^{\ell_{1} \cdots \ell_{s}} & =-\sum_{h=1}^{r} \sum_{p=1}^{n} R_{i j k_{h}}^{p} \alpha_{k_{1} \cdots k_{h-1}}^{\ell_{1} \cdots \ell_{s}} p k_{h+1} \cdots k_{r} \\
+ & +\sum_{h=1}^{s} \sum_{p=1}^{n} R_{i j p}^{\ell_{h}} \alpha_{k_{1} \cdots k_{r}}^{\ell_{1} \cdots \ell_{h-1}} \ell_{h+1} \cdots \ell_{s} \tag{1.32}
+ \end{align*}
+$$
+

@@ -1,0 +1,377 @@
+---
+title: 6.曲率分解与局部共形平坦流形
+description: 曲率分解的计算
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+## 6.1. 曲率张量的分解。
+
+黎曼曲率（4, 0）-张量是束 $\Lambda^{2} M^{n} \otimes_{S} \Lambda^{2} M^{n}$ 的一个截面，其中 $\Lambda^{2} M^{n}$ 表示 2-形式的向量束，而 $\otimes_{S}$ 表示对称张量积束。此外，由于第一个Bianchi恒等式，黎曼曲率张量是子束 $\operatorname{ker}(b)$ 的一个截面，其中 $\operatorname{ker}(b)$ 是线性映射 $b$ 的核：
+$$
+b: \Lambda^{2} M^{n} \otimes_{S} \Lambda^{2} M^{n} \rightarrow \Lambda^{3} M^{n} \otimes_{S} T^{*} M^{n}
+$$
+
+由下式定义：
+
+$$
+b(\Omega)(X, Y, Z, W) \doteqdot \frac{1}{3}(\Omega(X, Y, Z, W) + \Omega(Y, Z, X, W) + \Omega(Z, X, Y, W))
+$$
+
+我们将 $\mathrm{C} M \doteqdot \operatorname{ker}(b)$ 称为曲率张量束。对于每个 $x \in M^{n}$，纤维 $\mathrm{C}_{x} M$ 具有 $\mathrm{O}\left(T_{x}^{*} M\right)$-模的结构，给定为：
+
+$$
+\times: \mathrm{O}\left(T_{x}^{*} M\right) \times \mathrm{C}_{x} M \rightarrow \mathrm{C}_{x} M
+$$
+
+其中：
+
+$$
+A \times(\alpha \otimes \beta \otimes \gamma \otimes \delta) \doteqdot A \alpha \otimes A \beta \otimes A \gamma \otimes A \delta
+$$
+
+对于 $A \in \mathrm{O}\left(T_{x}^{*} M\right)$ 和 $\alpha, \beta, \gamma, \delta \in T_{x}^{*} M$。作为 $\mathrm{O}\left(T_{x}^{*} M\right)$ 表示空间，$\mathrm{C}_{x} M$ 自然分解为其不可约分量。这导致了黎曼曲率张量的相应分解。为了描述这一点，将方便考虑 Kulkarni-Nomizu 乘积：
+
+$$
+\odot: S^{2} M \times S^{2} M \rightarrow \mathrm{C} M
+$$
+
+定义为：
+
+$$
+(\alpha \odot \beta)_{i j k \ell} \doteqdot \alpha_{i \ell} \beta_{j k} + \alpha_{j k} \beta_{i \ell} - \alpha_{i k} \beta_{j \ell} - \alpha_{j \ell} \beta_{i k}
+$$
+
+这里 $S^{2} M = T^{*} M \otimes_{S} T^{*} M$ 是对称 2-张量的束。$\mathrm{C}_{x} M$ 作为 $\mathrm{O}\left(T_{x}^{*} M\right)$-模的不可约分解为：
+
+$$
+\mathrm{C} M = \mathbb{R} g \odot g \oplus \left(S_{0}^{2} M \odot g\right) \oplus \mathrm{W} M
+$$
+
+其中 $S_{0}^{2} M$ 是对称的、无迹的 2-张量的束，$\mathrm{W} M \doteqdot \operatorname{ker}(b) \cap \operatorname{ker}(c)$ 是 Weyl 曲率张量的束。这里：
+
+$$
+c: \Lambda^{2} M^{n} \otimes_{S} \Lambda^{2} M^{n} \rightarrow S^{2} M
+$$
+
+是通过下式定义的对合同映射：
+
+$$
+c(\Omega)(X, Y) \doteqdot \sum_{i=1}^{n} \Omega\left(e_{i}, X, Y, e_{i}\right)
+$$
+
+另请注意，$(g \odot g)_{i j k \ell} = 2\left(g_{i \ell} g_{j k} - g_{i k} g_{j \ell}\right)$。$\mathrm{C} M$ 的不可约分解导致了黎曼曲率张量的以下不可约分解：
+
+$$
+\mathrm{Rm} = f g \odot g + (h \odot g) + W
+$$
+
+其中 $f \in C^{\infty}(M)$，$h \in C^{\infty}\left(S_{0}^{2} M\right)$，$W \in C^{\infty}(\mathrm{W} M)$。取这个方程的合同 $c$ 得到：
+
+$$
+R_{j k} = 2(n-1) f g_{j k} + (n-2) h_{j k}
+$$
+
+另一方面，取两个合同，我们发现：
+
+$$
+R = 2 n(n-1) f
+$$
+
+因此，对于 $n \geq 3$，我们有：
+
+$$
+\begin{align*}
+\mathrm{Rm} & = -\frac{R}{2(n-1)(n-2)} g \odot g + \frac{1}{n-2} \mathrm{Rc} \odot g + \text { Weyl } \tag{1.57} \\
+& = \frac{R}{2 n(n-1)} g \odot g + \frac{1}{n-2} \mathrm{Rc} \odot g + \text { Weyl } \tag{1.58}
+\end{align*}
+$$
+
+其中 $\stackrel{\circ}{\mathrm{Rc}} \doteqdot \mathrm{Rc} - \frac{R}{n} g$ 是无迹的 Ricci 张量，而 Weyl 是 Weyl 张量，其定义见 (1.57)。Weyl 张量具有与黎曼曲率张量相同的代数对称性，此外，Weyl 张量是完全无迹的，即其所有的迹都为零，包括 $g^{i k} W_{i j k \ell} = 0$。此外，Weyl 张量是保形不变的：
+
+$$
+\operatorname{Weyl}\left(e^{2 f} g\right) = e^{2 f} \operatorname{Weyl}(g)
+$$
+
+对于 $M$ 上的任何光滑函数 $f$（见习题 1.59）。
+
+**推论 1.57.** 在局部坐标下 (1.57) 表示对于 $n \geq 3$：
+$$
+\begin{align*}
+R_{i j k \ell} & = -\frac{\dot{R}}{(n-1)(n-2)} \left(g_{i \ell} g_{j k} - g_{i k} g_{j \ell}\right) \\
+& \quad + \frac{1}{n-2} \left(R_{i \ell} g_{j k} + g_{i \ell} R_{j k} - R_{i k} g_{j \ell} - g_{i k} R_{j \ell}\right) + W_{i j k \ell} \tag{1.60}
+\end{align*}
+$$
+
+当 $n \leq 3$ 时，Weyl 张量消失。特别地，当 $n=2$ 时，我们有：
+
+$$
+\begin{equation*}
+R_{i j k \ell} = \frac{1}{2} R \left(g_{i \ell} g_{j k} - g_{i k} g_{j \ell}\right) \tag{1.61}
+\end{equation*}
+$$
+
+并且 $R_{i j} = \frac{1}{2} R g_{i j}$。当 $n=3$ 时，我们有：
+
+$$
+\begin{equation*}
+R_{i j k \ell} = R_{i \ell} g_{j k} + R_{j k} g_{i \ell} - R_{i k} g_{j \ell} - R_{j \ell} g_{i k} - \frac{1}{2} R \left(g_{i \ell} g_{j k} - g_{i k} g_{j \ell}\right) \tag{1.62}
+\end{equation*}
+$$
+
+其中一种看出 (1.61) 的方法是，束 $\Lambda^{2} M^{2} \otimes_{S} \Lambda^{2} M^{2}$ 的秩为 1，并且公式 (1.61) 的两边都是这个束的截面，并且具有相同的双重迹 $R$。方程 (1.62) 由 (1.60) 和 Weyl 张量的消失推导而来。
+
+**练习 1.58.** 证明当 $n=3$ 时，Weyl 张量消失。
+
+**练习 1.59.** 证明如果 $\tilde{g}=e^{2 f} g$ 对于某个函数 $f$，则有：
+$$
+\tilde{R}_{i j k}^{\ell} = R_{i j k}^{\ell} - a_{i}^{\ell} g_{j k} - a_{j k} \delta_{i}^{\ell} + a_{i k} \delta_{j}^{\ell} + a_{j}^{\ell} g_{i k}
+$$
+
+其中：
+
+$$
+\begin{equation*}
+a_{i j} \doteqdot \nabla_{i} \nabla_{j} f - \nabla_{i} f \nabla_{j} f + \frac{1}{2} |\nabla f|^{2} g_{i j} \tag{1.63}
+\end{equation*}
+$$
+
+即作为 $(4,0)$-张量：
+
+$$
+\begin{equation*}
+e^{-2 f} \widetilde{\mathrm{Rm}} = \mathrm{Rm} - a \odot g \tag{1.64}
+\end{equation*}
+$$
+
+从中推导 (1.59)。
+
+提示：首先证明：
+
+$$
+\tilde{R}_{i j k}^{\ell} = R_{i j k}^{\ell} + \nabla_{i} A_{j k}^{\ell} - \nabla_{j} A_{i k}^{\ell} + A_{j k}^{m} A_{i m}^{\ell} - A_{i k}^{m} A_{j m}^{\ell}
+$$
+
+其中：
+
+$$
+A_{i j}^{k} = \tilde{\Gamma}_{i j}^{k} - \Gamma_{i j}^{k} = \nabla_{i} f \delta_{j}^{k} + \nabla_{j} f \delta_{i}^{k} - \nabla^{k} f g_{i j}
+$$
+
+**练习 1.60.** 从 (1.56) 我们有 (可约的) 分解：
+$$
+\begin{equation*}
+C M \cong \left(S^{2} M \odot g\right) \oplus \mathrm{W} M \tag{1.65}
+\end{equation*}
+$$
+
+(1) 证明：
+
+$$
+\mathrm{Rm} = \frac{1}{n-2} S \odot g + \text { Weyl }
+$$
+
+其中 $S \doteqdot \operatorname{Rc} - \frac{R}{2(n-1)} g$ 是 Weyl-Schouten 张量。
+
+(2) 证明如果 $n \geq 3$，则：
+
+$$
+\nabla^{\ell} W_{i j k \ell} = \frac{n-3}{n-2} C_{i j k}
+$$
+
+其中：
+
+$$
+\begin{aligned}
+C_{i j k} & \doteqdot \nabla_{i} S_{j k} - \nabla_{j} S_{i k} \\
+& = \nabla_{i} R_{j k} - \nabla_{j} R_{i k} - \frac{1}{2(n-1)}\left(\nabla_{i} R g_{j k} - \nabla_{j} R g_{i k}\right)
+\end{aligned}
+$$
+
+是 Cotton 张量。由上述练习我们可以看到，对于 $n \geq 4$，如果 $\left(M^{n}, g\right)$ 的 Weyl 张量消失，则 Cotton 张量也消失。我们还可以看到，当 $n=3$ 时，Weyl 张量总是消失，但 Cotton 张量一般不会消失。
+
+**练习 1.61**（当 $n=3$ 时 Cotton 张量的保形不变性）。证明当 $n=3$ 时，如果 $\tilde{g}=e^{2 f} g$，则：
+$$
+\tilde{C}_{i j k} = e^{3 f} C_{i j k}
+$$
+
+其中 $\tilde{C}$ 是 $\tilde{g}$ 的 Cotton 张量。
+
+## 6.2. 局部共形平坦流形
+
+我们称一个黎曼流形 $(M^n, g)$ 是局部共形平坦的，如果对 $M^n$ 上的每一个点 $p$，存在一个局部坐标系 $\{x^i\}$，在点 $p$ 的邻域 $U$ 上满足
+$$
+g_{ij} = v \cdot \delta_{ij}
+$$
+其中 $v$ 是定义在 $U$ 上的某个函数，例如，$v^{-1}g$ 是一个平坦度量。当 $n=2$ 时，每个黎曼流形都是局部共形平坦的。实际上，如果 $(M^2, g)$ 是一个黎曼曲面，且 $u$ 是 $M$ 上的一个函数，那么根据练习 1.72，我们有
+$$
+R(e^u g) = e^{-u}(R(g) - \Delta_g u)
+$$
+
+因此，为了在局部找到 $u$ 使得 $R(e^u g) = 0$，我们只需解泊松方程
+$$
+\Delta_g u = R(g)
+$$
+这显然是可行的。
+
+**命题 1.62（Weyl, Schouten）**一个黎曼流形 $(M^n, g)$ 是局部共形平坦的当且仅当
+(1) 对于 $n \geq 4$，Weyl 张量为零。
+
+证明。要解决方程 (1.67)，必要且充分的条件是找到一个 1-形式 $X$，使得
+$$
+\nabla_i X_j = c_{ij} \doteqdot b_{ij} + X_i X_j - \frac{1}{2}|X|^2 g_{ij} \tag{1.70}
+$$
+其中 $c = c(X, g)$ 是一个对 $X$ 和 $g$ 仅依赖的对称 2-张量（注意对 $X$ 的依赖是多项式的）。显然，如果 $f$ 是方程 (1.67) 的解，则 $X = df$ 是方程 (1.70) 的解。另一方面，如果 $X$ 是方程 (1.70) 的解，由于右边的对称性，我们有
+$$
+\nabla_i X_j = \nabla_j X_i
+$$
+这意味着 $dX = 0$。因此局部上，$X$ 是某个函数 $f$ 的外微分，$f$ 也就解了 (1.67) 方程。现在将 (1.70) 重写为
+$$
+\frac{\partial}{\partial x^i} X_j = \tilde{c}_{ij} \tag{1.71}
+$$
+其中
+$$
+\begin{align*}
+\tilde{c}_{ij} &= \tilde{c}(X, g)_{ij} \doteqdot c(X, g)_{ij} + \Gamma_{ij}^k X_k \tag{1.72} \\
+&= b_{ij} + X_i X_j - \frac{1}{2}|X|^2 g_{ij} + \Gamma_{ij}^k X_k \tag{1.73}
+\end{align*}
+$$
+
+假设 $p \in M$，且坐标系 $\{x^i\}$ 在 $p$ 的邻域内定义。Frobenius 定理表明局部解方程 (1.71) 的必要且充分条件是来自于
+$$
+\frac{\partial^2}{\partial x^k \partial x^i} X_j = \frac{\partial^2}{\partial x^i \partial x^k} X_j
+$$
+的可积性条件：
+$$
+\frac{\partial}{\partial x^k} \tilde{c}_{ij} = \frac{\partial}{\partial x^j} \tilde{c}_{ik}
+$$
+
+更具不变性地，这个可积性条件来源于
+$$
+\nabla_k \nabla_i X_j = \nabla_i \nabla_k X_j - R_{kij}^\ell X_\ell
+$$
+并且是
+$$
+\nabla_k c_{ij} - \nabla_j c_{ik} = -R_{kij}^\ell X_\ell = -\left(b_k^\ell g_{ij} + b_{ij} \delta_k^\ell - b_{kj} \delta_i^\ell - b_i^\ell g_{kj}\right) X_\ell \tag{1.74}
+$$
+其中最后一个等式中我们使用了 $W_{kij}^\ell = 0$。代入 (1.70) 中 $c_{ij}$ 的定义，我们有
+$$
+\nabla_k c_{ij} = \nabla_k b_{ij} + X_j \nabla_k X_i + X_i \nabla_k X_j - X^\ell \nabla_k X_\ell g_{ij}
+$$
+对 $\nabla_i c_{kj}$ 也类似。因此，可积性条件是
+$$
+\begin{aligned}
+& \nabla_k b_{ij} - \nabla_j b_{ik} \\
+& = -X_i \nabla_k X_j - X_j \nabla_k X_i + X^\ell \nabla_k X_\ell g_{ij} \\
+& \quad + X_i \nabla_j X_k + X_k \nabla_j X_i - X^\ell \nabla_j X_\ell g_{ik} - R_{kij}^\ell X_\ell \\
+& = X^\ell \left[ \begin{array}{l}
+\left(X_k X_\ell - \frac{1}{2}|X|^2 g_{k\ell}\right) g_{ij} + \left(X_i X_j - \frac{1}{2}|X|^2 g_{ij}\right) g_{k\ell} \\
+- \left(X_j X_\ell - \frac{1}{2}|X|^2 g_{j\ell}\right) g_{ik} - \left(X_k X_i - \frac{1}{2}|X|^2 g_{ki}\right) g_{j\ell}
+\end{array} \right] \\
+& = 0
+\end{aligned}
+$$
+其中我们使用了 (1.74), (1.70) 和 $\nabla_j X_k = \nabla_k X_j$。
+
+**推论 1.64**如果黎曼流形 $(M^n, g)$ 具有常数切向曲率，则 $(M^n, g)$ 是局部共形平坦的。
+
+让 $\text{sect}(g)$ 表示 $g$ 的切向曲率，它在每个点 $p \in M$ 是 $T_p M$ 中 2-平面的 Grassmannian 上的一个函数。上述命题和分解 (1.65) 使得我们可以轻松地验证某些例子是局部共形平坦的。特别地，我们有
+
+**推论 1.65**
+(1) 如果 $(N, g^N)$ 和 $(P, g^P)$ 是黎曼流形，使得 $\operatorname{sect}(g^N) \equiv C$ 且 $\operatorname{sect}(g^P) \equiv -C$，
+其中 $C \in \mathbb{R}$，则它们的黎曼积 $(N \times P, g^N + g^P)$ 是局部共形平坦的。
+(2) 如果 $(N, g^N)$ 的 $\text{sect}(g^N) \equiv C$，则黎曼积 $(N \times \mathbb{R}, g^N + dt^2)$ 是局部共形平坦的。
+
+证明。(1) 积的黎曼曲率张量是
+$$
+\begin{aligned}
+\operatorname{Rm}^{N \times P} & = \operatorname{Rm}^N + \operatorname{Rm}^P = \frac{C}{2} g^N \odot g^N - \frac{C}{2} g^P \odot g^P \\
+& = \frac{C}{2} \left(g^N - g^P\right) \odot \left(g^N + g^P\right)
+\end{aligned}
+$$
+
+根据 (1.65) 的唯一性分解，我们有 $W^{N \times P} = 0$。
+(2) 积的黎曼曲率张量是
+$$
+\operatorname{Rm}^{N \times \mathbb{R}} = \frac{C}{2} g^N \odot g^N = \frac{C}{2} \left(g^N - dt^2\right) \odot \left(g^N + dt^2\right)
+$$
+其中我们使用了 $dt^2 \odot dt^2 = 0$。因此 $W^{N \times \mathbb{R}} = 0$。
+
+最后，我们陈述几个关于局部共形平坦流形的重要定理。这些结果在 Yamabe 问题和 Yamabe 流的研究中很重要。第一个结果也参见 Goldberg [249]。一个很好的参考是 Schoen 和 Yau [485] 的第六章。我们称两个黎曼流形 $(M_1^n, g_1)$ 和 $(M_2^n, g_2)$ 是共形等价的，如果存在一个微分同胚 $\varphi: M_1 \rightarrow M_2$ 和一个函数 $f: M_1 \rightarrow \mathbb{R}$ 使得 $g_1 = e^f \varphi^* g_2$。
+
+证明。由于 Weyl 张量的共形不变性，很明显，如果 $(M^n, g)$ 是局部共形平坦的，那么 Weyl 张量为零。反之，如果 Weyl 张量为零，则根据 (1.64) 和 (1.57)，度量 $\tilde{g} = e^{2f} g$ 是平坦的，即
+$$
+\widetilde{\mathrm{Rm}} = 0
+$$
+等价于
+$$
+\begin{align*}
+0 & = e^{-2f} \widetilde{\mathrm{Rm}} = \mathrm{Rm} - a \odot g \\
+& = \left(\frac{1}{n-2}\left(\mathrm{Rc} - \frac{1}{2(n-1)} \mathrm{Rg}\right) - a\right) \odot g \tag{1.66}
+\end{align*}
+$$
+其中 $a$ 由 (1.63) 定义。由于映射 $\odot: S^2 M \rightarrow \mathrm{C} M$ 由 $\odot(h) \doteqdot h \odot g$ 定义且是单射，（1.66）等价于
+$$
+\frac{1}{n-2}\left(\operatorname{Rc} - \frac{1}{2(n-1)} R g\right) = a
+$$
+
+即，
+$$
+\nabla_i \nabla_j f = b_{ij} + \nabla_i f \nabla_j f - \frac{1}{2}|\nabla f|^2 g_{ij} \tag{1.67}
+$$
+其中
+$$
+b_{ij} = \frac{1}{n-2}\left(R_{ij} - \frac{1}{2(n-1)} R g_{ij}\right) \tag{1.68}
+$$
+
+**命题 1.62** 现在是以下结论的结果，该结论给出了平坦度量方程 $\tilde{g}$ 局部可解的条件。
+
+**引理 1.63**只要 Weyl 张量为零，方程 (1.67) 局部可解当且仅当满足以下可积性条件：
+$$
+\nabla_k b_{ij} = \nabla_i b_{kj} \tag{1.69}
+$$
+即，如果且仅如果
+$$
+\nabla_k R_{ij} - \frac{1}{2(n-1)} \nabla_k R g_{ij} = \nabla_i R_{kj} - \frac{1}{2(n-1)} \nabla_i R g_{kj}
+$$
+
+回顾一下，当 $n \geq 4$ 时，（1.69）是由 Weyl 张量为零得出的（参见上面的练习 1.60）。另一方面，当 $n=3$ 时，Weyl 张量对于任何度量都为零。
+
+**定理 1.66（Kuiper）**如果 $(M^{n}, g)$ 是一个简单连通的、局部共形平坦的封闭黎曼流形，则 $(M^{n}, g)$ 与标准球面 $S^{n}$ 是共形等价的。
+
+一个从黎曼流形 $(M_{1}^{n}, g_{1})$ 到另一个黎曼流形 $(M_{2}^{n}, g_{2})$ 的映射 $\psi$ 称为共形的，如果存在一个函数 $f: M_{1} \rightarrow \mathbb{R}$ 使得 $g_{1} = e^{f} \psi^{*} g_{2}$。
+
+**定理 1.67（Schoen 和 Yau [484]）**如果 $(M^{n}, g)$ 是一个简单连通的、局部共形平坦的完整黎曼流形，且它的度量属于一个具有非负标量曲率的共形类中，则存在一个将 $(M^{n}, g)$ 共形映射到标准球面 $S^{n}$ 的一一对应的映射。
+
+当 $M^{n}$ 不是简单连通时，将上述结果应用于它的普遍覆盖 $\left(\tilde{M}^{n}, \tilde{g}\right)$ 是有用的。
+
+练习 1.68。证明如果 $(M_{1}, g_{1})$ 和 $(M_{2}, g_{2})$ 是黎曼流形，则乘积黎曼流形 $(M_{1} \times M_{2}, g_{1} + g_{2})$ 满足
+
+（1）
+$$
+\begin{align*}
+& \operatorname{Rm}_{g_{1} + g_{2}}(X, Y, Z, W) = \operatorname{Rm}_{g_{1}}\left(X_{1}, Y_{1}, Z_{1}, W_{1}\right) + \operatorname{Rm}_{g_{2}}\left(X_{2}, Y_{2}, Z_{2}, W_{2}\right)  \\
+& \text{其中 } X = \left(X_{1}, X_{2}\right) \in T\left(M_{1} \times M_{2}\right), \text{ 等等。} 
+\end{align*}
+$$
+（2）
+$$
+\begin{equation*}
+\operatorname{Rc}_{g_{1} + g_{2}}(X, Y) = \operatorname{Rc}_{g_{1}}\left(X_{1}, Y_{1}\right) + \operatorname{Rc}_{g_{2}}\left(X_{2}, Y_{2}\right) \tag{1.75}
+\end{equation*}
+$$

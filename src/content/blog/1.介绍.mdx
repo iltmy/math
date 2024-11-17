@@ -1,0 +1,31 @@
+---
+title: 1.介绍
+description: 第一章黎曼几何的介绍
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+## 黎曼几何介绍
+
+在黎曼几何中，人们常常会问以下问题：给定对黎曼流形的曲率的限制，可以推导出什么拓扑条件？迈耶斯定理 ${ }^{1}$ 是一个很好的例子。它指出，如果一个完整的 $n$-维流形的 Ricci 曲率 ${ }^{2}$ 被一个正的常数 $(n-1) k$ 下面界定，那么它的直径最多为 $\pi / \sqrt{k}$。这一结果的拓扑后果是该流形是紧致的，并且具有有限的基本群。另一个很好的例子是卡尔坦-哈达马尔定理，它说一个简单连通的完整黎曼流形，如果其截面曲率非正，那么它是微分同胚于 $\mathbb{R}^{n}$ 的，并且每一个指数映射都是微分同胚的。在 Ricci 流的研究中，我们通过将度量演化到更好的度量来解决上述问题。
+
+在本章中，我们介绍一些基本的黎曼几何，特别强调与 Ricci 流研究中遇到的技术相关的材料。汉密尔顿的工作强调了 Bochner 型公式、最大原理和逐点单调性公式。佩雷尔曼的最新工作将时空比较几何以及积分和逐点单调性公式引入了 Ricci 流的研究中。在这本书及其续集中，我们将学习上述技术。
+
+本章讨论的计算技术将在后续章节中广泛使用。我们强调在局部坐标中进行计算，因为这种方法最适用于 Ricci 流。在 Ricci 流中，由于黎曼度量是时间依赖的，计算通常是在每个时间 $t$ 进行的，对于此时间点度量 $g(t)$ 是定义的。然而，有时计算会将演化中的度量 $g(t)$ 的几何不变量与固定背景度量 $\tilde{g}$ 混合。
+
+熟悉基本黎曼几何的读者可以跳过以下部分，直接阅读第二章。
+

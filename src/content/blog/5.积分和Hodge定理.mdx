@@ -1,0 +1,299 @@
+---
+title: 5. 积分与Hodge理论
+description: 旋度定理与Hodge算子
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+## 5.1. 分部积分。
+
+除了逐点公式，如(1.45)，我们还会发现积分恒等式很有用。一个基本工具是分部积分。回顾一下斯托克斯定理：
+
+**定理 1.46** 如果 $\alpha$ 是一个在紧致定向流形 $M^{n}$ 上的 $(n-1)$-形式，且其边界为 $\partial M$（可能为空），那么
+$$
+\int_{M} d \alpha = \int_{\partial M} \alpha
+$$
+
+设 $\left(M^{n}, g\right)$ 是一个带有边界 $\partial M$ 的定向黎曼流形。$M$ 上的定向定义了 $\partial M$ 上的一个定向。在边界上，局部选择一个正向定向的框架场 $\left\{e_{i}\right\}_{i=1}^{n}$ 使得 $e_{1}=\nu$ 是单位外法线。则框架场 $\left\{e_{i}\right\}_{i=2}^{n}$ 在 $\partial M$ 上是正向定向的。设 $\left\{\omega^{i}\right\}_{i=1}^{n}$ 表示对偶于 $\left\{e_{i}\right\}_{i=1}^{n}$ 的正交规范共框架场。$M$ 的体积形式为
+
+$$
+d \mu = \omega^{1} \wedge \cdots \wedge \omega^{n}
+$$
+
+而 $\partial M$ 的体积形式为
+
+$$
+d \sigma \doteqdot \omega^{2} \wedge \cdots \wedge \omega^{n}
+$$
+
+从 (1.36) 中不难看出
+
+$$
+d \sigma = \iota_{\nu}(d \mu)
+$$
+
+确实，
+
+$$
+\iota_{\nu}(d \mu)\left(e_{2}, \ldots, e_{n}\right) = n(d \mu)\left(e_{1}, e_{2}, \ldots, e_{n}\right) = \frac{n}{n!} = \frac{1}{(n-1)!}
+$$
+
+散度定理说：
+
+**定理 1.47** 设 $\left(M^{n}, g\right)$ 是一个紧致定向黎曼流形。如果 $X$ 是一个向量场，则
+$$
+\begin{equation*}
+\int_{M^{n}} \operatorname{div}(X) d \mu = \int_{\partial M^{n}} \langle X, \nu \rangle d \sigma \tag{1.52}
+\end{equation*}
+$$
+其中 $\operatorname{div}(X) = \nabla_{i} X^{i}$。
+
+证明。定义 $(n-1)$-形式 $\alpha$ 为
+
+$$
+\alpha \doteqdot \iota_{X}(d \mu)
+$$
+
+利用 $d^{2}=0$ 和 (1.37)，我们计算得
+
+$$
+d \alpha = d \circ \iota_{X}(d \mu) = \left(d \circ \iota_{X} + \iota_{X} \circ d\right)(d \mu) = \mathcal{L}_{X}(d \mu) = \operatorname{div}(X) d \mu
+$$
+
+为得到最后一个等式，我们可以在正交规范框架 $e_{1}, \ldots, e_{n}$ 下进行计算：
+
+$$
+\begin{aligned}
+\mathcal{L}_{X}(d \mu)\left(e_{1}, \ldots, e_{n}\right) & = \sum_{i=1}^{n} d \mu\left(e_{1}, \ldots, \nabla_{e_{i}} X, \ldots, e_{n}\right) \\ 
+& = \operatorname{div}(X) d \mu\left(e_{1}, \ldots, e_{n}\right)
+\end{aligned}
+$$
+
+现在，斯托克斯定理意味着
+
+$$
+\int_{M} \operatorname{div}(X) d \mu = \int_{M} d \alpha = \int_{\partial M} \alpha = \int_{\partial M} \iota_{X}(d \mu) = \int_{\partial M} \langle X, \nu \rangle d \sigma .
+$$
+
+为了验证最后一个等式，我们用到了
+
+$$
+\begin{aligned}
+\left(\iota_{X}(d \mu)\right)\left(e_{2}, \ldots, e_{n}\right) & = n(d \mu)\left(X, e_{2}, \ldots, e_{n}\right) \\ 
+& = n \langle X, \nu \rangle (d \mu)\left(e_{1}, e_{2}, \ldots, e_{n}\right) \\ 
+& = \frac{1}{(n-1)!} \langle X, \nu \rangle
+\end{aligned}
+$$
+
+因此，定理得证。
+
+ **练习 1.48**（分部积分）。推导出散度定理的以下结论。
+ (1) 在闭合流形上，$\int_{M^{n}} \Delta u d \mu = 0$。
+ (2) （格林）在紧致流形上，
+$$
+ \int_{M^{n}} (u \Delta v - v \Delta u) d \mu = \int_{\partial M^{n}} \left(u \frac{\partial v}{\partial \nu} - v \frac{\partial u}{\partial \nu}\right) d \sigma
+$$
+
+ 特别地，在闭合流形上
+
+$$
+ \int_{M^{n}} u \Delta v d \mu = \int_{M^{n}} v \Delta u d \mu
+$$
+
+ (3) 证明如果 $f$ 是一个函数且 $X$ 是一个 1-形式，则
+
+$$
+ \int_{M^{n}} f \operatorname{div}(X) d \mu = -\int_{M^{n}} \langle \nabla f, X \rangle d \mu + \int_{\partial M^{n}} f \langle X, \nu \rangle d \sigma .
+$$
+
+ **推论 1.49** 设 $\left(M^{n}, g\right)$ 是一个闭合黎曼流形。如果 $\alpha$ 是一个 $(r, s)$-张量，且 $\beta$ 是一个 $(r-1, s)$-张量，则
+$$
+ \int_{M} \langle \alpha, \nabla \beta \rangle d V = -\int_{M} \langle \operatorname{div}(\alpha), \beta \rangle d V
+$$
+
+
+
+证明。设 $X_{j} = \alpha_{j i_{2} \cdots i_{r}}^{k_{1} \cdots k_{s}} \beta_{i_{2} \cdots i_{r}}^{k_{1} \cdots k_{s}}$。我们计算得
+
+$$
+\operatorname{div} X = \langle \operatorname{div}(\alpha), \beta \rangle + \langle \alpha, \nabla \beta \rangle
+$$
+
+因此结果从散度定理中得出。分部积分在推导积分Bochner公式中有用。以下的基本代数事实在推导Bochner公式类型的逐点和积分不等式中是有用的。
+
+ **练习 1.50**（2-张量的范数主导迹）。通过选择坐标，使得某点的 $g_{i j}=\delta_{i j}$，证明对于任何 2-张量 $a_{i j}$
+
+$$
+ \left|a_{i j}\right|_{g}^{2} \geq \frac{1}{n} \left(g^{i j} a_{i j}\right)^{2}
+$$
+
+ 更一般地，对于一个 $p$-张量（$p \geq 2$）
+
+$$
+ \left|a_{k_{1} \cdots k_{p}}\right|^{2} \geq \frac{1}{n} \left|g^{i j} a_{i j k_{3} \cdots k_{p}}\right|^{2}
+$$
+
+以下是这样一个应用的一个很好的例子。
+
+**练习 1.51** 证明在闭合流形上（使用练习 1.37）
+
+$$
+\begin{equation*}
+\int_{M^{n}} |\nabla \nabla f|^{2} d \mu + \int_{M^{n}} \operatorname{Rc}(\nabla f, \nabla f) d \mu = \int_{M^{n}} (\Delta f)^{2} d \mu \tag{1.53}
+\end{equation*}
+$$
+
+由于 $|\nabla \nabla f|^{2} \geq \frac{1}{n} (\Delta f)^{2}$，这意味着
+
+$$
+\begin{equation*}
+\int_{M^{n}} \operatorname{Rc}(\nabla f, \nabla f) d \mu \leq \frac{n-1}{n} \int_{M^{n}} (\Delta f)^{2} d \mu \tag{1.54}
+\end{equation*}
+$$
+
+有了这个不等式，我们可以证明以下经典结果。
+
+ **练习 1.52**（Lichnerowicz）。假设 $f$ 是拉普拉斯算子的特征函数，特征值为 $\lambda  0$：
+$$
+ \Delta f + \lambda f = 0
+$$
+
+ 利用 (1.54) 证明如果 $\mathrm{Rc} \geq (n-1) K$，其中 $K  0$ 是常数，则
+
+$$
+ \begin{equation*}
+ \lambda \geq n K \tag{1.55}
+ \end{equation*}
+$$
+
+
+
+有关特征函数和特征值的更多信息，请参见附录 A 第 5 节。
+
+## 5.2. De Rham定理与Hodge分解定理。
+
+现在我们回顾 de Rham 定理和 Hodge 分解定理。设 $M^{n}$ 是一个闭合流形。外导数 $d$ 形成一个复
+$$
+0 \rightarrow \Omega^{0}\left(M^{n}\right) \xrightarrow{d} \Omega^{1}\left(M^{n}\right) \xrightarrow{d} \cdots \xrightarrow{d} \Omega^{n-1}\left(M^{n}\right) \xrightarrow{d} \Omega^{n}\left(M^{n}\right) \rightarrow 0,
+$$
+
+其中 $d^{2} \doteqdot d \circ d = 0$。因此 $\operatorname{image}(d) \subset \operatorname{ker}(d)$，我们可以定义第 $p$ 个 de Rham 上同调群：
+
+$$
+H_{\mathrm{deR}}^{p}(M) \doteqdot \frac{\operatorname{ker}\left(\left.d\right|_{\Omega^{p}(M)}\right)}{\operatorname{image}\left(\left.d\right|_{\Omega^{p-1}(M)}\right)}
+$$
+
+我们有：
+
+ **定理 1.53**（De Rham）。如果 $M^{n}$ 是一个闭合流形，则第 $p$ 个 de Rham 上同调群同构于第 $p$ 个奇异实上同调群：
+$$
+ H_{\mathrm{deR}}^{p}(M) \cong H^{p}(M ; \mathbb{R})
+$$
+
+
+与 de Rham 上同调群紧密相关的是调和形式。一个微分形式 $\alpha$ 被称为调和的，如果
+
+$$
+\Delta_{d} \alpha = 0
+$$
+
+由于
+
+$$
+\int_{M} \left\langle \Delta_{d} \alpha, \alpha \right\rangle d \mu = -\int_{M} \left(|d \alpha|^{2} + |\delta \alpha|^{2}\right) d \mu
+$$
+
+因此 $\alpha$ 是调和的当且仅当
+
+$$
+d \alpha = 0 \text{ 和 } \delta \alpha = 0
+$$
+
+调和 $p$-形式的空间记作
+
+$$
+H^{p} = \left\{\alpha \in \Omega^{p}(M): \Delta_{d} \alpha = 0\right\}.
+$$
+
+Hodge 定理的本质是理解在给定 $\gamma \in \Omega^{p}(M)$ 的情况下，方程
+
+$$
+\Delta_{d} \alpha = \gamma
+$$
+
+是否有解 $\alpha \in \Omega^{p}(M)$。如果 $\beta \in H^{p}$ 是一个调和的 $p$-形式，则
+
+$$
+(\gamma, \beta) = \left(\Delta_{d} \alpha, \beta\right) = \left(\alpha, \Delta_{d} \beta\right) = 0
+$$
+
+因此，解 $\Delta_{d} \alpha = \gamma$ 的必要条件是对所有 $\beta \in H^{p}$ 有 $(\gamma, \beta) = 0$。这个条件也是充分的。特别地，我们有以下称为 Hodge 分解定理的结果。
+
+ **定理 1.54**（Hodge）。设 $\left(M^{n}, g\right)$ 是一个闭合黎曼流形。给定 $\gamma \in \Omega^{p}(M)$，方程
+$$
+ \Delta_{d} \alpha = \gamma
+$$
+
+ 有解 $\alpha \in \Omega^{p}(M)$ 当且仅当
+
+$$
+ (\gamma, \beta) = 0
+$$
+
+
+
+对所有 $\beta \in H^{p}$。因此，我们有 $p$-形式空间的以下分解：
+
+$$
+\begin{aligned}
+\Omega^{p}(M) & = \Delta_{d}\left(\Omega^{p}(M)\right) \oplus H^{p} \\ 
+& = d \delta \left(\Omega^{p}(M)\right) \oplus \delta d \left(\Omega^{p}(M)\right) \oplus H^{p}
+\end{aligned}
+$$
+
+此外，空间 $H^{p}$ 是有限维的。
+
+关于 de Rham 上同调群，我们有以下结论。
+
+ **推论 1.55** 在每个 de Rham 上同调类中，有一个唯一的调和形式表示该同调类。特别地，第 $p$ 个 de Rham 上同调群同构于调和 $p$-形式的空间 $H^{p}$。
+
+Hodge 定理的另一个有用结果是：
+
+ **推论 1.56** 如果 $\left(M^{n}, g\right)$ 是一个闭合黎曼流形，并且 $f$ 是一个光滑函数，满足 $\int_{M} f d \mu = 0$，那么存在一个光滑函数 $u: M \rightarrow \mathbb{R}$ 使得 $\Delta u = f$。函数 $u$ 唯一确定，除了一个加法常数。
+
+证明。由于 $M^{n}$ 是闭合的，$H^{0}$ 是常数函数的子空间。它的正交补是满足 $\int_{M} f d \mu = 0$ 的函数的子空间。因此，根据 Hodge 定理，如果 $\int_{M} f d \mu = 0$，则存在 $u$ 使得 $\Delta u = f$。唯一性也从方程 $\Delta u = 0$ 只有常数解这一事实中得到。
+
+Hodge 拉普拉斯算子的一个重要属性是它与星号算子交换：
+
+$$
+\Delta_{d^{*}} = * \Delta_{d}
+$$
+
+因此，如果 $\alpha \in H^{p}$ 是一个调和的 $p$-形式，则 $* \alpha$ 是一个调和的 $(n-p)$-形式，即
+
+$$
+*: H^{p} \rightarrow H^{n-p}
+$$
+
+是一个同构。因此，推论 1.55 意味着
+
+$$
+H_{\mathrm{deR}}^{p}(M) \cong H_{\mathrm{deR}}^{n-p}(M)
+$$
+
+这被称为 de Rham 上同调的 Poincaré 对偶性定理（而 de Rham 定理也意味着这对于奇异实上同调是成立的）。

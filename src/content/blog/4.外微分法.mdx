@@ -1,0 +1,338 @@
+---
+title: 4.外微分学与Bochner公式
+description: 交换协变导数出现曲率项
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+## 4.1 微分形式
+定向黎曼流形 $\left(M^{n}, g\right)$ 的体积形式 $d \mu$ 是通过正定向正交共框架 $\left\{\omega^{i}\right\}_{i=1}^{n}$（即 $\left\{\omega^{i}\right\}_{i=1}^{n}$ 是1-形式的局部基，且 $\left\langle\omega^{i}, \omega^{j}\right\rangle=\delta^{ij}$）来定义的：
+$$
+d \mu \doteqdot \omega^{1} \wedge \cdots \wedge \omega^{n}
+$$
+
+体积形式满足 $n!(d \mu)\left(e_{1}, \ldots, e_{n}\right)=1$，其中 $\left\{e_{i}\right\}_{i=1}^{n}$ 是与 $\left\{\omega^{i}\right\}_{i=1}^{n}$ 对偶的正交标架（即 $\omega^{j}\left(e_{i}\right)=\delta_{i}^{j}$）。在一个正定向的局部坐标系 $\left\{x^{i}\right\}$ 中，有
+$$
+\begin{equation*}
+d \mu=\sqrt{\operatorname{det}\left(g_{i j}\right)} d x^{1} \wedge \cdots \wedge d x^{n} \tag{1.33}
+\end{equation*}
+$$
+
+ **注释 1.30**一般来说，$p$-形式 $\alpha$ 和 $q$-形式 $\beta$ 的楔积定义为
+$$
+ \begin{aligned}
+ & (\alpha \wedge \beta)\left(X_{1}, \ldots, X_{p+q}\right) \\
+ & \doteqdot \frac{1}{(p+q)!} \sum_{(J, K)} \operatorname{sign}(J, K) \alpha\left(X_{j_{1}}, \ldots, X_{j_{p}}\right) \beta\left(X_{k_{1}}, \ldots, X_{k_{q}}\right)
+ \end{aligned}
+$$
+ 其中 $J \doteqdot\left(j_{1}, \ldots, j_{p}\right)$ 和 $K \doteqdot\left(k_{1}, \ldots, k_{q}\right)$ 是多重指标，$\operatorname{sign}(J, K)$ 是置换 $(1, \ldots, p+q) \mapsto\left(j_{1}, \ldots, j_{p}, k_{1}, \ldots, k_{q}\right)$ 的符号。
+
+回顾一下，$p$-形式 $\beta$ 的外导数满足（参见[353]第36页的命题3.11）
+$$
+\begin{aligned}
+& (d \beta)\left(X_{0}, \ldots, X_{p}\right) \\
+& =\frac{1}{p+1} \sum_{j=0}^{p}(-1)^{j} X_{j}\left(\beta\left(X_{0}, \ldots, \hat{X}_{j}, \ldots, X_{p}\right)\right) \\
+& +\frac{1}{p+1} \sum_{0 \leq i<j \leq p}(-1)^{i+j} \beta\left(\left[X_{i}, X_{j}\right], X_{0}, \ldots, \hat{X}_{i}, \ldots, \hat{X}_{j}, \ldots, X_{p}\right)
+\end{aligned}
+$$
+
+利用乘法规则和 $\nabla$ 是无挠的事实，我们可以将 $d \beta$ 用协变导数表达为
+$$
+\begin{equation*}
+(d \beta)\left(X_{0}, \ldots, X_{p}\right)=\frac{1}{p+1} \sum_{j=0}^{p}(-1)^{j}\left(\nabla_{X_{j}} \beta\right)\left(X_{0}, \ldots, \hat{X}_{j}, \ldots, X_{p}\right) \tag{1.34}
+\end{equation*}
+$$
+
+在局部坐标中，这可以表示为
+$$
+(d \beta)_{i_{0} i_{1} \cdots i_{p}}=\frac{1}{p+1} \sum_{j=0}^{p}(-1)^{j} \nabla_{i_{j}} \beta_{i_{0} i_{1} \cdots \hat{i}_{j} \cdots i_{p}}
+$$
+其中 $\beta_{i_{1} \cdots i_{p}} \doteqdot \beta\left(\frac{\partial}{\partial x^{i_{1}}}, \ldots, \frac{\partial}{\partial x^{i_{p}}}\right)$。例如，如果 $\beta$ 是一个1-形式，那么
+$$
+\begin{aligned}
+(d \beta)(X, Y) & =\frac{1}{2}\left\{\left(\nabla_{X} \beta\right)(Y)-\left(\nabla_{Y} \beta\right)(X)\right\} \\
+(d \beta)_{i j} & =\frac{1}{2}\left(\nabla_{i} \beta_{j}-\nabla_{j} \beta_{i}\right)
+\end{aligned}
+$$
+如果 $\beta$ 是一个2-形式，那么
+$$
+\begin{aligned}
+(d \beta)(X, Y, Z) & =\frac{1}{3}\left\{\left(\nabla_{X} \beta\right)(Y, Z)+\left(\nabla_{Y} \beta\right)(Z, X)+\left(\nabla_{Z} \beta\right)(X, Y)\right\} \\
+(d \beta)_{i j k} & =\frac{1}{3}\left(\nabla_{i} \beta_{j k}+\nabla_{j} \beta_{k i}+\nabla_{k} \beta_{i j}\right)
+\end{aligned}
+$$
+
+ **练习 1.31.** 证明公式 (1.34)
+
+我们借此机会定义一个 $(p, 0)$-张量的散度(divergence)为
+$$
+\begin{equation*}
+\operatorname{div}(\alpha)_{i_{1} \cdots i_{p-1}} \doteqdot g^{jk} \nabla_{j} \alpha_{k i_{1} \cdots i_{p-1}}=\nabla_{j} \alpha_{j i_{1} \cdots i_{p-1}} \tag{1.35}
+\end{equation*}
+$$
+
+特别地，如果 $X$ 是一个1-形式，那么
+$$
+\operatorname{div}(X)=g^{ij} \nabla_{i} X_{j}
+$$
+
+公式 (1.35) 中的最后一个等式反映了我们在本书中经常采用的约定，即通常不去抬高指标，并对重复的指标求和。读者可以将其视为在局部坐标系中的计算，这时 $g_{ij}=\delta_{ij}$。例如，$R_{ijk\ell}=R_{ijk}^{\ell}$。更一般地，我们定义一个 $(p, s)$-张量 $\alpha$ 的散度，当 $p \geq 1$ 时，$\operatorname{div}(\alpha)_{i_{1} \cdots i_{p-1}} \doteqdot g^{jk} \nabla_{j} \alpha_{k i_{1} \cdots i_{p-1}}$。
+
+给定一个 $p$-形式 $\beta$ 和一个向量场 $X$，我们定义内乘为
+$$
+\begin{equation*}
+\left(\iota_{X} \beta\right)\left(Y_{1}, \ldots, Y_{p-1}\right) \doteqdot p \cdot \beta\left(X, Y_{1}, \ldots, Y_{p}\right) \tag{1.36}
+\end{equation*}
+$$
+对于所有的向量场 $Y_{1}, \ldots, Y_{p-1}$。回顾一下，对于任意向量场 $X$ 和微分形式 $\gamma$，
+$$
+\begin{equation*}
+\mathcal{L}_{X} \gamma=\left(d \circ \iota_{X}+\iota_{X} \circ d\right) \gamma \tag{1.37}
+\end{equation*}
+$$
+（参见 [353] 第35页的命题3.10）。
+
+$\Lambda^{p} T^{*} M$ 上的内积定义为
+$$
+\langle\gamma, \eta\rangle \doteqdot p!g^{i_{1} j_{1}} \cdots g^{i_{p} j_{p}} \gamma_{i_{1} \cdots i_{p}} \eta_{j_{1} \cdots j_{p}}
+$$
+例如，
+$$
+\left\langle\omega^{i_{1}} \wedge \cdots \wedge \omega^{i_{p}}, \omega^{j_{1}} \wedge \cdots \wedge \omega^{j_{p}}\right\rangle=\operatorname{det}\left(\delta^{i_{k} j_{\ell}}\right) .
+$$
+
+回顾一下，给定 $p$-形式 $\gamma$ 和 $\eta$，它们的 $L^{2}$ 内积定义为
+$$
+(\gamma, \eta)_{L^{2}} \doteqdot \int_{M^{n}}\langle\gamma, \eta\rangle d\mu
+$$
+
+Hodge 星算子 $*: \Lambda^{p} T^{*} M \rightarrow \Lambda^{n-p} T^{*} M, p=0, \ldots, n$，定义为
+$$
+\langle\gamma, \eta\rangle d \mu=\gamma \wedge * \eta
+$$
+对于任意 $\gamma, \eta \in \Lambda^{p} T^{*} M$。例如，
+$$
+*\left(\omega^{1} \wedge \cdots \wedge \omega^{p}\right)=\omega^{p+1} \wedge \cdots \wedge \omega^{n}
+$$
+对于一个正定向的正交共框架 $\left\{\omega^{i}\right\}_{i=1}^{n}$。
+
+ **练习 1.32.** 证明作用于 $\Lambda^{p} T^{*} M$ 上的恒等式 $*^{2}=(-1)^{p(n-p)}$。
+
+微分形式 $\alpha$ 的外微分算子 $d$ 的伴随算子 $\delta$ 定义为
+$$
+\delta \alpha=(-1)^{np+n+1} * d * \alpha
+$$
+
+在协变导数的表达中，伴随算子 $\delta$ 为
+$$
+\begin{equation*}
+(\delta \alpha)\left(X_{1}, \ldots, X_{p-1}\right)=-p \sum_{a=1}^{n}\left(\nabla_{e_{a}} \alpha\right)\left(e_{a}, X_{1}, \ldots, X_{p-1}\right) \tag{1.38}
+\end{equation*}
+$$
+其中 $\left\{e_{a}\right\}_{a=1}^{n}$ 是一个正交标架。也就是说，$\delta \alpha=-p \operatorname{div} \alpha$，或者在局部坐标系中表示为：
+$$
+(\delta \alpha)_{i_{1} \cdots i_{p-1}}=-p \sum_{j, k=1}^{n} g^{jk} \nabla_{j} \alpha_{k i_{1} \cdots i_{p-1}}
+$$
+
+实际上，可以很容易地验证
+$$
+\begin{equation*}
+(d \beta, \alpha)_{L^{2}}=(\beta, \delta \alpha)_{L^{2}} \tag{1.39}
+\end{equation*}
+$$
+其中 $\alpha \in \Omega^{p}(M)$ 且 $\beta \in \Omega^{p-1}(M)$。
+
+ **练习 1.33. 证明公式 (1.39)。**
+
+微分 $p$-形式上的 Hodge 拉普拉斯算子定义为
+$$
+\Delta_{d} \doteqdot-(d \delta+\delta d)
+$$
+（我们采用了与通常符号约定相反的符号约定）。注意 $\Delta_{d}$ 是一个自伴算子。作用于函数时，它与 (1.40) 中定义的拉普拉斯-贝尔特拉米算子相同。
+
+## 4.2. 作用于张量的（粗略）拉普拉斯算子
+
+设 $\Delta$ 表示作用于函数的拉普拉斯算子（也称为拉普拉斯-贝尔特拉米算子），它被全局定义为梯度的散度，并在局部坐标系中表示为
+$$
+\begin{equation*}
+\Delta \doteqdot \operatorname{div} \nabla=g^{ij} \nabla_{i} \nabla_{j}=g^{ij}\left(\frac{\partial^{2}}{\partial x^{i} \partial x^{j}}-\Gamma_{ij}^{k} \frac{\partial}{\partial x^{k}}\right) \tag{1.40}
+\end{equation*}
+$$
+
+还有其他等效的方式定义 $\Delta$，例如
+$$
+\begin{equation*}
+\Delta f=\sum_{a=1}^{n} e_{a}\left(e_{a} f\right)-\left(\nabla_{e_{a}} e_{a}\right) f \tag{1.41}
+\end{equation*}
+$$
+其中 $\left\{e_{a}\right\}_{a=1}^{n}$ 是一个正交标架。
+
+ **备注 1.34.** 在欧几里得空间中，$\Delta=\sum_{i=1}^{n} \frac{\partial^{2}}{\left(\partial x^{i}\right)^{2}}$，并且热方程为 $\left(\frac{\partial}{\partial t}-\Delta\right) u=0$。特别地，由于Ricci流类似于热方程，我们将经常遇到拉普拉斯算子和热算子。
+
+ **练习 1.35.**
+
+ 1. 证明上述两个 $\Delta$ 的定义是相同的。提示：证明对于任意函数 $f$ 和在点 $p$ 处的向量 $X$ 和 $Y$，Hessian $\nabla \nabla f$ 的以下公式成立：
+
+$$
+ \nabla \nabla f(X, Y)=X(Y f)-\left(\nabla_{X} Y\right) f
+$$
+
+ 在点 $p$ 处，这个公式与 $X$ 和 $Y$ 如何延拓到 $p$ 的邻域无关。拉普拉斯算子是 Hessian 的迹。
+
+ 2. 证明
+
+$$
+ \begin{equation*}
+ \Delta f=\frac{1}{\sqrt{|g|}} \sum_{i, j=1}^{n} \frac{\partial}{\partial x^{i}}\left(\sqrt{|g|} g^{ij} \frac{\partial f}{\partial x^{j}}\right) \tag{1.42}
+ \end{equation*}
+$$
+
+ 其中 $|g| \doteqdot \operatorname{det}\left(g_{ij}\right)$。
+
+ 3. 证明，当作用于函数时，拉普拉斯算子 $\Delta$ 与 Hodge 拉普拉斯算子 $\Delta_{d}$ 是相同的。
+
+ 更一般地，作用于张量的（粗略）拉普拉斯算子定义为
+$$
+ \begin{equation*}
+ \Delta=\operatorname{div} \nabla=\operatorname{trace}_{g} \nabla^{2}=g^{ij} \nabla_{i} \nabla_{j} \doteqdot \nabla_{i} \nabla_{i} \tag{1.43}
+ \end{equation*}
+$$
+
+ 更具体地，给定一个 $(r, s)$-张量 $\beta$，$\nabla \nabla \beta$ 是一个 $(r+2, s)$-张量，我们通过收缩得到
+$$
+ \Delta \beta\left(X_{1}, \ldots, X_{r}\right)=\sum_{a=1}^{n} \nabla \nabla \beta\left(e_{a}, e_{a}, X_{1}, \ldots, X_{r}\right) \in \otimes^{s} T M
+$$
+ 对于所有的向量 $X_{1}, \ldots, X_{r}$。
+
+## 4.3 Bochner公式
+
+在本小节中，我们讨论一对Bochner公式。我们首先考虑一个特别有用的恒等式。
+
+ **引理 1.36**（$\Delta$ 和 $\nabla$ 在函数上的对易子）。对于任意函数 $f$，
+$$
+ \begin{equation*}
+ \Delta \nabla_{i} f=\nabla_{i} \Delta f+R_{ij} \nabla_{j} f \tag{1.44}
+ \end{equation*}
+$$
+
+
+**证明**。这可以通过以下公式推导出来：
+$$
+\Delta \nabla_{i} f=\nabla_{j} \nabla_{i} \nabla_{j} f=\nabla_{i} \nabla_{j} \nabla_{j} f-R_{jijk} \nabla_{k} f
+$$
+
+ **练习 1.37**（$|\nabla f|^{2}$ 的Bochner公式）证明对于任意函数 $f$，
+$$
+ \begin{equation*}
+ \Delta|\nabla f|^{2}=2|\nabla \nabla f|^{2}+2 R_{ij} \nabla_{i} f \nabla_{j} f+2 \nabla_{i} f \nabla_{i}(\Delta f) \tag{1.45}
+ \end{equation*}
+$$
+
+
+从中得出结论，如果 $\operatorname{Rc} \geq 0, \Delta f \equiv 0$ 且 $|\nabla f| \equiv 1$，则 $\nabla f$ 是平行的，即 $\nabla \nabla f \equiv 0$，且 $\operatorname{Rc}(\nabla f, \nabla f) \equiv 0$。正如我们将看到的，距离函数和布斯曼函数满足 $|\nabla f|=1$ 几乎处处（见练习 1.160）。
+
+参见练习 1.52 了解上述Bochner公式的应用。
+
+ **练习 1.38** 证明
+$$
+ \Delta|\nabla f|=\frac{1}{|\nabla f|}\left(\nabla f \cdot \nabla(\Delta f)+\operatorname{Rc}(\nabla f, \nabla f)+|\nabla \nabla f|^{2}-\left|\left\langle\nabla \nabla f, \frac{\nabla f}{|\nabla f|}\right\rangle\right|^{2}\right)
+$$
+ 在 $|\nabla f| \neq 0$ 的地方成立，并且得出结论：如果 $\operatorname{Rc} \geq 0$，那么
+$$
+ \Delta|\nabla f| \geq \frac{\nabla f}{|\nabla f|} \cdot \nabla(\Delta f)
+$$
+
+ 特别地，如果 $\Delta f=0$，那么
+$$
+ \begin{equation*}
+ \Delta|\nabla f| \geq 0 \tag{1.47}
+ \end{equation*}
+$$
+
+
+ **备注 1.39**。在公式 (1.46) 中，$\left\langle\nabla \nabla f, \frac{\nabla f}{|\nabla f|}\right\rangle$ 是由下式给出的 1-形式：
+$$
+ \left\langle\nabla \nabla f, \frac{\nabla f}{|\nabla f|}\right\rangle_{i}=g^{jk} \nabla_{i} \nabla_{j} f \frac{\nabla_{k} f}{|\nabla f|}=\nabla_{i}|\nabla f|
+$$
+
+
+与此相关的是，如果 $T_{1}$ 和 $T_{2}$ 是 $(r, s)$-张量，那么
+$$
+\nabla\left\langle T_{1}, T_{2}\right\rangle=\left\langle\nabla T_{1}, T_{2}\right\rangle+\left\langle T_{1}, \nabla T_{2}\right\rangle
+$$
+其中，$\left\langle\nabla T_{1}, T_{2}\right\rangle_{i} \doteqdot\left(\nabla_{i} T_{1}\right)_{j_{1} \cdots j_{r}}^{k_{1} \cdots k_{s}}\left(T_{2}\right)_{j_{1} \cdots j_{r}}^{k_{1} \cdots k_{s}}$，$\left\langle T_{1}, \nabla T_{2}\right\rangle$ 的定义类似。
+
+ **练习 1.40 **证明如果 $\frac{\partial}{\partial t} g_{ij}=-2 R_{ij}$（Ricci 流），那么
+$$
+ \left(\Delta-\frac{\partial}{\partial t}\right)|\nabla f|^{2}=2\left|\nabla_{i} \nabla_{j} f\right|^{2}+2 \nabla_{i} f \nabla_{i}\left(\left(\Delta-\frac{\partial}{\partial t}\right) f\right)
+$$
+
+
+ **备注 1.41**。这里 $\left|\nabla_{i} \nabla_{j} f\right|^{2}=|\nabla \nabla f|^{2} \doteqdot g^{ik} g^{j\ell} \nabla_{i} \nabla_{j} f \nabla_{k} \nabla_{\ell} f$。类似地，我们有时表示一个 $p$-张量 $\alpha$ 的平方为
+$$
+ \left|\alpha_{i_{1} \cdots i_{p}}\right|^{2}=|\alpha|^{2} \doteqdot g^{i_{1} j_{1}} \cdots g^{i_{p} j_{p}} \alpha_{i_{1} \cdots i_{p}} \alpha_{j_{1} \cdots j_{p}}
+$$
+
+ **练习 1.42** 证明对于任意张量 $A$，
+$$
+ \begin{equation*}
+ \nabla \Delta A-\Delta \nabla A=\operatorname{Rm} * \nabla A+(\nabla \operatorname{Rc}) * A \tag{1.48}
+ \end{equation*}
+$$
+
+ 在这里，给定张量 $A$ 和 $B$，$A * B$ 表示 $A \otimes B$ 的某些收缩的线性组合。我们考虑的第二个Bochner公式将正的Ricci曲率与第一个上同调联系起来。
+
+ **练习 1.43 （Bochner [54], [55]）**
+
+ 证明如果 $X$ 是一个 1-形式，那么
+$$
+ \begin{equation*}
+ \Delta X_{i}-R_{ij} X_{j}=\Delta_{d} X_{i} \tag{1.49}
+ \end{equation*}
+$$
+
+ 特别地，如果一个闭流形的Ricci曲率为正，那么不存在非平凡的调和 1-形式。根据下面的 Hodge 定理，这意味着第一个贝蒂数 $b_{1}(M)$ 为零。这也是 Bonnet-Myers 定理 1.127 的一个推论，即流形 $M$ 的基本群是有限的。
+
+ 提示：参见小节 5.1 了解如何在闭流形上分部积分。
+
+如果 $\beta$ 是一个 2-形式，那么
+$$
+\begin{equation*}
+\left(\Delta_{d} \beta\right)_{ij}=\Delta \beta_{ij}+2 R_{ik\ell j} \beta_{k\ell}-R_{ik} \beta_{kj}-R_{jk} \beta_{ik} \tag{1.50}
+\end{equation*}
+$$
+
+ **练习 1.44 **验证公式 (1.50)。提示：使用
+$$
+ (d \beta)_{ijk}=\frac{1}{3}\left(\nabla_{i} \beta_{jk}-\nabla_{j} \beta_{ik}+\nabla_{k} \beta_{ij}\right) \quad(\delta \beta)_{k}=-2 \nabla_{i} \beta_{ik}
+$$
+ 证明
+$$
+ \left(\Delta_{d} \beta\right)_{jk}=\Delta \beta_{jk}+\left(\nabla_{j} \nabla_{i}-\nabla_{i} \nabla_{j}\right) \beta_{ik}+\left(\nabla_{i} \nabla_{k}-\nabla_{k} \nabla_{i}\right) \beta_{ij}
+$$
+ 并应用协变微分的对易公式。
+
+现在设 $\alpha$ 是一个微分 $p$-形式。使用公式 (1.34) 和 (1.38)，在局部坐标中我们可以将 Hodge 拉普拉斯算子写为
+$$
+\begin{align*}
+\left(\Delta_{d} \alpha\right)_{i_{1} \cdots i_{r}} & =(-1)^{j+1} g^{k\ell} \nabla_{i_{j}} \nabla_{k} \alpha_{\ell i_{1} \cdots i_{j-1} i_{j+1} \cdots i_{r}}+g^{k\ell} \nabla_{k} \nabla_{\ell} \alpha_{i_{1} \cdots i_{r}} \\
+& +(-1)^{j} g^{k\ell} \nabla_{k} \nabla_{i_{j}} \alpha_{\ell i_{1} \cdots i_{j-1} i_{j+1} \cdots i_{r}} \\
+1.51) \quad & =(\Delta \alpha)_{i_{1} \cdots i_{r}}+(-1)^{j} g^{k\ell}\left(\nabla_{k} \nabla_{i_{j}}-\nabla_{i_{j}} \nabla_{k}\right) \alpha_{\ell i_{1} \cdots i_{j-1} i_{j+1} \cdots i_{r}} . \tag{1.51}
+\end{align*}
+$$
+
+ **练习 1.45** 证明公式 (1.51)。

@@ -1,0 +1,114 @@
+---
+
+title: 8. 弧长、能量和面积的变分
+description: 弧长、能量和面积的变分的求法
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+在黎曼几何中，测地线和最小子流形可以用于研究流形的几何和拓扑。在这一节中，我们研究路径和子流形的长度、能量和面积函数。我们回顾这些泛函的第一和第二变化公式。
+
+## 8.1. 弧长的第一变分。
+
+给定路径 $\gamma:[a, b] \rightarrow M^{n}$，其长度定义为
+$$
+\mathrm{L}(\gamma) \doteqdot \int_{a}^{b}|\dot{\gamma}(u)| d u
+$$
+
+距离函数定义为
+
+$$
+d_{p}(x) \doteqdot d(x, p) \doteqdot \inf _{\gamma} \mathrm{L}(\gamma)
+$$
+
+其中的下确界是对所有路径 $\gamma:[0,1] \rightarrow M^{n}$，满足 $\gamma(0)=p$ 和 $\gamma(1)=x$ 取的。一个测地线段是最小的，如果其长度等于两个端点之间的距离。
+
+我们回顾弧长的第一和第二变化公式。设 $\gamma_{r}:[a, b] \rightarrow M^{n}, r \in \mathcal{J} \subset \mathbb{R}$，为一族1-参数路径。从中我们可以定义映射 $\Gamma:[a, b] \times \mathcal{J} \rightarrow M^{n}$ 为
+
+$$
+\Gamma(s, r) \doteqdot \gamma_{r}(s)
+$$
+
+我们通过 $R \doteqdot \Gamma_{*}(\partial / \partial r)$ 和 $S \doteqdot \Gamma_{*}(\partial / \partial s)$ 定义沿 $\gamma_{r}$ 的向量场 $R$ 和 $S$。我们称 $R$ 为变化向量场，$S$ 为切向量场。路径 $\gamma_{r}$ 的长度由以下公式给出：
+
+$$
+\mathrm{L}\left(\gamma_{r}\right) \doteqdot \int_{a}^{b}\left|S\left(\gamma_{r}(s)\right)\right| d s
+$$
+
+假设 $0 \in \mathcal{J}$。弧长的第一变化公式为\\
+**引理 1.81**（弧长的第一变化）。如果 $\gamma_{0}$ 由弧长参数化，即 $\left|S\left(\gamma_{0}(s)\right)\right| \equiv 1$，则有
+$$
+\begin{equation*}
+\left.\frac{d}{d r}\right|_{r=0} \mathrm{~L}\left(\gamma_{r}\right)=-\int_{a}^{b}\left\langle R, \nabla_{S} S\right\rangle d s+\left.\langle R, S\rangle\right|_{a} ^{b} \tag{1.94}
+\end{equation*}
+$$
+证明。我们计算
+
+
+$$
+\begin{align}
+\frac{d}{d r} \mathrm{~L}\left(\gamma_r\right) & =\frac{1}{2} \int_a^b|S|^{-1} R\langle S, S\rangle d s=\int_a^b|S|^{-1}\left\langle S, \nabla_R S\right\rangle d s  \\ 
+& =\int_a^b\langle S /| S\left|, \nabla_S R\right\rangle d s \tag{1.95}
+\end{align}
+$$
+
+使用 $\nabla_R S-\nabla_S R=[R, S]=\Gamma_*([\partial / \partial r, \partial / \partial s])=0$. 以及 $|S| \equiv 1$ 部分积分法给出了所需公式。
+
+**推论 1.82**。如果 $\gamma_{r}:[0, b] \rightarrow M^{n}, r \in \mathcal{J} \subset \mathbb{R}$，是一族从固定点 $p \in M^{n}$ 发出的1-参数路径（即 $\gamma_{r}(0)=p$），且 $\gamma_{0}$ 是由弧长参数化的测地线，则有
+$$
+\begin{equation*}
+\left.\frac{d}{d r}\right|_{r=0} \mathrm{~L}\left(\gamma_{r}\right)=\left\langle\left.\frac{\partial}{\partial r}\right|_{r=0} \gamma_{r}(b), \frac{\partial \gamma_{0}}{\partial s}(b)\right\rangle \tag{1.96}
+\end{equation*}
+$$
+**备注 1.83**。如果我们不假设 $\gamma_{0}$ 是由弧长参数化的，则我们有
+$$
+\left.\frac{d}{d r}\right|_{r=0} \mathrm{~L}\left(\gamma_{r}\right)=-\int_{a}^{b}\left\langle R, \nabla_{S}\left(\frac{S}{|S|}\right)\right\rangle d s+\left.\left\langle R, \frac{S}{|S|}\right\rangle\right|_{a} ^{b}
+$$
+因此，在所有固定两个端点的路径中，长度泛函的临界点是满足
+$$
+\nabla_{\dot{\gamma}}\left(\frac{\dot{\gamma}}{|\dot{\gamma}|}\right)=0
+$$
+的测地线 $\gamma$。
+
+## 8.2. 弧长的第二变化
+
+现在假设我们有一族2-参数路径 $\gamma_{q, r}:[a, b] \rightarrow M^{n}, q \in \mathcal{I} \subset \mathbb{R}$ 和 $r \in \mathcal{J} \subset \mathbb{R}$。定义 $\Phi:[a, b] \times \mathcal{I} \times \mathcal{J} \rightarrow M^{n}$ 为
+$$
+\Phi(s, q, r) \doteqdot \gamma_{q, r}(s)
+$$
+并且 $Q \doteqdot \Phi_{*}(\partial / \partial q), R \doteqdot \Phi_{*}(\partial / \partial r)$ 和 $S \doteqdot \Phi_{*}(\partial / \partial s)$。弧长的第二变化公式为
+
+**引理 1.84**（弧长的第二变化）。假设 $0 \in \mathcal{I}$ 且 $0 \in \mathcal{J}$。如果 $\gamma_{0,0}$ 是由弧长参数化的，则有
+$$
+\begin{align*}
+& \left.\frac{\partial^{2}}{\partial q \partial r}\right|_{(q, r)=(0,0)} \mathrm{L}\left(\gamma_{q, r}\right)  \tag{1.97}\\
+& =\int_{a}^{b}\left(\left\langle\nabla_{S} Q, \nabla_{S} R\right\rangle-\left\langle\nabla_{S} Q, S\right\rangle\left\langle\nabla_{S} R, S\right\rangle-\langle\operatorname{Rm}(Q, S) S, R\rangle\right) d s \\
+& -\int_{a}^{b}\left\langle\nabla_{Q} R, \nabla_{S} S\right\rangle d s+\left.\left\langle\nabla_{Q} R, S\right\rangle\right|_{a} ^{b} .
+\end{align*}
+$$
+证明。对（1.95）进行微分，我们计算得到
+
+$$
+\begin{align}
+& \left.\frac{\partial^{2}}{\partial q \partial r}\right|_{(q, r)=(0,0)} \mathrm{L}\left(\gamma_{q, r}\right) \\
+& =\left.\frac{\partial}{\partial q}\right|_{(q, r)=(0,0)} \int_{a}^{b}\left\langle S /|S|, \nabla_{S} R\right\rangle d s=\int_{a}^{b} Q\left\langle S /|S|, \nabla_{S} R\right\rangle d s \\
+& =\int_{a}^{b}\left(\left\langle S /|S|, \nabla_{Q} \nabla_{S} R\right\rangle+\left\langle\nabla_{Q}(S /|S|), \nabla_{S} R\right\rangle\right) d s \\
+& =\int_{a}^{b}\left(\langle\operatorname{Rm}(Q, S) R, S /|S|\rangle+\left\langle S /|S|, \nabla_{S} \nabla_{Q} R\right\rangle\right) d s \\
+& +\int_{a}^{b}|S|^{-1}\left\langle\nabla_{Q} S, \nabla_{S} R\right\rangle d s-\int_{a}^{b}|S|^{-3}\left\langle\nabla_{Q} S, S\right\rangle\left\langle S, \nabla_{S} R\right\rangle d s
+\end{align}
+$$

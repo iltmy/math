@@ -1,0 +1,373 @@
+---
+title: 7. 移动标架与Gauss-Bonnet公式
+description: 移动标架来计算曲率在共型类上面的变化
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+## 7.1. Cartan结构方程
+
+我们经常发现使用移动（正交）标架的方法很方便，它在计算具有对称性的度量的联络和曲率时非常有效，例如旋转对称度量和齐次度量。该方法最初由Elie  Cartan开发，随后由陈省身进一步完善。令 $\left\{e_{i}\right\}_{i=1}^{n}$ 为 $U \subset M^{n}$ 中的局部正交标架场。 $T^{*} M^{n}$ 的对偶正交基（或协标架场） $\left\{\omega^{i}\right\}_{i=1}^{n}$ 被定义为 $\omega^{i}\left(e_{j}\right)=\delta_{j}^{i}$，对所有 $i, j=1, \ldots, n$ 都成立。于是我们有
+$$
+\operatorname{Rm}_{i}^{j}(X, Y) = \frac{1}{2}\left\langle\nabla_{X, Y}^{2} e_{i}-\nabla_{Y, X}^{2} e_{i}, e_{j}\right\rangle
+= \frac{1}{2}\left\langle\left(\nabla_{X} \omega_{i}^{k}\right)(Y) e_{k}+\omega_{i}^{k}(Y) \nabla_{X} e_{k}-\left(\nabla_{Y} \omega_{i}^{k}\right)(X) e_{k}-\omega_{i}^{k}(X) \nabla_{Y} e_{k}, e_{j}\right\rangle
+$$
+$$
+= d \omega_{i}^{k}(X, Y)\left\langle e_{k}, e_{j}\right\rangle+\frac{1}{2}\left(\omega_{i}^{k}(Y) \omega_{k}^{\ell}(X)-\omega_{i}^{k}(X) \omega_{k}^{\ell}(Y)\right)\left\langle e_{\ell}, e_{j}\right\rangle
+$$
+并且（1.80）得证。
+
+对于曲面 $M^{2}$，我们有
+$$
+\begin{gathered}
+d \omega^{1}=\omega^{2} \wedge \omega_{2}^{1}, \quad d \omega^{2}=\omega^{1} \wedge \omega_{1}^{2} \\
+\operatorname{Rm}_{2}^{1}=d \omega_{2}^{1}
+\end{gathered}
+$$
+
+特别地，高斯曲率由以下公式给出：
+$$
+K \doteqdot\left\langle\operatorname{Rm}\left(e_{1}, e_{2}\right) e_{2}, e_{1}\right\rangle=2 \operatorname{Rm}_{2}^{1}\left(e_{1}, e_{2}\right)=2 d \omega_{2}^{1}\left(e_{1}, e_{2}\right)
+$$
+
+**练习 1.70 （联络1-形式的公式）**。证明
+$$
+d \omega^{k}\left(e_{i}, e_{j}\right)=\frac{1}{2} \omega_{i}^{k}\left(e_{j}\right)-\frac{1}{2} \omega_{j}^{k}\left(e_{i}\right)
+$$
+
+利用此式及第一结构方程（1.79），推导出联络1-形式的公式：
+$$
+\omega_{i}^{k}\left(e_{j}\right)=d \omega^{i}\left(e_{j}, e_{k}\right)+d \omega^{j}\left(e_{i}, e_{k}\right)-d \omega^{k}\left(e_{j}, e_{i}\right) \tag{1.81}
+$$
+
+注意，这与Christoffel符号公式（1.5）有相似之处。度量可以写成：
+$$
+g=\sum_{i=1}^{n} \omega^{i} \otimes \omega^{i}
+$$
+
+联络1-形式 $\omega_{i}^{j}$ 是相对于 $\left\{e_{i}\right\}_{i=1}^{n}$ 的Levi-Civita联络的分量：
+$$
+\nabla_{X} e_{i} \doteqdot \sum_{j=1}^{n} \omega_{i}^{j}(X) e_{j} \tag{1.76}
+$$
+对所有 $i, j=1, \ldots, n$ 和 $U$ 上的所有向量场 $X$ 都成立。联络1-形式是反对称的：
+$$
+\omega_{i}^{j}=-\omega_{j}^{i}
+$$
+因为对所有 $X$ 都有
+$$
+0 \equiv X\left\langle e_{i}, e_{j}\right\rangle=\left\langle\nabla_{X} e_{i}, e_{j}\right\rangle+\left\langle e_{i}, \nabla_{X} e_{j}\right\rangle
+$$
+
+由 $\omega^{i}\left(e_{j}\right)=\delta_{j}^{i}$ 及乘积法则，我们可以看出：
+$$
+\nabla_{X} \omega^{i}=-\omega_{j}^{i}(X) \omega^{j} \tag{1.77}
+$$
+
+在 $U$ 上，曲率2-形式 $\mathrm{Rm}_{i}^{j}$ 定义为
+$$
+\operatorname{Rm}_{i}^{j}(X, Y) e_{j} \doteqdot \frac{1}{2} \operatorname{Rm}(X, Y) e_{i} \tag{1.78}
+$$
+因此 $\operatorname{Rm}_{i}^{j}(X, Y)=\frac{1}{2}\left\langle\operatorname{Rm}(X, Y) e_{i}, e_{j}\right\rangle$。
+
+**定理 1.69 （Cartan结构方程）**。第一和第二Cartan结构方程为：
+$$
+\begin{align*}
+d \omega^{i} & =\omega^{j} \wedge \omega_{j}^{i}  \tag{1.79}\\
+\operatorname{Rm}_{i}^{j} & =d \omega_{i}^{j}-\omega_{i}^{k} \wedge \omega_{k}^{j} \tag{1.80}
+\end{align*}
+$$
+
+证明。我们计算：
+$$
+d \omega^{i}(X, Y) =\frac{1}{2}\left(\nabla_{X} \omega^{i}\right)(Y)-\frac{1}{2}\left(\nabla_{Y} \omega^{i}\right)(X)
+= -\frac{1}{2} \omega_{j}^{i}(X) \omega^{j}(Y) + \frac{1}{2} \omega_{j}^{i}(Y) \omega^{j}(X)
+$$
+从而（1.79）得证。由（1.8）和
+$$
+\nabla^{2} e_{i}=\left(\nabla \omega_{i}^{k}\right) e_{k}+\omega_{i}^{k} \nabla e_{k}
+$$
+**练习 1.71 （第二Bianchi恒等式）。**证明
+$$
+\left(d_{\nabla} \mathrm{Rm}\right)_{i}^{j} \doteqdot d \mathrm{Rm}_{i}^{j}-\omega_{i}^{k} \wedge \mathrm{Rm}_{k}^{j}+\omega_{k}^{j} \wedge \mathrm{Rm}_{i}^{k}=0
+$$
+
+这里 $d_{\nabla} \mathrm{Rm}_{i}^{j}$ 是曲率 $\mathrm{Rm}$ 的外协变导数，作为取值于 $T^{*} M^{n} \otimes T M^{n}$ 的2-形式。这是第二Bianchi恒等式的等价表述。
+
+**练习 1.72**。证明：若 $\left(M^{2}, g\right)$ 是一个黎曼曲面，且 $u: M^{2} \rightarrow \mathbb{R}$ 为一函数，则有
+$$
+R\left(e^{u} g\right)=e^{-u}\left(R(g)-\Delta_{g} u\right)
+$$
+
+解答见例如 [163] 中引理 5.3。注意，可以使用（1.81）来进行计算，而不是采用 [163] 中的证明方法。
+
+## 7.2. 度量的共形变化下的曲率
+
+拉普拉斯算子和Hessian算子在计算共形相关度量的曲率关系时出现。
+
+**练习 1.73**。令 $\tilde{g}=e^{2u} g$，且令 $\left\{\omega^{i}\right\}_{i=1}^{n}$ 是度量 $g$ 的一个局部正交共框架场。那么 $\left\{\tilde{\omega}^{i}\right\}_{i=1}^{n}$，其中 $\tilde{\omega}^{i}=e^{u} \omega^{i}$，是度量 $\tilde{g}$ 的一个局部正交共框架场。还令 $\left\{e_{i}\right\}_{i=1}^{n}$ 和 $\left\{\tilde{e}_{i}\right\}_{i=1}^{n}$ 分别表示 $\left\{\omega^{i}\right\}$ 和 $\left\{\tilde{\omega}^{i}\right\}$ 的正交框架场对偶，因此有 $\tilde{e}_{i}=e^{-u} e_{i}$。证明Riemann曲率2-形式 $\mathrm{Rm}_{i}^{j}$ 和 $\widetilde{\mathrm{Rm}_{i}^{j}}$ 之间的关系为
+$$
+\begin{align*}
+\widetilde{\operatorname{Rm}_{i}^{j}} & =\operatorname{Rm}_{i}^{j}+\nabla_{e_{k}} \nabla_{e_{i}} u \cdot \omega^{k} \wedge \omega^{j}-\nabla_{e_{k}} \nabla_{e_{j}} u \cdot \omega^{k} \wedge \omega^{i} \\
+& +|\nabla u|^{2} \omega^{i} \wedge \omega^{j}+d u \wedge\left(e_{j}(u) \omega^{i}-e_{i}(u) \omega^{j}\right) \tag{1.82}
+\end{align*}
+$$
+其中 $\nabla$ 表示相对于度量 $g$ 的协变导数。
+
+**注释 1.74**。我们采用的约定是，对于1-形式 $\alpha$ 和 $\beta$，有 $\alpha \wedge \beta=\frac{1}{2}(\alpha \otimes \beta-\beta \otimes \alpha)$。练习1.73是使用移动框架法的练习1.59的版本。我们包括它是为了让读者比较这两种进行局部计算的技术。你更喜欢哪一种？
+
+应用（1.82）到（1.78），我们计算出Ricci曲率的关系为
+$$
+\begin{aligned}
+\widetilde{\operatorname{Rc}}\left(\tilde{e}_{\ell}, \tilde{e}_{i}\right) & =\sum_{m=1}^{n}\left\langle\widetilde{\operatorname{Rm}}\left(\tilde{e}_{m}, \tilde{e}_{\ell}\right) \tilde{e}_{i}, \tilde{e}_{m}\right\rangle=2 \sum_{m=1}^{n}\left\langle\widetilde{\operatorname{Rm}_{i}^{j}}\left(\tilde{e}_{m}, \tilde{e}_{\ell}\right) \cdot \tilde{e}_{j}, \tilde{e}_{m}\right\rangle \\
+& =2 \sum_{m=1}^{n} \widetilde{\operatorname{Rm}_{i}^{m}}\left(\tilde{e}_{m}, \tilde{e}_{\ell}\right) \\
+& =e^{-2 u}\binom{\operatorname{Rc}\left(e_{\ell}, e_{i}\right)+(2-n) \nabla_{e_{\ell}} \nabla_{e_{i}} u-\delta_{\ell i} \Delta u}{+|\nabla u|^{2}(2-n) \delta_{i \ell}-(2-n) e_{\ell}(u) e_{i}(u)} .
+\end{aligned}
+$$
+
+因此，如果 $\tilde{g}=e^{2 u} g$，则度量 $g$ 和 $\tilde{g}$ 的标量曲率之间的关系为
+$$
+\begin{align*}
+\tilde{R} & =\sum_{i=1}^{n} \widetilde{\operatorname{Rc}}\left(\tilde{e}_{i}, \tilde{e}_{i}\right) \\
+& =e^{-2 u}\left(R-2(n-1) \Delta u-(n-2)(n-1)|\nabla u|^{2}\right) \tag{1.83}
+\end{align*}
+$$
+
+**注释 1.75**。如果我们令 $u \doteqdot-\frac{1}{n} f$，其中 $f: M^{n} \rightarrow \mathbb{R}$，则有
+$$
+\tilde{R}=e^{\frac{2}{n} f}\left(R+2\left(1-\frac{1}{n}\right) \Delta f-\left(1-\frac{2}{n}\right)\left(1-\frac{1}{n}\right)|\nabla f|^{2}\right)
+$$
+
+形式上，如果我们取 $n \rightarrow \infty$，则有
+$$
+\begin{equation*}
+\tilde{R} \rightarrow R+2 \Delta f-|\nabla f|^{2} \tag{1.84}
+\end{equation*}
+$$
+
+## 7.3. 高斯-博内公式
+
+我们使用移动框架法来证明黎曼几何中最基本的结果之一，即高斯-博内公式。它指出，对于一个封闭的黎曼曲面 $\left(M^{2}, g\right)$，其高斯曲率（即标量曲率的一半）的积分等于 $2\pi$ 乘以 $M^{2}$ 的Euler特征。
+
+**定理 1.76 (高斯-博内)**。如果 $\left(M^{2}, g\right)$ 是一个封闭的定向黎曼曲面，则有
+$$
+\int_{M} K dA = 2\pi \cdot \chi(M)
+$$
+
+该公式的证明将占据本小节的剩余部分。令 $\left\{e_1, e_2\right\}$ 为开集 $U \subset M$ 中的一个局部正定向正交基底，从而
+$$
+dA = \omega^1 \wedge \omega^2
+$$
+
+高斯-博内积分的被积项在局部是联络1-形式 $-\omega_1^2$ 的外导数：
+$$
+K dA = -d\omega_1^2 \tag{1.85}
+$$
+
+我们希望应用Stokes定理。由于 $\omega_1^2$ 只在局部定义，我们不能全局应用Stokes定理。然而，我们可以选择在 $M$ 上除去有限个点的区域上构造正交框架场。实际上，设 $V \in C^{\infty}(M)$ 是一个光滑向量场，它在有限个点 $p_1, \dots, p_k$ 处具有孤立零点（例如，我们可以取 $V$ 为 $M$ 上Morse函数的梯度）。在 $M^2 - \{p_1, \dots, p_k\}$ 上，令
+$$
+e_1 = \frac{V}{|V|}
+$$
+然后 $e_2$ 通过条件 $\{e_1, e_2\}$ 为正定向正交框架场唯一确定。
+
+**引理 1.77**。对于 $\varepsilon < \operatorname{inj}(M^2, g)$，令 $B(p_i, \varepsilon) \doteqdot \{x \in M: d(x, p_i) < \varepsilon\}$，对于 $i=1, \dots, k$，高斯-博内的被积项可以重写为
+$$
+\int_M K dA = \sum_{i=1}^k \lim_{\varepsilon \rightarrow 0} \int_{\partial B(p_i, \varepsilon)} \omega_1^2
+$$
+
+证明。根据(1.85)、Stokes定理，并考虑方向，我们有
+$$
+\int_M K dA = -\lim_{\varepsilon \rightarrow 0} \int_{M - \bigcup_{i=1}^k B(p_i, \varepsilon)} d\omega_1^2 = \lim_{\varepsilon \rightarrow 0} \int_{\bigcup_{i=1}^k \partial B(p_i, \varepsilon)} \omega_1^2 \tag{1.86}
+$$
+
+我们将证明(1.86)右侧的边界积分趋近于向量场 $V$ 的指数的 $2\pi$ 倍。
+
+**引理 1.78.**
+$$
+\begin{equation*}
+\lim _{\epsilon \rightarrow 0} \int_{\partial B\left(p_{i}, \varepsilon\right)} \omega_{1}^{2}=2 \pi \cdot \operatorname{index}_{p_{i}}(V) \tag{1.87}
+\end{equation*}
+$$
+
+假设该引理成立，我们可以完成
+高斯-博内公式的证明。使用 (1.86)、(1.87) 和庞加莱-霍普夫定理，我们有
+$$
+\int_{M} K d A=2 \pi \sum_{i=1}^{k} \operatorname{index}_{p_{i}}(V)=2 \pi \cdot \operatorname{index}_{M}(V)=2 \pi \cdot \chi(M)
+$$
+
+我们以
+引理 1.78 的证明结束本节。给定 $1 \leq i \leq k$，设 $\nu$ 表示 $\partial B\left(p_{i}, \varepsilon\right)$ 的单位外法向量场，$T$ 表示 $\partial B\left(p_{i}, \varepsilon\right)$ 的单位切向量场，使得 $\{\nu, T\}$ 构成正定框架。用单位速度路径参数化 $\partial B\left(p_{i}, \varepsilon\right)$
+$$
+\gamma_{i}:\left[0, L_{i}\right] \rightarrow \partial B\left(p_{i}, \varepsilon\right) \subset M
+$$
+使得 $d \gamma_{i} / d s=T$。我们定义角度函数
+$$
+\theta:\left[0, L_{i}\right] \rightarrow \mathbb{R}
+$$
+如下所示
+$$
+T\left(\gamma_{i}(s)\right) \doteqdot \cos \theta(s) \cdot e_{1}\left(\gamma_{i}(s)\right)+\sin \theta(s) \cdot e_{2}\left(\gamma_{i}(s)\right)
+$$
+
+我们要求 $\theta$ 是光滑的，以确保它仅定义到 $2 \pi$ 的整数倍。单位外法向量场 $\nu$ 给出
+$$
+\nu\left(\gamma_{i}(s)\right)=\sin \theta(s) \cdot e_{1}\left(\gamma_{i}(s)\right)-\cos \theta(s) \cdot e_{2}\left(\gamma_{i}(s)\right)
+$$
+
+围绕 $\gamma_{i}$ 走一圈后角度 $\theta$ 的变化为
+$$
+\theta\left(L_{i}\right)-\theta(0)=-2 \pi\left(\operatorname{index}_{p_{i}}(V)-1\right)
+$$
+
+上述关于角度 $\theta$ 的讨论与 (1.87) 中的边界积分相关，如下所述。
+
+**子引理.**
+$$
+\begin{equation*}
+\omega_{1}^{2}(T)=\kappa-T \theta \tag{1.88}
+\end{equation*}
+$$
+其中 $\kappa \doteqdot-\left\langle\nabla_{T} T, \nu\right\rangle$ 是 $\partial B\left(p_{i}, \varepsilon\right)$ 的测地曲率。
+
+子引理的证明。我们计算
+$$
+\begin{aligned}
+\nabla_{T} T & =\nabla_{T}\left(\cos \theta \cdot e_{1}+\sin \theta \cdot e_{2}\right) \\
+& =T(\cos \theta) \cdot e_{1}+T(\sin \theta) \cdot e_{2}+\cos \theta \cdot \nabla_{T} e_{1}+\sin \theta \cdot \nabla_{T} e_{2} \\
+& =-\sin \theta \cdot T \theta \cdot e_{1}+\cos \theta \cdot T \theta \cdot e_{2}+\cos \theta \cdot \omega_{1}^{2}(T) e_{2}+\sin \theta \cdot \omega_{2}^{1}(T) e_{1} \\
+& =-\nu \cdot\left(T \theta+\omega_{1}^{2}(T)\right)
+\end{aligned}
+$$
+这意味着
+$$
+\kappa=-\left\langle\nabla_{T} T, \nu\right\rangle=T \theta+\omega_{1}^{2}(T)
+$$
+
+设 $d s$ 为 $\partial B\left(p_{i}, \varepsilon\right)$ 的弧长元。根据 (1.88) 和微积分基本定理，我们有
+$$
+\begin{aligned}
+\int_{\partial B\left(p_{i}, \varepsilon\right)} \omega_{1}^{2} & =\int_{\partial B\left(p_{i}, \varepsilon\right)} \omega_{1}^{2}(T) d s=\int_{\partial B\left(p_{i}, \varepsilon\right)}(\kappa-T \theta) d s \\
+& =\int_{\partial B\left(p_{i}, \varepsilon\right)} \kappa d s-\theta\left(L_{i}\right)+\theta(0) \\
+& =\int_{\partial B\left(p_{i}, \varepsilon\right)} \kappa d s+2 \pi\left(\operatorname{index}_{p_{i}}(V)-1\right)
+\end{aligned}
+$$
+
+因为
+$$
+\lim _{\epsilon \rightarrow 0} \int_{\partial B\left(p_{i}, \varepsilon\right)} \kappa d s=2 \pi
+$$
+我们得出
+$$
+\sum_{i=1}^{k} \lim _{\epsilon \rightarrow 0} \int_{\partial B\left(p_{i}, \varepsilon\right)} \omega_{1}^{2}=2 \pi \cdot \sum_{i=1}^{k} \operatorname{index}_{p_{i}}(V)
+$$
+至此，引理和高斯-博内公式均已证明。
+
+## 7.4 移动标架适应于超曲面
+
+研究黎曼流形中的超曲面对探究这些流形的几何具有重要作用。例如，在三维流形中，极小曲面有助于理解周围三维流形的拓扑结构。设$\left(P^{n}, g_{P}\right)$为一个黎曼流形，并且$D$表示其对应的协变导数（Levi-Civita 连接）。给定超曲面$M^{n-1} \subset P^{n}$，令$\left\{e_{i}\right\}_{i=1}^{n}$为包含$M^{n-1}$上一点的邻域$U \subset P^{n}$中的一个移动标架。$\left(P^{n}, g_{P}\right)$的连接1-形式$\left\{\omega_{i}^{j}\right\}_{i, j=1}^{n}$满足
+$$
+D_{X} e_{i}=\sum_{j=1}^{n} \omega_{i}^{j}(X) e_{j} .
+$$
+现在假设标架适应于$M^{n-1}$，即$e_{n} \doteqdot \nu$为$M^{n-1}$的法向量。第一基本形式定义为
+
+$$
+\begin{equation*}
+g_{M}(X, Y) \doteqdot g_{P}(X, Y) \tag{1.89}
+\end{equation*}
+$$
+对于$X, Y \in T M^{n-1}$，这也称为超曲面上的诱导黎曼度量。第二基本形式为
+$$
+\begin{equation*}
+h(X, Y) \doteqdot\left\langle D_{X} \nu, Y\right\rangle=\omega_{n}^{j}(X)\left\langle Y, e_{j}\right\rangle \tag{1.90}
+\end{equation*}
+$$
+对于切于$M^{n-1}$的$X$和$Y$，第二基本形式测量超曲面的外在几何，例如法向量的非平行性。令$h_{i j} \doteqdot h\left(e_{i}, e_{j}\right)=\omega_{n}^{j}\left(e_{i}\right)$，因此
+$$
+\omega_{n}^{j}=\sum_{i=1}^{n-1} h_{i j} \omega^{i}
+$$
+平均曲率是第二基本形式的迹：
+$$
+H \doteqdot \sum_{i=1}^{n} h\left(e_{i}, e_{i}\right)
+$$
+诱导的$g_{M}$的Levi-Civita连接$\nabla$满足
+$$
+\nabla_{X} e_{i} \doteqdot\left(D_{X} e_{i}\right)^{T}=\sum_{j=1}^{n-1} \omega_{i}^{j}(X) e_{j}
+$$
+这里${ }^{T}$表示向量的切向分量。因此$\left\{\omega_{i}^{j}\right\}_{i, j=1}^{n-1}$是$\left(M^{n-1}, g_{M}\right)$的连接1-形式。第二结构方程为我们提供了环境流形和超曲面的曲率公式：
+$$
+\begin{array}{ll}
+\left(\operatorname{Rm}_{P}\right)_{i}^{j}=d \omega_{i}^{j}-\sum_{k=1}^{n} \omega_{i}^{k} \wedge \omega_{k}^{j}, & i, j=1, \ldots, n \\
+\left(\operatorname{Rm}_{M}\right)_{i}^{j}=d \omega_{i}^{j}-\sum_{k=1}^{n-1} \omega_{i}^{k} \wedge \omega_{k}^{j}, & i, j=1, \ldots, n-1
+\end{array}
+$$
+因此，对于$i, j=1, \ldots, n-1$，我们有
+$$
+\begin{aligned}
+\left(\operatorname{Rm}_{M}\right)_{i}^{j} & =\left(\operatorname{Rm}_{P}\right)_{i}^{j}+\omega_{i}^{n} \wedge \omega_{n}^{j} \\
+& =\left(\operatorname{Rm}_{P}\right)_{i}^{j}-h_{i k} h_{j \ell} \omega^{k} \wedge \omega^{\ell} .
+\end{aligned}
+$$
+应用于$\left(e_{k}, e_{\ell}\right)$，我们得到Gauss方程
+$$
+\begin{equation*}
+\left(\operatorname{Rm}_{M}\right)_{i j k \ell}=\left(\operatorname{Rm}_{P}\right)_{i j k \ell}+h_{i \ell} h_{j k}-h_{i k} h_{j \ell} \tag{1.91}
+\end{equation*}
+$$
+**练习 1.79**
+证明
+$$
+\left(\operatorname{Rc}_{M}\right)_{j k}=\left(\operatorname{Rc}_{P}\right)_{j k}-\left(R_{P}\right)_{n j k n}+H h_{j k}-h_{j \ell} h_{\ell k}
+$$
+以及
+$$
+\begin{equation*}
+R_{M}=R_{P}-2\left(\operatorname{Rc}_{P}\right)_{n n}+H^{2}-|h|^{2} \tag{1.92}
+\end{equation*}
+$$
+
+对于$j=1, \ldots, n-1$，我们有
+$$
+\left(\operatorname{Rm}_{P}\right)_{n}^{j}=d \omega_{n}^{j}-\sum_{k=1}^{n-1} \omega_{n}^{k} \wedge \omega_{k}^{j}
+$$
+
+(1,1)-张量$W \doteqdot \sum_{j=1}^{n-1} \omega_{n}^{j} e_{j}$是Weingarten映射。将$W$视为一个取值于$T M^{n-1}$的1-形式，我们有
+$$
+d_{\nabla} W=\sum_{j=1}^{n-1}\left(\mathrm{Rm}_{P}\right)_{n}^{j} e_{j}
+$$
+这是一个取值于$T M^{n-1}$的2-形式。
+
+**练习 1.80 (Codazzi 方程)**
+证明对于切于$M^{n-1}$的向量$X, Y, Z$
+$$
+\left(\nabla_{X} h\right)(Y, Z)-\left(\nabla_{Y} h\right)(X, Z)=-\left\langle\operatorname{Rm}_{P}(X, Y) Z, \nu\right\rangle
+$$
+
+在第4章和第9章中关于梯度Ricci孤立子的研究中，我们将特别有用地考虑由光滑函数$f: M^{n} \rightarrow \mathbb{R}$的水平集产生的超曲面。对于$f$的任何正则值$c \in \mathbb{R}$（即对于所有满足$f(x)=c$的$x \in M$，$\nabla f(x) \neq 0$），根据隐函数定理，水平集$f^{-1}(c)$是一个光滑超曲面。水平集$f^{-1}(c)$的第二基本形式为
+$$
+\begin{equation*}
+h(V, W)=\frac{\operatorname{Hess}(f)(V, W)}{|\nabla f|} \tag{1.93}
+\end{equation*}
+$$
+
+事实上，$\nu=\frac{\nabla f}{|\nabla f|}$是$f^{-1}(c)$的单位法向量。对于$V, W \in T f^{-1}(c)$，我们有
+$$
+\begin{aligned}
+h(V, W) & =\left\langle\nabla_{V} \nu, W\right\rangle=\left\langle\nabla_{V} \frac{\nabla f}{|\nabla f|}, W\right\rangle \\
+& =\left\langle\frac{\nabla_{V} \nabla f}{|\nabla f|}, W\right\rangle=\frac{1}{|\nabla f|} \operatorname{Hess}(f)(V, W)
+\end{aligned}
+$$
+因为$\langle\nabla f, W\rangle=0$。特别地，如果$f$是（严格）凸的（$\nabla \nabla f \geq 0$，$\nabla \nabla f>0$），那么任何光滑的超曲面$f^{-1}(c)$是（严格）凸的（$h \geq 0$，$h>0$）。

@@ -1,0 +1,343 @@
+---
+title: 2.度量、联络、曲率和协变导数
+description: 度量、联络、曲率和协变导数的公式
+pubDate: 07 12 2024
+image: /image/image2.jpg
+categories:
+  - 黎曼几何
+tags:
+  - math
+---
+
+import Collapse from "../../components/blog/collapse.astro";
+import Diff from "../../components/blog/diff.astro";
+import Error from "../../components/blog/error.astro";
+import Info from "../../components/blog/info.astro";
+import Kbd from "../../components/blog/kbd.astro";
+import Success from "../../components/blog/success.astro";
+import Warning from "../../components/blog/warning.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+import LinkCard from "../../components/page/LinkCard.astro";
+
+
+## 2.1. 度量和联络
+
+设 $\left(M^{n}, g\right)$ 是一个黎曼流形，即 $M^{n}$ 是一个 $n$ 维光滑流形，$g$ 是黎曼度量。黎曼度量 $g$（也表示为 $\langle \cdot, \cdot \rangle$）是切空间上的光滑变化的内积（Riemann, 1854）。等效地，我们可以将 $g$ 视为对称（协变）2-张量束 $T^{*} M \otimes_{S} T^{*} M$ 的一个正定截面，或作为正定双线性映射 $g(x): T_{x} M \times T_{x} M \rightarrow \mathbb{R}$，对于所有 $x \in M$。这里，$T^{*} M \otimes_{S} T^{*} M$ 是 $T^{*} M \otimes T^{*} M$ 的一个子空间，由形式为 $X \otimes Y + Y \otimes X$ 的元素生成。度量 $g$ 定义了一个微小的长度和角度的概念。切向量 $X$ 的长度定义为
+$$
+|X| \doteqdot g(X, X)^{1 / 2}
+$$
+两个非零切向量 $X$ 和 $Y$ 之间的角度定义为
+$$
+\angle(X, Y) \doteqdot \cos ^{-1}\left(\frac{\langle X, Y\rangle}{|X||Y|}\right)
+$$
+
+设 $\left\{x^{i}\right\}_{i=1}^{n}$ 是流形 $M$ 某点附近的局部坐标。在 $U$ 中，向量场 $\left\{\partial / \partial x^{i}\right\}_{i=1}^{n}$ 形成 $T M$ 的局部基，1-形式 $\left\{d x^{i}\right\}_{i=1}^{n}$ 形成 $T^{*} M$ 的对偶基，即 $d x^{i}\left(\partial / \partial x^{j}\right)=\delta_{j}^{i}$。在局部坐标下，度量可以写作
+$$
+g = g_{i j} \, d x^{i} \otimes d x^{j}
+$$
+其中 $g_{i j} \doteqdot g\left(\partial / \partial x^{i}, \partial / \partial x^{j}\right)$。在本书中，我们遵循爱因斯坦求和约定，对重复的指标进行求和。我们经常用 $g_{i j}$ 来表示度量 $g$（以及一般的张量）。
+
+给定一个光滑的浸入映射 $\varphi: N^{m} \rightarrow M^{n}$ 和一个度量 $g$ 在 $M^{n}$ 上，我们可以将 $g$ 反推到 $N$ 上的度量
+$$
+\left(\varphi^{*} g\right)(V, W) \doteqdot g\left(\varphi_{*} V, \varphi_{*} W\right)
+$$
+其中 $\varphi_{*}: T N \rightarrow T M$ 是切映射。注意，如果 $\left\{y^{\alpha}\right\}$ 和 $\left\{x^{i}\right\}$ 分别是 $N$ 和 $M$ 上的局部坐标，则
+$$
+\left(\varphi^{*} g\right)_{\alpha \beta}=g_{i j} \frac{\partial \varphi^{i}}{\partial y^{\alpha}} \frac{\partial \varphi^{j}}{\partial y^{\beta}}
+$$
+其中 $\left(\varphi^{*} g\right)_{\alpha \beta} \doteqdot\left(\varphi^{*} g\right)\left(\partial / \partial y^{\alpha}, \partial / \partial y^{\beta}\right)$ 和 $\varphi^{i} \doteqdot x^{i} \circ \varphi$。更一般地，对于任何在 $M^{n}$ 上的协变 $p$-张量 $\alpha$ 和一个光滑映射 $\varphi: N^{m} \rightarrow M^{n}$，我们定义 $\alpha$ 在 $N$ 上的反推为
+$$
+\left(\varphi^{*} \alpha\right)\left(X_{1}, \ldots, X_{p}\right)=\alpha\left(\varphi_{*} X_{1}, \ldots, \varphi_{*} X_{p}\right)
+$$
+对于所有 $X_{1}, \ldots, X_{p} \in T_{y} N$。如果 $\varphi$ 是一个微分同胚，则协变张量的反推定义为 $\varphi^{-1}$ 的推前。
+
+**备注 1.1**. 从几何上讲，我们不区分度量 $g$ 和通过微分同胚 $\varphi$ 的反推 $\varphi^{*} g$（见定义 1.25）。
+
+回顾一下，Levi-civita联络（或黎曼协变导数）$\nabla: T M \times C^{\infty}(T M) \rightarrow C^{\infty}(T M)$ 是在 $T M$ 上唯一一个与度量兼容且无扭曲的连接：
+$$
+\begin{align}
+X(g(Y, Z)) & = g\left(\nabla_{X} Y, Z\right) + g\left(Y, \nabla_{X} Z\right) \tag{1.2} \\
+\nabla_{X} Y - \nabla_{Y} X & = [X, Y] \tag{1.3}
+\end{align}
+$$
+在这里，习惯上用 $\nabla_{X} Y$ 表示 \((\nabla Y)(X) = \nabla(X, Y)\)（注意 $\nabla Y$ 是一个 (1,1) 张量），并且
+$$
+[X, Y] f \doteqdot X(Y f) - Y(X f)
+$$
+定义了作用于函数上的李括号。（李括号是一个导数，因此它是一个向量场。）从此，可以通过对上述方程对向量场 $X, Y$ 和 $Z$ 进行线性组合和置换，来得到
+$$
+\begin{align*}
+2 g\left(\nabla_{X} Y, Z\right) & = X(g(Y, Z)) + Y(g(X, Z)) - Z(g(X, Y)) \tag{1.4} \\
+& \quad + g([X, Y], Z) - g([X, Z], Y) - g([Y, Z], X)
+\end{align*}
+$$
+
+这给出了 $\nabla_{X} Y$ 的公式。
+流形 $M^{n}$ 上的可微结构使我们能够定义函数的方向导数，除了线性性质外，还满足乘积规则 $X(f h) = h X(f) + f X(h)$。协变导数通过使用黎曼度量来定义，告诉我们如何对向量场进行微分。方程 (1.2) 是乘积规则（与度量的兼容性），而 (1.3) 是与可微结构的兼容性（无扭曲）条件。
+
+ **练习 1.2.** 设 $\nabla^{g}$ 表示度量 $g$ 的黎曼-里奇连接。证明对于任何常数 $c  0$ 和度量 $g$，有 $\nabla^{c g} = \nabla^{g}$。
+
+设 $\left\{x^{i}\right\}_{i=1}^{n}$ 是在 $M^{n}$ 中开集 $U$ 上定义的局部坐标系统。克里斯托费尔符号是黎曼-里奇连接的分量，并在 $U$ 中定义为
+
+$$
+\nabla_{\partial / \partial x^{i}} \partial / \partial x^{j} \doteqdot \Gamma_{i j}^{k} \partial / \partial x^{k}
+$$
+
+根据 (1.4) 和 $\left[\frac{\partial}{\partial x^{i}}, \frac{\partial}{\partial x^{j}}\right] = 0$，可以得到
+$$
+\Gamma_{i j}^{k} = \frac{1}{2} g^{k \ell} \left(\frac{\partial}{\partial x^{i}} g_{j \ell} + \frac{\partial}{\partial x^{j}} g_{i \ell} - \frac{\partial}{\partial x^{\ell}} g_{i j}\right) \tag{1.5}
+$$
+**练习 1.3.** 设 $\left\{x^{i}\right\}$ 和 $\left\{y^{\alpha}\right\}$ 是一个公共开集上的坐标函数。使用 $g_{\alpha \beta}=g_{i j} \frac{\partial x^{i}}{\partial y^{\alpha}} \frac{\partial x^{j}}{\partial y^{\beta}}$，证明
+$$
+\Gamma_{\alpha \beta}^{\gamma} \frac{\partial x^{k}}{\partial y^{\gamma}} = \Gamma_{i j}^{k} \frac{\partial x^{i}}{\partial y^{\alpha}} \frac{\partial x^{j}}{\partial y^{\beta}} + \frac{\partial^{2} x^{k}}{\partial y^{\alpha} \partial y^{\beta}}
+$$
+
+**练习 1.4.** 验证如果 $\left(M^{n}, g\right)$ 是一个黎曼流形，$\varphi: N^{m} \rightarrow M^{n}$ 是一个浸入映射，并且 $\left\{y^{\alpha}\right\}$ 和 $\left\{x^{i}\right\}$ 分别是 $N$ 和 $M$ 上的局部坐标，则
+$$
+\Gamma\left(\varphi^{*} g\right)_{\alpha \beta}^{\gamma} \frac{\partial \varphi^{k}}{\partial y^{\gamma}} = \left(\Gamma_{i j}^{k} \circ \varphi\right) \frac{\partial \varphi^{i}}{\partial y^{\alpha}} \frac{\partial \varphi^{j}}{\partial y^{\beta}} + \frac{\partial^{2} \varphi^{k}}{\partial y^{\alpha} \partial y^{\beta}}
+$$
+其中 $\varphi^{i} \doteqdot x^{i} \circ \varphi$。
+
+协变导数定义了沿路径的平行平移的概念。特别地，如果路径 $\gamma:[a, b] \rightarrow M^{n}$ 上的向量场 $X$ 是平行的，如果
+$$
+\nabla_{\dot{\gamma}} X = 0
+$$
+沿 $\gamma$；向量场 $X(\gamma(t))$ 被称为 $\boldsymbol{X}(\gamma(a))$ 的平行平移。我们说路径 $\gamma$ 是测地线，如果单位切向量场沿 $\gamma$ 是平行的：
+$$
+\nabla_{\dot{\gamma}}\left(\frac{\dot{\gamma}}{|\dot{\gamma}|}\right) = 0
+$$
+如果 $|\dot{\gamma}|$ 在 $\gamma$ 上是常数，则测地线具有恒定速度；在这种情况下 $\nabla_{\dot{\gamma}} \dot{\boldsymbol{\gamma}} = 0$。如第 8 节所示，两个点之间的最短路径是测地线，测地线在局部上最小化长度。
+
+**练习 1.5.** 证明如果 $X$ 在路径 $\gamma$ 上是平行的，则 $|X|^{2}$ 在 $\gamma$ 上是常数。
+
+## 2.2. 曲率
+
+黎曼曲率 (3,1) 型张量 $\operatorname{Rm}$ 定义为
+$$
+\operatorname{Rm}(X, Y) Z \doteqdot \nabla_{X} \nabla_{Y} Z - \nabla_{Y} \nabla_{X} Z - \nabla_{[X, Y]} Z
+\tag{1.6}
+$$
+可以很容易地验证，对于任何函数 $f$，
+$$
+\operatorname{Rm}(f X, Y) Z = \operatorname{Rm}(X, f Y) Z = \operatorname{Rm}(X, Y)(f Z) = f \operatorname{Rm}(X, Y) Z
+\tag{1.7}
+$$
+因此，$\operatorname{Rm}$ 确实是一个张量。我们还可以定义
+$$
+\nabla_{X, Y}^{2} Z \doteqdot \nabla_{X} \nabla_{Y} Z - \nabla_{\nabla_{X} Y} Z
+$$
+从而有
+$$
+\begin{gather*}
+\operatorname{Rm}(X, Y) Z = \nabla_{X, Y}^{2} Z - \nabla_{Y, X}^{2} Z \tag{1.8} \\
+
+\nabla_{f X, Y}^{2} Z = \nabla_{X, f Y}^{2} Z = f \nabla_{X, Y}^{2} Z 
+\tag{1.9}
+\end{gather*}
+$$
+以及
+$$
+\begin{align}
+\nabla_{X, Y}^{2}(f Z) & = f \nabla_{X, Y}^{2} Z + Y(f) \nabla_{X} Z + X(f) \nabla_{Y} Z \tag{1.10}\\
+& - \left(\left(\nabla_{X} Y\right) f\right) Z + X(Y(f)) Z
+\end{align}
+$$
+对于任何函数 $f$。注意，从(1.9),(1.10)和(1.8)中可以立即推导出上述结果。
+
+**备注 1.6.** 括号测量了方向导数作用于函数的不交换性，而 $\operatorname{Rm}$ 测量了协变导数作用于向量场的不交换性。
+
+(3,1) 张量 $\operatorname{Rm}$ 的分量定义为
+$$
+\operatorname{Rm}\left(\frac{\partial}{\partial x^{i}}, \frac{\partial}{\partial x^{j}}\right) \frac{\partial}{\partial x^{k}} \doteqdot R_{i j k}^{\ell} \frac{\partial}{\partial x^{\ell}}
+$$
+并且 $R_{i j k \ell} \doteqdot g_{\ell m} R_{i j k}^{m}$；注意
+$$
+R_{i j k \ell} = \operatorname{Rm}\left(\frac{\partial}{\partial x^{i}}, \frac{\partial}{\partial x^{j}}, \frac{\partial}{\partial x^{k}}, \frac{\partial}{\partial x^{\ell}}\right) \doteqdot \left\langle \operatorname{Rm}\left(\frac{\partial}{\partial x^{i}}, \frac{\partial}{\partial x^{j}}\right) \frac{\partial}{\partial x^{k}}, \frac{\partial}{\partial x^{\ell}} \right\rangle
+$$
+是 $\operatorname{Rm}$ 作为 (4,0) 张量的分量。黎曼曲率张量的一些基本对称性为
+$$
+R_{i j k \ell} = -R_{j i k \ell} = -R_{i j \ell k} = R_{k \ell i j}\tag{1.11}
+$$
+如果 $P \subset T_{x} M^{n}$ 是一个 2-平面，则 $P$ 的截面曲率定义为
+$$
+K(P) \doteqdot \left\langle \operatorname{Rm}\left(e_{1}, e_{2}\right) e_{2}, e_{1} \right\rangle
+$$
+其中 $\left\{e_{1}, e_{2}\right\}$ 是 $P$ 的一个正交归一基底；此定义与基底的选择无关。
+
+**练习 1.7.** 证明如果 $X$ 和 $Y$ 是 $P$ 上的任意两个向量，则
+$$
+K(P) = \frac{\langle \operatorname{Rm}(X, Y) Y, X \rangle}{|X|^{2} |Y|^{2} - \langle X, Y \rangle^{2}}
+$$
+曲率在小平行四边形上的平行平移具有几何解释（参见 Spivak [519] 或 Lee [363]）。另一种看待 $2$-平面 $P \subset T_{p} M$ 的截面曲率的方法是，它等于在 $p$ 点由从 $p$ 发出的测地线和 $P$ 切线所生成的表面的高斯曲率（该表面在 $p$ 附近是光滑的）。
+
+**练习 1.8.** 使用 (1.6) 和 (1.5) 证明
+$$
+R_{i j k}^{\ell} = \partial_{i} \Gamma_{j k}^{\ell} - \partial_{j} \Gamma_{i k}^{\ell} + \Gamma_{j k}^{p} \Gamma_{i p}^{\ell} - \Gamma_{i k}^{p} \Gamma_{j p}^{\ell}\tag{1.12}
+$$
+
+
+**备注 1.9.** 本书中有时我们将 $\frac{\partial}{\partial x^{i}}$ 表示为 $\partial_{i}$。
+
+Ricci 张量 $\operatorname{Rc}$ 是黎曼曲率张量的迹：
+$$
+\operatorname{Rc}(Y, Z) \doteqdot \operatorname{trace}(X \mapsto \operatorname{Rm}(X, Y) Z)
+$$
+在正交归一基 $\left\{e_{a}\right\}_{a=1}^{n}$ 下，即 $g\left(e_{a}, e_{b}\right)=\delta_{a b}$ 的基，我们有 $\operatorname{Rc}(Y, Z) = \sum_{a=1}^{n}\left\langle \operatorname{Rm}\left(e_{a}, Y\right) Z, e_{a} \right\rangle$。其分量由 $R_{i j} \doteqdot \operatorname{Rc}\left(\frac{\partial}{\partial x^{i}}, \frac{\partial}{\partial x^{j}}\right)$ 定义，给出为
+$$
+R_{j k} = \sum_{i=1}^{n} R_{i j k}^{i}
+$$
+一条线 $L \subset T_{x} M^{n}$ 的 Ricci 曲率定义为
+$$
+\operatorname{Rc}(L) \doteqdot \operatorname{Rc}\left(e_{1}, e_{1}\right)
+$$
+其中 $e_{1} \in T_{x} M^{n}$ 是一个单位向量生成 $L$。
+标量曲率是 Ricci 张量的迹：
+$$
+R \doteqdot \sum_{a=1}^{n} \operatorname{Rc}\left(e_{a}, e_{a}\right)
+$$
+在局部坐标下，$R = g^{i j} R_{i j}$；这里 $\left(g^{i j}\right) \doteqdot \left(g_{i j}\right)^{-1}$ 是逆矩阵。注意，我们可以在余切丛上全局定义一个度量 $g^{-1}$，即 $g^{-1} \doteqdot g^{i j} \frac{\partial}{\partial x^{i}} \otimes \frac{\partial}{\partial x^{j}}$，在任何局部坐标系中。
+**练习 1.10.** 证明 $g^{-1}$ 是良定义的。
+
+一个黎曼流形 $\left(M^{n}, g\right)$ 如果每个 2-平面的截面曲率都相同，则它具有恒定的截面曲率。即，存在 $k \in \mathbb{R}$ 使得对每个 $x \in M$ 和 2-平面 $P \subset T_{x} M$，有 $K(P) = k$。类似地，我们说一个度量具有恒定的 Ricci 曲率，如果每条线的 Ricci 曲率都相同。
+**练习 1.11 (曲率的缩放性质).** 给定一个度量 $g$ 和一个正数 $C$，证明 $\operatorname{Rm}_{(3,1)}(C g) = \operatorname{Rm}_{(3,1)}(g)$（作为 (3,1) 张量），$\operatorname{Rm}_{(4,0)}(C g) = C \operatorname{Rm}_{(4,0)}(g)$，$\operatorname{Rc}(C g) = \operatorname{Rc}(g)$，以及 $R(C g) = C^{-1} R(g)$。提示：使用练习 1.2。
+
+**练习 1.12**（迹的几何解释）。证明对称 2-张量 $\alpha$ 的迹由以下公式给出：
+$$
+\text{Trace}_{g}(\alpha) = \frac{1}{\omega_{n}} \int_{S^{n-1}} \alpha(V, V) \, d \sigma(V)
+$$
+其中 $S^{n-1}$ 是单位 $(n-1)$-球，$n \omega_{n}$ 是其体积，$d \sigma$ 是体积形式。由此证明，对于任何单位向量 $U$，$\frac{1}{n-1} \operatorname{Rc}(U, U)$ 是包含向量 $U$ 的平面的截面曲率的平均值。类似地，$\frac{1}{n} R(p)$ 是所有单位向量 $U \in S^{n-1} \subset T_{p} M^{n}$ 上的 $\operatorname{Rc}(U, U)$ 的平均值。
+
+**备注 1.13.** 正如在介绍中讨论的那样，一个基本问题是理解曲率条件（例如曲率的给定符号）对流形的拓扑和几何的影响。截面曲率告诉我们最多的信息，标量曲率告诉我们最少的信息，而 Ricci 曲率介于两者之间。
+
+## 2.3 协变微分
+
+与函数和向量场的微分一样，张量的微分也同样重要。通过要求协变微分与收缩运算对易，并且乘积（Leibnitz）规则成立，定义了作用于张量的协变微分。特别地，对于 $(0, s)$-张量，我们定义协变微分为
+$$
+\nabla_{X}: C^{\infty}\left(\otimes^{s} T M\right) \rightarrow C^{\infty}\left(\bigotimes^{s} T M\right)
+$$
+其中
+$$
+\nabla_{X}\left(Z_{1} \otimes \cdots \otimes Z_{s}\right) \doteqdot \sum_{i=1}^{s} Z_{1} \otimes \cdots \otimes \nabla_{X} Z_{i} \otimes \cdots \otimes Z_{s}
+$$
+则 $(r, s)$-张量 $\alpha$ 的协变导数定义为
+$$
+\begin{equation*}
+\left(\nabla_{X} \alpha\right)\left(Y_{1}, \ldots, Y_{r}\right) \doteqdot \nabla_{X}\left(\alpha\left(Y_{1}, \ldots, Y_{r}\right)\right) - \sum_{i=1}^{r} \alpha\left(Y_{1}, \ldots, \nabla_{X} Y_{i}, \ldots, Y_{r}\right) \tag{1.13}
+\end{equation*}
+$$
+其中每一项是 $C^{\infty}\left(\otimes^{s} T M\right)$ 的元素。设 $\otimes^{r, s} M = \left(\otimes^{r} T^{*} M\right) \otimes \left(\otimes^{s} T M\right)$。协变导数可以表示为
+$$
+\nabla: C^{\infty}\left(\bigotimes^{r, s} M\right) \rightarrow C^{\infty}\left(\bigotimes^{r+1, s} M\right)
+$$
+其中
+$$
+(\nabla \alpha)\left(X, Z_{1}, \ldots, Z_{r}\right) \doteqdot \left(\nabla_{X} \alpha\right)\left(Z_{1}, \ldots, Z_{r}\right)
+$$
+或者等效地，
+$$
+\nabla \alpha = \sum_{i=1}^{n} d x^{i} \otimes \nabla_{i} \alpha
+$$
+我们现在有 (1.2) 等价于
+$$
+\begin{equation*}
+\nabla g = 0 \tag{1.14}
+\end{equation*}
+$$
+（即度量是平行的）。
+
+协变导数算子的平方：
+$$
+\nabla^{2}: C^{\infty}\left(\otimes^{r, s} M\right) \rightarrow C^{\infty}\left(\otimes^{r+2, s} M\right)
+$$
+由下式给出：
+$$
+\begin{aligned}
+\nabla^{2} \alpha\left(X, Y, Z_{1}, \ldots, Z_{r}\right) &= \nabla_{X}(\nabla \alpha)\left(Y, Z_{1}, \ldots, Z_{r}\right) \\
+&= \left[\nabla_{X}(\nabla \alpha(Y)) - \nabla \alpha\left(\nabla_{X} Y\right)\right]\left(Z_{1}, \ldots, Z_{r}\right) \\
+&= \nabla_{X}\left(\nabla_{Y} \alpha\right)\left(Z_{1}, \ldots, Z_{r}\right) - \nabla_{\nabla_{X} Y} \alpha\left(Z_{1}, \ldots, Z_{r}\right)
+\end{aligned}
+$$
+使用记号
+$$
+\nabla_{X, Y}^{2} \alpha\left(Z_{1}, \ldots, Z_{r}\right) \doteqdot \nabla^{2} \alpha\left(X, Y, Z_{1}, \ldots, Z_{r}\right)
+$$
+我们可以将其重写为
+$$
+\nabla_{X, Y}^{2} \alpha = \nabla_{X} \nabla_{Y} \alpha - \nabla_{\nabla_{X} Y} \alpha
+$$
+我们通常使用局部坐标来表示张量的分量，并遵循经典的索引符号（Ricci 计算法）。如果 $\beta$ 是 $(r, s)$ 张量，则定义 $\beta$ 的协变导数 $\nabla \beta$ 的分量为
+$$
+\nabla_{i} \beta_{j_{1} \cdots j_{r}}^{k_{1} \cdots k_{s}} \frac{\partial}{\partial x^{k_{1}}} \otimes \cdots \otimes \frac{\partial}{\partial x^{k_{s}}} \doteqdot \left(\nabla_{\partial / \partial x^{i}} \beta\right)\left(\frac{\partial}{\partial x^{j_{1}}}, \ldots, \frac{\partial}{\partial x^{j_{r}}}\right)
+$$
+我们得到
+$$
+\begin{align*}
+\nabla_{i} \beta_{j_{1} \cdots j_{r}}^{k_{1} \cdots k_{s}} &= \frac{\partial}{\partial x^{i}} \beta_{j_{1} \cdots j_{r}}^{k_{1} \cdots k_{s}} - \sum_{m=1}^{r} \sum_{\ell=1}^{n} \Gamma_{i j_{m}}^{\ell} \beta_{j_{1} \cdots j_{m-1} \ell j_{m+1} \cdots j_{r}}^{k_{1}} \tag{1.15} \\
+& \quad + \sum_{p=1}^{s} \sum_{q=1}^{n} \Gamma_{i q}^{k_{p}} \beta_{j_{1} \cdots j_{r}}^{k_{1} \cdots k_{p-1} q k_{p+1} \cdots k_{s}}
+\end{align*}
+$$
+例如
+$$
+\begin{aligned}
+\nabla_{i} R_{j k} &= \doteqdot (\nabla \mathrm{Rc})\left(\frac{\partial}{\partial x^{i}}, \frac{\partial}{\partial x^{j}}, \frac{\partial}{\partial x^{k}}\right) \\
+&= \left(\nabla_{\frac{\partial}{\partial x^{i}}} \mathrm{Rc}\right)\left(\frac{\partial}{\partial x^{j}}, \frac{\partial}{\partial x^{k}}\right) = \frac{\partial}{\partial x^{i}} R_{j k} - \Gamma_{i j}^{\ell} R_{\ell k} - \Gamma_{i k}^{\ell} R_{j \ell}
+\end{aligned}
+$$
+以及
+$$
+\begin{aligned}
+\nabla_{i} R_{j k \ell m} &= \doteqdot \left(\nabla_{\partial / \partial x^{i}} \operatorname{Rm}\right)\left(\frac{\partial}{\partial x^{j}}, \frac{\partial}{\partial x^{k}}, \frac{\partial}{\partial x^{\ell}}, \frac{\partial}{\partial x^{m}}\right) \\
+&= \frac{\partial}{\partial x^{
+
+i}} R_{j k \ell m} - \Gamma_{i j}^{p} R_{p k \ell m} - \Gamma_{i k}^{p} R_{j p \ell m} - \Gamma_{i \ell}^{p} R_{j k p m} - \Gamma_{i m}^{p} R_{j k \ell p}
+\end{aligned}
+$$
+**练习 1.14**
+证明
+$$
+\nabla_{i} \nabla_{j} f \doteqdot (\nabla \nabla f)\left(\frac{\partial}{\partial x^{i}}, \frac{\partial}{\partial x^{j}}\right) = \frac{\partial^{2} f}{\partial x^{i} \partial x^{j}} - \Gamma_{i j}^{k} \frac{\partial f}{\partial x^{k}}
+$$
+
+更一般地，对于一个 1-形式 $X$：
+$$
+\frac{\partial}{\partial x^{i}} X_{j}-\Gamma_{i j}^{k} X_{k}
+$$
+现在我们解释张量多重协变微分的局部坐标表示。设 $\alpha_{i_{1} \cdots i_{r}}$ 表示一个 $(r, 0)$ 张量 $\alpha$ 的分量：
+$$
+\alpha_{i_{1} \cdots i_{r}} \doteqdot \alpha\left(\frac{\partial}{\partial x^{i_{1}}}, \ldots, \frac{\partial}{\partial x^{i_{r}}}\right)
+$$
+我们将 $\nabla^{m} \alpha \doteqdot \underbrace{\nabla \cdots \nabla}_{m \text { 次 }} \alpha$ 的分量表示为 $\nabla_{j_{1}} \cdots \nabla_{j_{m}} \alpha_{i_{1} \cdots i_{r}}$，即
+$$
+\nabla_{j_{1}} \cdots \nabla_{j_{m}} \alpha_{i_{1} \cdots i_{r}} \doteqdot \left(\nabla^{m} \alpha\right)\left(\frac{\partial}{\partial x^{j_{1}}}, \ldots, \frac{\partial}{\partial x^{j_{m}}}, \frac{\partial}{\partial x^{i_{1}}}, \ldots, \frac{\partial}{\partial x^{i_{r}}}\right)
+$$
+对于 $(r, s)$ 张量的多重协变导数的定义也是类似的。
+
+## 2.4. Holonomy
+
+给定一条从 $p$ 到 $q$ 的路径 $\gamma:[a, b] \rightarrow M^{n}$，沿 $\gamma$ 的平行移动定义了一个等距映射 $\iota_{\gamma}:\left(T_{p} M, g(p)\right) \rightarrow \left(T_{q} M, g(q)\right)$。对于给定的点 $p \in M$，由基于 $p$ 的可收缩闭环平行移动所诱导的等距映射集合是一个群，称为受限的 Holonomy 群 $\operatorname{Hol}_{p}^{0}(M, g)$（或简称为 $\mathrm{Hol}_{p}^{0}$）。
+
+**练习 1.15**
+(1) 证明：如果 $E \subset T_{p} M$ 是一个不变子空间，即 $\operatorname{Hol}_{p}^{0}(E) \subset E$，则 $E^{\perp}$ 也是一个不变子空间。
+(2) 证明：
+$$
+\operatorname{Hol}_{(p, q)}^{0}\left(M_{1} \times M_{2}, g_{1}+g_{2}\right) = \operatorname{Hol}_{p}^{0}\left(M_{1}, g_{1}\right) \times \operatorname{Hol}_{q}^{0}\left(M_{2}, g_{2}\right)
+$$
+
+$\mathrm{Hol}_{p}^{0}$ 在 $T_{p} M$ 上的作用引入了一个丛分解：
+$$
+T M = E_{1} \oplus \cdots \oplus E_{k}\tag{1.16}
+$$
+其中 $E_{i}$ 是在平行移动下不变的子丛，对于每个 $p \in M$，有
+$$
+T_{p} M = \left(E_{1}\right)_{p} \oplus \cdots \oplus \left(E_{k}\right)_{p}
+$$
+这是 $T_{p} M$ 在 $\mathrm{Hol}_{p}^{0}$ 作用下的不可约不变子空间的分解。我们称分解 (1.16) 为 $T M$ 的不可约 Holonomy 分解。
+
+黎曼流形的 Holonomy 分裂定理的全局版本如下所示。
+
+**定理 1.16 (De Rham Holonomy 分裂)**：设 $\left(M^{n}, g\right)$ 是一个完备的单连通黎曼流形。如果 $TM = E_{1} \oplus \cdots \oplus E_{k}$ 是 $T M$ 的不可约 Holonomy 分解，其中 $\operatorname{dim} E_{i} \doteqdot r_{i}$，那么
+$$
+\left(M^{n}, g\right) = \left(N_{1}^{r_{1}} \times \cdots \times N_{k}^{r_{k}}, h_{1} + \cdots + h_{k}\right)
+$$
+且 $E_{i} = T N_{i}^{r_{i}}$。
+
