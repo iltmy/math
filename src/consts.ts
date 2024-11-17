@@ -63,14 +63,14 @@ export const menuItems = [
       {
         id: "数学分析",
         text: "数学分析",
-        href: "/blog/categories/考研数学分析",
+        href: "/blog/categories/数学分析",
         svg: "heart",
         target: "_self",
       }, // Life category
       {
         id: "高等代数",
         text: "高等代数",
-        href: "/blog/categories/考研高等代数",
+        href: "/blog/categories/高等代数",
         svg: "heart",
         target: "_self",
       }, 
