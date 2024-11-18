@@ -34,6 +34,7 @@
     "autoprefixer": "^10.4.20",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
+    "emoji-regex": "^10.4.0",
     "hastscript": "^9.0.0",
     "i18next": "^23.16.5",
     "i18next-fs-backend": "^2.3.2",
