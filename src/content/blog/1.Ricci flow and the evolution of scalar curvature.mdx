@@ -22,10 +22,10 @@ import LinkCard from "../../components/page/LinkCard.astro";
 
 ## Hamilton's Ricci flow
 
-> Hamilton's Ricci flow equation is 
-> $$
-> \frac{\partial}{\partial t}g_{ij}=-2R_{ij}
-> $$
+Hamilton's Ricci flow equation is 
+ $$
+ \frac{\partial}{\partial t}g_{ij}=-2R_{ij}
+ $$
 
 - **EX 1:** Let $M^{n}=S^{n}$ and let $g_{S^{n}}$ denote the standard metric on the unit $n$-sphere in Euclidean space. If $g_{0}=r_{0}^{2} g_{S^{n}}$ for some $r_{0}>0$ ( $r_{0}$ is the radius), then
   $$
@@ -57,29 +57,29 @@ import LinkCard from "../../components/page/LinkCard.astro";
 
 ## the evolution equation for the scalar curvature
 
-> the evolution equation for the scalar curvature
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial t} R=\Delta R+2|\mathrm{Rc}|^{2} \tag{2.2}
-> \end{equation*}
-> $$
->
-> When $n=2$, since then $\mathrm{Rc}=\frac{1}{2} R g$, we have
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial t} R=\Delta R+R^{2} \tag{2.3}
-> \end{equation*}
-> $$
->
-> Note the similarity to the heat equation $\frac{\partial u}{\partial t}=\Delta u$.
+ the evolution equation for the scalar curvature
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial t} R=\Delta R+2|\mathrm{Rc}|^{2} \tag{2.2}
+ \end{equation*}
+ $$
 
-> **Lemma**  (Variation of scalar curvature). If $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial s} R=-\Delta V+\operatorname{div}(\operatorname{div} v)-\langle v, \mathrm{Rc}\rangle \tag{2.4}
-> \end{equation*}
-> $$
-> where $V=g^{i j} v_{i j}=\operatorname{trace}(v)$ is the trace of $v$.
+ When $n=2$, since then $\mathrm{Rc}=\frac{1}{2} R g$, we have
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial t} R=\Delta R+R^{2} \tag{2.3}
+ \end{equation*}
+ $$
+
+ Note the similarity to the heat equation $\frac{\partial u}{\partial t}=\Delta u$.
+
+ **Lemma**  (Variation of scalar curvature). If $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial s} R=-\Delta V+\operatorname{div}(\operatorname{div} v)-\langle v, \mathrm{Rc}\rangle \tag{2.4}
+ \end{equation*}
+ $$
+ where $V=g^{i j} v_{i j}=\operatorname{trace}(v)$ is the trace of $v$.
 
 **Proof:** 
 

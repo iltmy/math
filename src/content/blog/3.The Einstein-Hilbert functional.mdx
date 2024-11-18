@@ -22,93 +22,93 @@ import LinkCard from "../../components/page/LinkCard.astro";
 
 ##  The gradient flow for E
 
->  If $\frac{\partial}{\partial s} g_{i j}=v_{i j}$​,then 
->  $$
->  \begin{equation*}
->  \frac{\partial}{\partial s} d \mu=\frac{1}{2} V d \mu \tag{2.11}
->  \end{equation*}
->  $$
+  If $\frac{\partial}{\partial s} g_{i j}=v_{i j}$​,then 
+  $$
+  \begin{equation*}
+  \frac{\partial}{\partial s} d \mu=\frac{1}{2} V d \mu \tag{2.11}
+  \end{equation*}
+  $$
 
 **Proof:**
 
 
 
-> **Ex1**:(Variation of the inverse of $g$ ). By differentiating the formula $g^{i j} g_{j k}=\delta_{k}^{i}$, show that
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial s} g^{i j}=-g^{i k} g^{j \ell} \frac{\partial}{\partial s} g_{k \ell} \tag{2.14}
-> \end{equation*}
-> $$
+ **Ex1**:(Variation of the inverse of $g$ ). By differentiating the formula $g^{i j} g_{j k}=\delta_{k}^{i}$, show that
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial s} g^{i j}=-g^{i k} g^{j \ell} \frac{\partial}{\partial s} g_{k \ell} \tag{2.14}
+ \end{equation*}
+ $$
 
 **Proof:**
 
 
 
-> If $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
-> $$
-> \begin{align*}
-> \frac{d}{d s} E & =\int_{M}\left(-\Delta V+\nabla_{p} \nabla_{q} v_{p q}-\langle v, \mathrm{Rc}\rangle+\frac{1}{2} R V\right) d \mu \\
-> & =\int_{M}\left\langle v, \frac{1}{2} R g-\mathrm{Rc}\right\rangle d \mu \tag{2.15}
-> \end{align*}
-> $$
->
-> where
-> $$
-> E(g) \doteqdot \int_{M} R d \mu
-> $$
+ If $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
+ $$
+ \begin{align*}
+ \frac{d}{d s} E & =\int_{M}\left(-\Delta V+\nabla_{p} \nabla_{q} v_{p q}-\langle v, \mathrm{Rc}\rangle+\frac{1}{2} R V\right) d \mu \\
+ & =\int_{M}\left\langle v, \frac{1}{2} R g-\mathrm{Rc}\right\rangle d \mu \tag{2.15}
+ \end{align*}
+ $$
+
+ where
+ $$
+ E(g) \doteqdot \int_{M} R d \mu
+ $$
 
 Proof:
 
 
 
-> Remark:Note that (twice) the gradient flow of $E$ is
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial t} g_{i j}=2(\nabla E(g))_{i j}=R g_{i j}-2 R_{i j} \tag{2.16}
-> \end{equation*}
-> $$
+ Remark:Note that (twice) the gradient flow of $E$ is
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial t} g_{i j}=2(\nabla E(g))_{i j}=R g_{i j}-2 R_{i j} \tag{2.16}
+ \end{equation*}
+ $$
 
 
 
-> **Ex2**:. Given a metric $g_{0}$, let
-> $$
-> \mathcal{C} \doteqdot\left\{u g_{0}: u>0 \text { and } \operatorname{Vol}\left(u g_{0}\right)=1\right\}
-> $$
-> be the space of unit volume metrics conformal to $g_{0}$. Show that subject to the constraint of lying in $\mathcal{C}$, the critical points $E$ have constant scalar curvature.
-
-**Proof:**
-
-
-
-> **Ex3**. Show that when $n \geq 3$, the negative gradient flow of $E$ in a fixed conformal class (i.e., in $\left[g_{0}\right] \doteqdot\left\{g: g=e^{u} g_{0}\right.$ for some $\left.u \in C^{\infty}(M)\right\}$ ) is the Yamabe flow $\frac{\partial}{\partial t} g=-R g$.
+ **Ex2**:. Given a metric $g_{0}$, let
+ $$
+ \mathcal{C} \doteqdot\left\{u g_{0}: u>0 \text { and } \operatorname{Vol}\left(u g_{0}\right)=1\right\}
+ $$
+ be the space of unit volume metrics conformal to $g_{0}$. Show that subject to the constraint of lying in $\mathcal{C}$, the critical points $E$ have constant scalar curvature.
 
 **Proof:**
 
 
 
-> In other words, we consider the more general class of flows
-> $$
-> \frac{\partial}{\partial t} g_{i j}=-2\left(R_{i j}+\nabla_{i} \nabla_{j} f\right)
-> $$
-> where $f$ is a time-dependent function. Flows of this form are equivalent to the Ricci flow since $\nabla_{i} \nabla_{j} f=\left(\mathcal{L}_{\nabla f} g\right)_{i j}$ (see (1.24)). The following exercise verifies this.
+ **Ex3**. Show that when $n \geq 3$, the negative gradient flow of $E$ in a fixed conformal class (i.e., in $\left[g_{0}\right] \doteqdot\left\{g: g=e^{u} g_{0}\right.$ for some $\left.u \in C^{\infty}(M)\right\}$ ) is the Yamabe flow $\frac{\partial}{\partial t} g=-R g$.
+
+**Proof:**
+
+
+
+ In other words, we consider the more general class of flows
+ $$
+ \frac{\partial}{\partial t} g_{i j}=-2\left(R_{i j}+\nabla_{i} \nabla_{j} f\right)
+ $$
+ where $f$ is a time-dependent function. Flows of this form are equivalent to the Ricci flow since $\nabla_{i} \nabla_{j} f=\left(\mathcal{L}_{\nabla f} g\right)_{i j}$ (see (1.24)). The following exercise verifies this.
 
 
 
 
-> **Ex4.** Define a 1-parameter family of diffeomorphisms $\Psi(t)$ : $M \rightarrow M$ by
-> $$
-> \begin{aligned}
-> \frac{d}{d t} \Psi(t) & =\nabla_{g(t)} f(t) \\
-> \Psi(0) & =\operatorname{id}_{M}
-> \end{aligned}
-> $$
-> Show that $\bar{g}(t) \doteqdot \Psi(t)^{*} g(t)$ and $\bar{f}(t) \doteqdot f \circ \Psi(t)$ satisfy
-> $$
-> \begin{align*}
-> \frac{\partial \bar{g}_{i j}}{\partial t} & =-2 \bar{R}_{i j}  \tag{2.17}\\
-> \frac{\partial \bar{f}}{\partial t} & =-\bar{\Delta} \bar{f}+|\bar{\nabla} \bar{f}|^{2}-\bar{R} \tag{2.18}
-> \end{align*}
-> $$
+ **Ex4.** Define a 1-parameter family of diffeomorphisms $\Psi(t)$ : $M \rightarrow M$ by
+ $$
+ \begin{aligned}
+ \frac{d}{d t} \Psi(t) & =\nabla_{g(t)} f(t) \\
+ \Psi(0) & =\operatorname{id}_{M}
+ \end{aligned}
+ $$
+ Show that $\bar{g}(t) \doteqdot \Psi(t)^{*} g(t)$ and $\bar{f}(t) \doteqdot f \circ \Psi(t)$ satisfy
+ $$
+ \begin{align*}
+ \frac{\partial \bar{g}_{i j}}{\partial t} & =-2 \bar{R}_{i j}  \tag{2.17}\\
+ \frac{\partial \bar{f}}{\partial t} & =-\bar{\Delta} \bar{f}+|\bar{\nabla} \bar{f}|^{2}-\bar{R} \tag{2.18}
+ \end{align*}
+ $$
 
 **Proof:**
 
@@ -116,19 +116,19 @@ Proof:
 
 ##  the gradient flow for $\mathcal{F}$
 
-> If we define
-> $$
-> \begin{equation*}
-> \mathcal{F}(g, f) \doteqdot \int_{M}\left(R+|\nabla f|^{2}\right) e^{-f} d \mu \tag{2.21}
-> \end{equation*}
-> $$
-> then the gradient flow for $\mathcal{F}$, under the constraint that $e^{-f} d \mu$ is fixed, is
-> $$
-> \begin{aligned}
-> \frac{\partial}{\partial t} g_{i j} & =-2\left(R_{i j}+\nabla_{i} \nabla_{j} f\right) \\
-> \frac{\partial}{\partial t} f & =-R-\Delta f
-> \end{aligned}
-> $$
+ If we define
+ $$
+ \begin{equation*}
+ \mathcal{F}(g, f) \doteqdot \int_{M}\left(R+|\nabla f|^{2}\right) e^{-f} d \mu \tag{2.21}
+ \end{equation*}
+ $$
+ then the gradient flow for $\mathcal{F}$, under the constraint that $e^{-f} d \mu$ is fixed, is
+ $$
+ \begin{aligned}
+ \frac{\partial}{\partial t} g_{i j} & =-2\left(R_{i j}+\nabla_{i} \nabla_{j} f\right) \\
+ \frac{\partial}{\partial t} f & =-R-\Delta f
+ \end{aligned}
+ $$
 
 **Proof:**
 
@@ -164,14 +164,14 @@ Proof:
 
 
 
-> **Ex**6. Show that
-> $$
-> \int_{M}|\nabla f|^{2} e^{-f} d \mu=\int_{M}(\Delta f) e^{-f} d \mu
-> $$
->
-> This shows that we may rewrite $\mathcal{F}$ as
-> $$
-> \mathcal{F}(g, f)=\int_{M}\left(R+2 \Delta f-|\nabla f|^{2}\right) e^{-f} d \mu
-> $$
->
-> Motivations for doing this are given by (1.84) and (5.17).
+ **Ex**6. Show that
+ $$
+ \int_{M}|\nabla f|^{2} e^{-f} d \mu=\int_{M}(\Delta f) e^{-f} d \mu
+ $$
+
+ This shows that we may rewrite $\mathcal{F}$ as
+ $$
+ \mathcal{F}(g, f)=\int_{M}\left(R+2 \Delta f-|\nabla f|^{2}\right) e^{-f} d \mu
+ $$
+
+ Motivations for doing this are given by (1.84) and (5.17).

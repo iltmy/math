@@ -22,12 +22,12 @@ import LinkCard from "../../components/page/LinkCard.astro";
 
 ## Variation of the Christoffel symbols
 
-> **Lemma 1**(Variation of Christoffel symbols). If $g(s)$ is a 1-parameter family of metrics with $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial s} \Gamma_{i j}^{k}=\frac{1}{2} g^{k \ell}\left(\nabla_{i} v_{j \ell}+\nabla_{j} v_{i \ell}-\nabla_{\ell} v_{i j}\right) \tag{2.23}
-> \end{equation*}
-> $$
+ **Lemma 1**(Variation of Christoffel symbols). If $g(s)$ is a 1-parameter family of metrics with $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial s} \Gamma_{i j}^{k}=\frac{1}{2} g^{k \ell}\left(\nabla_{i} v_{j \ell}+\nabla_{j} v_{i \ell}-\nabla_{\ell} v_{i j}\right) \tag{2.23}
+ \end{equation*}
+ $$
 
 **Proof:**
 
@@ -35,86 +35,86 @@ import LinkCard from "../../components/page/LinkCard.astro";
 
 
 
-> **Remark:**In coordinate-free notation, (2.23) is
-> $$
-> \begin{equation*}
-> \left\langle\left(\frac{\partial}{\partial s} \nabla\right)(X, Y), Z\right\rangle=\frac{1}{2}\left(\left(\nabla_{X} v\right)(Y, Z)+\left(\nabla_{Y} v\right)(X, Z)-\left(\nabla_{Z} v\right)(X, Y)\right) \tag{2.24}
-> \end{equation*}
-> $$
->
-> This formula may be derived directly from differentiating (1.4).
+ **Remark:**In coordinate-free notation, (2.23) is
+ $$
+ \begin{equation*}
+ \left\langle\left(\frac{\partial}{\partial s} \nabla\right)(X, Y), Z\right\rangle=\frac{1}{2}\left(\left(\nabla_{X} v\right)(Y, Z)+\left(\nabla_{Y} v\right)(X, Z)-\left(\nabla_{Z} v\right)(X, Y)\right) \tag{2.24}
+ \end{equation*}
+ $$
+
+ This formula may be derived directly from differentiating (1.4).
 
 
 
 
 
-> **Corollary:**(Evolution of Christoffel symbols under RF). Under the Ricci flow $\frac{\partial}{\partial t} g_{i j}=-2 R_{i j}$, we have
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial t} \Gamma_{i j}^{k}=-g^{k \ell}\left(\nabla_{i} R_{j \ell}+\nabla_{j} R_{i \ell}-\nabla_{\ell} R_{i j}\right) \tag{2.25}
-> \end{equation*}
-> $$
+ **Corollary:**(Evolution of Christoffel symbols under RF). Under the Ricci flow $\frac{\partial}{\partial t} g_{i j}=-2 R_{i j}$, we have
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial t} \Gamma_{i j}^{k}=-g^{k \ell}\left(\nabla_{i} R_{j \ell}+\nabla_{j} R_{i \ell}-\nabla_{\ell} R_{i j}\right) \tag{2.25}
+ \end{equation*}
+ $$
 
 ## Evolution of Laplacian under RF
 
-> **Lemma:** (Evolution of Laplacian under RF). If $\left(M^{n}, g(t)\right)$ is a solution to the Ricci flow, then
-> $$
-> \frac{\partial}{\partial t}\left(\Delta_{g(t)}\right)=2 R_{i j} \cdot \nabla_{i} \nabla_{j}
-> $$
-> where $\Delta_{g(t)}$ is the Laplacian acting on functions. In particular, when $n=2$, $\frac{\partial}{\partial t}(\Delta)=R \Delta$.
+ **Lemma:** (Evolution of Laplacian under RF). If $\left(M^{n}, g(t)\right)$ is a solution to the Ricci flow, then
+ $$
+ \frac{\partial}{\partial t}\left(\Delta_{g(t)}\right)=2 R_{i j} \cdot \nabla_{i} \nabla_{j}
+ $$
+ where $\Delta_{g(t)}$ is the Laplacian acting on functions. In particular, when $n=2$, $\frac{\partial}{\partial t}(\Delta)=R \Delta$.
 
 **Proof:**
 
 
 
-> **Ex1:**Given $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, compute $\frac{\partial}{\partial s}\left(\Delta_{g(s)}\right)$.
+ **Ex1:**Given $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, compute $\frac{\partial}{\partial s}\left(\Delta_{g(s)}\right)$.
 
 **Proof:**
 
 
 
-> 1.  if $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
->    $$
->    \begin{equation*}
->    \frac{\partial}{\partial s} R_{i j}=\frac{1}{2} \nabla_{\ell}\left(\nabla_{i} v_{j \ell}+\nabla_{j} v_{i \ell}-\nabla_{\ell} v_{i j}\right)-\frac{1}{2} \nabla_{i} \nabla_{j} V \tag{2.29}
->    \end{equation*}
->    $$
->
-> 2. Commuting derivatives in (2.29) yields the variation of Ricci formula:
-> $$
-> \begin{equation*}
->    \frac{\partial}{\partial s} R_{i j}=-\frac{1}{2}\left(\Delta_{L} v_{i j}+\nabla_{i} \nabla_{j} V-\nabla_{i}(\operatorname{div} v)_{j}-\nabla_{j}(\operatorname{div} v)_{i}\right) \tag{2.31}
->    \end{equation*}
-> $$
-> Here $\Delta_{L}$ denotes the Lichnerowicz Laplacian, which is defined by
-> $$
-> \begin{equation*}
-> \Delta_{L} v_{i j} \doteqdot \Delta v_{i j}+2 R_{k i j \ell} v_{k \ell}-R_{i k} v_{j k}-R_{j k} v_{i k} \tag{2.32}
-> \end{equation*}
-> $$
+ 1.  if $\frac{\partial}{\partial s} g_{i j}=v_{i j}$, then
+    $$
+    \begin{equation*}
+    \frac{\partial}{\partial s} R_{i j}=\frac{1}{2} \nabla_{\ell}\left(\nabla_{i} v_{j \ell}+\nabla_{j} v_{i \ell}-\nabla_{\ell} v_{i j}\right)-\frac{1}{2} \nabla_{i} \nabla_{j} V \tag{2.29}
+    \end{equation*}
+    $$
+
+ 2. Commuting derivatives in (2.29) yields the variation of Ricci formula:
+ $$
+ \begin{equation*}
+    \frac{\partial}{\partial s} R_{i j}=-\frac{1}{2}\left(\Delta_{L} v_{i j}+\nabla_{i} \nabla_{j} V-\nabla_{i}(\operatorname{div} v)_{j}-\nabla_{j}(\operatorname{div} v)_{i}\right) \tag{2.31}
+    \end{equation*}
+ $$
+ Here $\Delta_{L}$ denotes the Lichnerowicz Laplacian, which is defined by
+ $$
+ \begin{equation*}
+ \Delta_{L} v_{i j} \doteqdot \Delta v_{i j}+2 R_{k i j \ell} v_{k \ell}-R_{i k} v_{j k}-R_{j k} v_{i k} \tag{2.32}
+ \end{equation*}
+ $$
 
 
 
-> Note that (2.31) may be rewritten as
-> $$
-> \frac{\partial}{\partial s}\left(-2 R_{i j}\right)=\Delta_{L} v_{i j}+\nabla_{i} X_{j}+\nabla_{j} X_{i}
-> $$
-> where $X=\frac{1}{2} \nabla V-\operatorname{div} v$. This is related to DeTurck's trick in proving short time existence (see (2.47)).
+ Note that (2.31) may be rewritten as
+ $$
+ \frac{\partial}{\partial s}\left(-2 R_{i j}\right)=\Delta_{L} v_{i j}+\nabla_{i} X_{j}+\nabla_{j} X_{i}
+ $$
+ where $X=\frac{1}{2} \nabla V-\operatorname{div} v$. This is related to DeTurck's trick in proving short time existence (see (2.47)).
 
 
 
-> **Remark:** By (1.50) we see that the Hodge Laplacian acts on 2-forms formally in the same way that the Lichnerowicz Laplacian acts on symmetric 2 -tensors.
+ **Remark:** By (1.50) we see that the Hodge Laplacian acts on 2-forms formally in the same way that the Lichnerowicz Laplacian acts on symmetric 2 -tensors.
 
 
 
 ## Commutator formula for Hessian and Lichnerowicz heat operator 
 
-> **Lemma:**(Commutator formula for the Hessian and the Lichnerowicz heat operator). Under the Ricci flow, the Hessian and the Lichnerowicz Laplacian heat operator commute. That is, for any function $f$ of space and time we have
-> $$
-> \begin{equation*}
-> \nabla_{i} \nabla_{j}\left(\frac{\partial f}{\partial t}-\Delta f\right)=\left(\frac{\partial}{\partial t}-\Delta_{L}\right) \nabla_{i} \nabla_{j} f \tag{2.33}
-> \end{equation*}
-> $$
+ **Lemma:**(Commutator formula for the Hessian and the Lichnerowicz heat operator). Under the Ricci flow, the Hessian and the Lichnerowicz Laplacian heat operator commute. That is, for any function $f$ of space and time we have
+ $$
+ \begin{equation*}
+ \nabla_{i} \nabla_{j}\left(\frac{\partial f}{\partial t}-\Delta f\right)=\left(\frac{\partial}{\partial t}-\Delta_{L}\right) \nabla_{i} \nabla_{j} f \tag{2.33}
+ \end{equation*}
+ $$
 
 **Proof:**
 
@@ -128,79 +128,79 @@ $$
 $$
 where $\Delta_{L} \doteqdot \Delta$ acting on functions. An immediate consequence of the above lemma is the following.
 
-> **Corollary:**If $g(t)$ satisfies the Ricci flow and $f(t)$ satisfies the heat equation $\frac{\partial f}{\partial t}=\Delta f$, then the Hessian satisfies the Lichnerowicz Laplacian heat equation:
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial t}(\nabla \nabla f)=\Delta_{L}(\nabla \nabla f) \tag{2.36}
-> \end{equation*}
-> $$
+ **Corollary:**If $g(t)$ satisfies the Ricci flow and $f(t)$ satisfies the heat equation $\frac{\partial f}{\partial t}=\Delta f$, then the Hessian satisfies the Lichnerowicz Laplacian heat equation:
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial t}(\nabla \nabla f)=\Delta_{L}(\nabla \nabla f) \tag{2.36}
+ \end{equation*}
+ $$
 
-> **Ex2.** (Commutator of $\frac{\partial}{\partial t}+\Delta_{L}$ and $\nabla \nabla$ ). Using the formulas derived in the proof of Lemma 2.33, establish under the Ricci flow that we have the identity
-> $\nabla_{i} \nabla_{j}\left(\frac{\partial f}{\partial t}+\Delta f\right)=\left(\frac{\partial}{\partial t}+\Delta_{L}\right) \nabla_{i} \nabla_{j} f-2\left(\nabla_{i} R_{j \ell}+\nabla_{j} R_{i \ell}-\nabla_{\ell} R_{i j}\right) \nabla_{\ell} f$.
-
-**Proof:**
-
-
-
-> **Ex3.**Show that under the Ricci flow, for any 1-form $X$
-> $$
-> \left(\frac{\partial}{\partial t}-\Delta_{L}\right)\left(\mathcal{L}_{X^{\natural}} g\right)=\mathcal{L}_{\left[\left(\frac{\partial}{\partial t}-\Delta_{d}\right) X\right]^{\natural} g}
-> $$
-> that is,
-> $$
-> \begin{equation*}
-> \left(\frac{\partial}{\partial t}-\Delta_{L}\right)\left(\nabla_{i} X_{j}+\nabla_{j} X_{i}\right)=\nabla_{i} Y_{j}+\nabla_{j} Y_{i} \tag{2.38}
-> \end{equation*}
-> $$
-> where $Y \doteqdot\left(\frac{\partial}{\partial t}-\Delta_{d}\right) X$
-
-
-
-
-
->  **Lemma:** If $\left(M^{n}, g(t)\right)$ is a solution to the Ricci flow and if $X$ is a vector field evolving by
->  $$
->  \begin{equation*}
->  \frac{\partial}{\partial t} X^{i}=\Delta X^{i}+R_{k}^{i} X^{k} \tag{2.39}
->  \end{equation*}
->  $$
->  then $h_{i j} \doteqdot \nabla_{i} X_{j}+\nabla_{j} X_{i}=\left(\mathcal{L}_{X} g\right)_{i j}$ evolves by
->  $$
->  \begin{equation*}
->  \frac{\partial}{\partial t} h_{i j}=\Delta_{L} h_{i j} \doteqdot \Delta h_{i j}+2 R_{k i j \ell} h_{k \ell}-R_{i k} h_{k j}-R_{j k} h_{i k} \tag{2.40}
->  \end{equation*}
->  $$
+ **Ex2.** (Commutator of $\frac{\partial}{\partial t}+\Delta_{L}$ and $\nabla \nabla$ ). Using the formulas derived in the proof of Lemma 2.33, establish under the Ricci flow that we have the identity
+ $\nabla_{i} \nabla_{j}\left(\frac{\partial f}{\partial t}+\Delta f\right)=\left(\frac{\partial}{\partial t}+\Delta_{L}\right) \nabla_{i} \nabla_{j} f-2\left(\nabla_{i} R_{j \ell}+\nabla_{j} R_{i \ell}-\nabla_{\ell} R_{i j}\right) \nabla_{\ell} f$.
 
 **Proof:**
 
 
 
-> **Remark:**A special case of (2.38) is formula (2.33). We may see this as follows. Since $\left(\frac{\partial}{\partial t}-\Delta_{d}\right) d f=d\left(\frac{\partial}{\partial t}-\Delta\right) f$, by taking $X=d f$, we have from (2.38)
-> $$
-> \begin{aligned}
-> \left(\frac{\partial}{\partial t}-\Delta_{L}\right)\left(2 \nabla_{i} \nabla_{j} f\right) & =\nabla_{i}\left(\left(\frac{\partial}{\partial t}-\Delta_{d}\right)(d f)\right)_{j}+\nabla_{j}\left(\left(\frac{\partial}{\partial t}-\Delta_{d}\right)(d f)\right)_{i} \\
-> & =2 \nabla_{i} \nabla_{j}\left(\left(\frac{\partial}{\partial t}-\Delta\right) f\right)
-> \end{aligned}
-> $$
-> which is (2.33).
+ **Ex3.**Show that under the Ricci flow, for any 1-form $X$
+ $$
+ \left(\frac{\partial}{\partial t}-\Delta_{L}\right)\left(\mathcal{L}_{X^{\natural}} g\right)=\mathcal{L}_{\left[\left(\frac{\partial}{\partial t}-\Delta_{d}\right) X\right]^{\natural} g}
+ $$
+ that is,
+ $$
+ \begin{equation*}
+ \left(\frac{\partial}{\partial t}-\Delta_{L}\right)\left(\nabla_{i} X_{j}+\nabla_{j} X_{i}\right)=\nabla_{i} Y_{j}+\nabla_{j} Y_{i} \tag{2.38}
+ \end{equation*}
+ $$
+ where $Y \doteqdot\left(\frac{\partial}{\partial t}-\Delta_{d}\right) X$
 
 
 
-> **Ex4** Show that if $X$ is a Killing vector field, then
-> $$
-> \begin{equation*}
-> \nabla_{k} \nabla_{j} X_{i}+R_{\ell k j i} X_{\ell}=0 \tag{2.41}
-> \end{equation*}
-> $$
->
-> Tracing (2.41), we have
-> $$
-> \begin{equation*}
-> \Delta X_{i}+R_{\ell i} X_{\ell}=0 \tag{2.42}
-> \end{equation*}
-> $$
->
-> Hence, if $M^{n}$ is closed and the Ricci curvature is negative, then there are no nontrivial Killing vector fields. 
+
+
+  **Lemma:** If $\left(M^{n}, g(t)\right)$ is a solution to the Ricci flow and if $X$ is a vector field evolving by
+  $$
+  \begin{equation*}
+  \frac{\partial}{\partial t} X^{i}=\Delta X^{i}+R_{k}^{i} X^{k} \tag{2.39}
+  \end{equation*}
+  $$
+  then $h_{i j} \doteqdot \nabla_{i} X_{j}+\nabla_{j} X_{i}=\left(\mathcal{L}_{X} g\right)_{i j}$ evolves by
+  $$
+  \begin{equation*}
+  \frac{\partial}{\partial t} h_{i j}=\Delta_{L} h_{i j} \doteqdot \Delta h_{i j}+2 R_{k i j \ell} h_{k \ell}-R_{i k} h_{k j}-R_{j k} h_{i k} \tag{2.40}
+  \end{equation*}
+  $$
+
+**Proof:**
+
+
+
+ **Remark:**A special case of (2.38) is formula (2.33). We may see this as follows. Since $\left(\frac{\partial}{\partial t}-\Delta_{d}\right) d f=d\left(\frac{\partial}{\partial t}-\Delta\right) f$, by taking $X=d f$, we have from (2.38)
+ $$
+ \begin{aligned}
+ \left(\frac{\partial}{\partial t}-\Delta_{L}\right)\left(2 \nabla_{i} \nabla_{j} f\right) & =\nabla_{i}\left(\left(\frac{\partial}{\partial t}-\Delta_{d}\right)(d f)\right)_{j}+\nabla_{j}\left(\left(\frac{\partial}{\partial t}-\Delta_{d}\right)(d f)\right)_{i} \\
+ & =2 \nabla_{i} \nabla_{j}\left(\left(\frac{\partial}{\partial t}-\Delta\right) f\right)
+ \end{aligned}
+ $$
+ which is (2.33).
+
+
+
+ **Ex4** Show that if $X$ is a Killing vector field, then
+ $$
+ \begin{equation*}
+ \nabla_{k} \nabla_{j} X_{i}+R_{\ell k j i} X_{\ell}=0 \tag{2.41}
+ \end{equation*}
+ $$
+
+ Tracing (2.41), we have
+ $$
+ \begin{equation*}
+ \Delta X_{i}+R_{\ell i} X_{\ell}=0 \tag{2.42}
+ \end{equation*}
+ $$
+
+ Hence, if $M^{n}$ is closed and the Ricci curvature is negative, then there are no nontrivial Killing vector fields. 
 
 **Proof:**
 
@@ -208,17 +208,17 @@ where $\Delta_{L} \doteqdot \Delta$ acting on functions. An immediate consequenc
 
 
 
-> **Lemma**(Evolution of the Ricci tensor under RF). Under the Ricci flow,
-> $$
-> \begin{equation*}
-> \frac{\partial}{\partial t} R_{i j}=\Delta_{L} R_{i j}=\Delta R_{i j}+2 R_{k i j \ell} R_{k \ell}-2 R_{i k} R_{j k} \tag{2.43}
-> \end{equation*}
-> $$
+ **Lemma**(Evolution of the Ricci tensor under RF). Under the Ricci flow,
+ $$
+ \begin{equation*}
+ \frac{\partial}{\partial t} R_{i j}=\Delta_{L} R_{i j}=\Delta R_{i j}+2 R_{k i j \ell} R_{k \ell}-2 R_{i k} R_{j k} \tag{2.43}
+ \end{equation*}
+ $$
 
 **Proof:**
 
 
 
-> **Ex6**. Calculate the evolution equation for $R_{i j}-\alpha R g_{i j}$, where $\alpha \in \mathbb{R}$.
+ **Ex6**. Calculate the evolution equation for $R_{i j}-\alpha R g_{i j}$, where $\alpha \in \mathbb{R}$.
 
 **Proof:**
