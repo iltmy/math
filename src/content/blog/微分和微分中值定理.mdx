@@ -22,12 +22,12 @@ import LinkCard from "../../components/page/LinkCard.astro";
 
 ## 一些关于微分的问题
 
-> **第一题**. 设 $f(x)$ 在 $(-1,+\infty)$ 上可导, 且有
-> $$
-> f^{\prime}(x)+f(x)-\frac{1}{1+x} \int_0^x f(t) d t=0, f(0)=1
-> $$
->
-> 求 $f^{\prime}(x)$, 并证明 $x \geq 0$ 时, 有 $e^{-x} \leq f(x) \leq 1$.
+ **第一题**. 设 $f(x)$ 在 $(-1,+\infty)$ 上可导, 且有
+ $$
+ f^{\prime}(x)+f(x)-\frac{1}{1+x} \int_0^x f(t) d t=0, f(0)=1
+ $$
+
+ 求 $f^{\prime}(x)$, 并证明 $x \geq 0$ 时, 有 $e^{-x} \leq f(x) \leq 1$.
 
 解答：
 
@@ -41,9 +41,9 @@ import LinkCard from "../../components/page/LinkCard.astro";
 
 这里我们补充一点组合数的知识，当然你可以回去自己证明
 
-> - $C_n^k+C_n^{k+1}=C_{n+1}^{k+1}$
-> - $k C_n^k=n C_{n-1}^{k-1}$
-> - $\left(C_n^0\right)^2+\left(C_n^1\right)^2+\left(C_n^2\right)^2+\cdots+\left(C_n^n\right)^2=C_{2 n}^n$
+ - $C_n^k+C_n^{k+1}=C_{n+1}^{k+1}$
+ - $k C_n^k=n C_{n-1}^{k-1}$
+ - $\left(C_n^0\right)^2+\left(C_n^1\right)^2+\left(C_n^2\right)^2+\cdots+\left(C_n^n\right)^2=C_{2 n}^n$
 
 ##  微分中值定理 
 
@@ -61,7 +61,7 @@ f^{\prime}(\xi)=0
 $$
 这个定理我们经常使用例如
 
->  已知 $f(x)$ 在区间 $I$ 上 $n$ 阶可导, 若 $f(x)$ 在 $I$ 上有 $n+1$ 个互异的实根, 则 $f^{(n)}(x)$ 在 $I$ 上至少有一个实根。
+  已知 $f(x)$ 在区间 $I$ 上 $n$ 阶可导, 若 $f(x)$ 在 $I$ 上有 $n+1$ 个互异的实根, 则 $f^{(n)}(x)$ 在 $I$ 上至少有一个实根。
 
 
 
@@ -75,11 +75,11 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[0,+\infty)$ 可微, 且对任意的 $x \in[0,+\infty)$, 均有 $0 \leq f(x) \leq \ln \frac{2 x+1}{x+\sqrt{1+x^2}}$, 证明存在 $\xi \in(0,+\infty)$, 使得
->
-> $$
-> f^{\prime}(\xi)=\frac{2}{2 \xi+1}-\frac{1}{\sqrt{1+\xi^2}}
-> $$
+ 设 $f(x)$ 在 $[0,+\infty)$ 可微, 且对任意的 $x \in[0,+\infty)$, 均有 $0 \leq f(x) \leq \ln \frac{2 x+1}{x+\sqrt{1+x^2}}$, 证明存在 $\xi \in(0,+\infty)$, 使得
+
+ $$
+ f^{\prime}(\xi)=\frac{2}{2 \xi+1}-\frac{1}{\sqrt{1+\xi^2}}
+ $$
 
 这个题注意到对上面那个求导就是下面这个
 
@@ -97,11 +97,11 @@ f^{\prime}(\xi)=\frac{f(b)-f(a)}{b-a}
 $$
 这个证明其实就是两边作差积分套罗尔中值定理
 
-> 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 证明存在 $\xi \in(a, b)$, 使得
->
-> $$
-> \frac{b f(b)-a f(a)}{b-a}=f(\xi)+\xi f^{\prime}(\xi)
-> $$
+ 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 证明存在 $\xi \in(a, b)$, 使得
+
+ $$
+ \frac{b f(b)-a f(a)}{b-a}=f(\xi)+\xi f^{\prime}(\xi)
+ $$
 
 
 
@@ -121,14 +121,14 @@ $$
 $$
 注意到这个证明不能上下去拉格朗日，因为得到的中值点可能不是同一个
 
-> 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 且 $a b>0$, 证明存在 $\xi \in(a, b)$, 使得
->
-> $$
-> \frac{1}{a-b}\left|\begin{array}{cc}
-> a & b \\
-> f(a) & f(b)
-> \end{array}\right|=f(\xi)-\xi f^{\prime}(\xi) .
-> $$
+ 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 且 $a b>0$, 证明存在 $\xi \in(a, b)$, 使得
+
+ $$
+ \frac{1}{a-b}\left|\begin{array}{cc}
+ a & b \\
+ f(a) & f(b)
+ \end{array}\right|=f(\xi)-\xi f^{\prime}(\xi) .
+ $$
 
 
 
@@ -156,17 +156,17 @@ $$
 
 这个定理其实就是用多项式去拟合原来的函数，当然有了级数的知识我们知道这个其实是有一个收敛范围的，并不是所有的都会收敛到原来的函数的，例子的话可以看一看函数项级数课本上面有一个（我记得是）
 
-> 1. 设 $f(x)$ 在 $a$ 处存在二阶导数, 证明
->
-> $$
-> \lim _{h \rightarrow 0} \frac{f(a+h)+f(a-h)-2 f(a)}{h^2}=f^{\prime \prime}(a)
-> $$
->
-> 2. 设 $f(x)$ 在 $a$ 的某邻域二阶可导, 证明对充分小的 $h$, 存在 $\theta \in(0,1)$, 使得
->
-> $$
-> \frac{f(a+h)+f(a-h)-2 f(a)}{h^2}=\frac{f^{\prime \prime}(a+\theta h)+f^{\prime \prime}(a-\theta h)}{2}
-> $$
+ 1. 设 $f(x)$ 在 $a$ 处存在二阶导数, 证明
+
+ $$
+ \lim _{h \rightarrow 0} \frac{f(a+h)+f(a-h)-2 f(a)}{h^2}=f^{\prime \prime}(a)
+ $$
+
+ 2. 设 $f(x)$ 在 $a$ 的某邻域二阶可导, 证明对充分小的 $h$, 存在 $\theta \in(0,1)$, 使得
+
+ $$
+ \frac{f(a+h)+f(a-h)-2 f(a)}{h^2}=\frac{f^{\prime \prime}(a+\theta h)+f^{\prime \prime}(a-\theta h)}{2}
+ $$
 
 
 
@@ -192,11 +192,11 @@ $$
 
 这个定理主要是用来捏合系数，我记得我们之前在连续的时候有个例题这里有一个他的平推版本
 
-> 设 $f(x)$ 在区间 $I$ 可微, $\xi_1<\xi_2<\cdots<\xi_n$ 是 $I$ 中 $n$ 个点, 设 $\lambda_1, \cdots, \lambda_n$ 是正数. 则一定存在 $\xi \in I$ ，使得
->
-> $$
-> \lambda_1 f^{\prime}\left(\xi_1\right)+\lambda_2 f^{\prime}\left(\xi_2\right)+\cdots+\lambda_n f^{\prime}\left(\xi_n\right)=\left(\lambda_1+\cdots+\lambda_n\right) f^{\prime}(\xi)
-> $$
+ 设 $f(x)$ 在区间 $I$ 可微, $\xi_1<\xi_2<\cdots<\xi_n$ 是 $I$ 中 $n$ 个点, 设 $\lambda_1, \cdots, \lambda_n$ 是正数. 则一定存在 $\xi \in I$ ，使得
+
+ $$
+ \lambda_1 f^{\prime}\left(\xi_1\right)+\lambda_2 f^{\prime}\left(\xi_2\right)+\cdots+\lambda_n f^{\prime}\left(\xi_n\right)=\left(\lambda_1+\cdots+\lambda_n\right) f^{\prime}(\xi)
+ $$
 
 当然回到我们定理，为什么这里导数没有连续就有介值定理成立呢？想一想。原因出现在哪里，当然证明的时候我们构造一个使用费马定理就可以，我个人觉得这里最核心的问题是导数没有第二类间断点
 
@@ -248,7 +248,7 @@ $$
 
 当然这些一般都注意不到哈哈哈哈哈，不是因为我菜。
 
->  设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 且 $f(a)<0, f(b)<0$, 同时存在 $c \in(a, b)$, 使得 $f(c)>0$, 证明存在 $\xi \in(a, b)$, 使得 $f(\xi)+f^{\prime}(\xi)=0$.
+  设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可导, 且 $f(a)<0, f(b)<0$, 同时存在 $c \in(a, b)$, 使得 $f(c)>0$, 证明存在 $\xi \in(a, b)$, 使得 $f(\xi)+f^{\prime}(\xi)=0$.
 
 
 
@@ -258,7 +258,7 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[0,1]$ 连续, 在 $(0,1)$ 可导, 且 $f(0)=f(1)=0, f\left(\frac{1}{2}\right)=1$, 证明对任意的 $\lambda>0$,存在 $\xi \in(0,1)$, 使得 $f^{\prime}(\xi)-\lambda[f(\xi)-\xi]=1$.
+ 设 $f(x)$ 在 $[0,1]$ 连续, 在 $(0,1)$ 可导, 且 $f(0)=f(1)=0, f\left(\frac{1}{2}\right)=1$, 证明对任意的 $\lambda>0$,存在 $\xi \in(0,1)$, 使得 $f^{\prime}(\xi)-\lambda[f(\xi)-\xi]=1$.
 
 
 
@@ -272,7 +272,7 @@ $$
 
 常数变易法
 
->  设 $f(x)$ 在 $[1,2]$ 上连续, 在 $(1,2)$ 可微, 证明存在 $\xi \in(1,2)$, 使得 $f(2)-f(1)=\frac{1}{2} \xi^2 f^{\prime}(\xi)$.
+  设 $f(x)$ 在 $[1,2]$ 上连续, 在 $(1,2)$ 可微, 证明存在 $\xi \in(1,2)$, 使得 $f(2)-f(1)=\frac{1}{2} \xi^2 f^{\prime}(\xi)$.
 
 
 
@@ -280,7 +280,7 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[0,1]$ 上二阶可导, 且 $f(0)=f(1)$, 证明存在 $\xi \in(0,1)$, 使得 $f^{\prime \prime}(\xi)=\frac{3 f^{\prime}(\xi)}{1-\xi}$.
+ 设 $f(x)$ 在 $[0,1]$ 上二阶可导, 且 $f(0)=f(1)$, 证明存在 $\xi \in(0,1)$, 使得 $f^{\prime \prime}(\xi)=\frac{3 f^{\prime}(\xi)}{1-\xi}$.
 
 这个证明首先我们用求解出$f^{\prime}\left( x \right) =\frac{1}{\left( 1-x \right) ^3}$然后再乘过去可以得到$1=(1-x)^3 f^{\prime}(x)$这样我们令$F(x)=(1-x)^3 f^{\prime}(x)$.然后我们求导就会发现得到的刚好的是我们要求的（这是一个细节）
 
@@ -292,11 +292,11 @@ $$
 
 
 
-> 设 $f(x)$ 在 $R$ 上二阶可导, 且 $f(0)=0$, 证明: 存在 $\xi \in\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, 使得
->
-> $$
-> f^{\prime \prime}(\xi)=3 f^{\prime}(\xi) \tan \xi+2 f(\xi)
-> $$
+ 设 $f(x)$ 在 $R$ 上二阶可导, 且 $f(0)=0$, 证明: 存在 $\xi \in\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, 使得
+
+ $$
+ f^{\prime \prime}(\xi)=3 f^{\prime}(\xi) \tan \xi+2 f(\xi)
+ $$
 
 这里我们求解出，发现超级难解~~于是我们放弃~~哈哈哈哈，这里我们先把他作差然后积分试一试反过来找我们要构造的函数
 $$
@@ -314,12 +314,12 @@ $$
 
 **华师经常考的**
 
-> 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可微, 其中 $0<a<b$, 证明
->
-> 1. 存在 $\xi, \eta \in(a, b)$, 使得 $f^{\prime}(\xi)=\frac{a+b}{2 \eta} f^{\prime}(\eta)$;
->
-> 2) 存在 $x_1, x_2, x_3 \in(a, b)$, 使得 $\frac{f^{\prime}\left(x_1\right)}{2 x_1}=\frac{f^{\prime}\left(x_2\right)}{4 x_2^3}\left(b^2+a^2\right)=\frac{\ln b-\ln a}{b^2-a^2} x_3 f^{\prime}\left(x_3\right)$;
-> 3) 存在 $\xi_1, \xi_2, \xi_3 \in(a, b)$, 使得 $f^{\prime}\left(\xi_1\right)=(a+b) \frac{f^{\prime}\left(\xi_2\right)}{2 \xi_2}=\left(a^2+a b+b^2\right) \frac{f^{\prime}\left(\xi_3\right)}{3 \xi_3^2}$.
+ 设 $f(x)$ 在 $[a, b]$ 连续, 在 $(a, b)$ 可微, 其中 $0<a<b$, 证明
+
+ 1. 存在 $\xi, \eta \in(a, b)$, 使得 $f^{\prime}(\xi)=\frac{a+b}{2 \eta} f^{\prime}(\eta)$;
+
+ 2. 存在 $x_1, x_2, x_3 \in(a, b)$, 使得 $\frac{f^{\prime}\left(x_1\right)}{2 x_1}=\frac{f^{\prime}\left(x_2\right)}{4 x_2^3}\left(b^2+a^2\right)=\frac{\ln b-\ln a}{b^2-a^2} x_3 f^{\prime}\left(x_3\right)$;
+ 3. 存在 $\xi_1, \xi_2, \xi_3 \in(a, b)$, 使得 $f^{\prime}\left(\xi_1\right)=(a+b) \frac{f^{\prime}\left(\xi_2\right)}{2 \xi_2}=\left(a^2+a b+b^2\right) \frac{f^{\prime}\left(\xi_3\right)}{3 \xi_3^2}$.
 
 我们知道
 $$
@@ -334,7 +334,7 @@ $$
 
 这个有一定的几何意义
 
->  设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, $f(0)=0, f(1)=1, \lambda_1, \lambda_2, \cdots, \lambda_n$ 为 $n$ 个正数, 满足 $\sum_{i=1}^n \lambda_i=1$. 证明在 $[0,1]$ 内存在一组互不相同的点 $x_1, x_2, \cdots, x_n$, 使得 $\sum_{i=1}^n \frac{\lambda_i}{f^{\prime}\left(x_i\right)}=1$.
+  设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, $f(0)=0, f(1)=1, \lambda_1, \lambda_2, \cdots, \lambda_n$ 为 $n$ 个正数, 满足 $\sum_{i=1}^n \lambda_i=1$. 证明在 $[0,1]$ 内存在一组互不相同的点 $x_1, x_2, \cdots, x_n$, 使得 $\sum_{i=1}^n \frac{\lambda_i}{f^{\prime}\left(x_i\right)}=1$.
 
 这里把拉姆达看成y然后发现懂的都懂，然后再去解答发现很简单
 
@@ -359,10 +359,10 @@ $$
 $$
 给出一个应用
 
-> 设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, 且 $f(0)=0, f(1)=1, a, b$ 为正实数, 证明
->
-> (1) 存在 $\xi \in(0,1)$, 使得 $f(\xi)=\frac{a}{a+b}$ ；
-> (2) 存在互异的 $\eta_1, \eta_2 \in(0,1)$, 使得 $\frac{a}{f^{\prime}\left(\eta_1\right)}+\frac{b}{f^{\prime}\left(\eta_2\right)}=a+b$.
+ 设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, 且 $f(0)=0, f(1)=1, a, b$ 为正实数, 证明
+
+ (1) 存在 $\xi \in(0,1)$, 使得 $f(\xi)=\frac{a}{a+b}$ ；
+ (2) 存在互异的 $\eta_1, \eta_2 \in(0,1)$, 使得 $\frac{a}{f^{\prime}\left(\eta_1\right)}+\frac{b}{f^{\prime}\left(\eta_2\right)}=a+b$.
 
 
 
@@ -372,10 +372,10 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, 且 $f(0)=0, f(1)=1$, 证明
->
-> (1) 存在 $\xi \in(0,1)$, 使得 $f(\xi)=1-\xi$;
-> (2) 存在两个互异的点 $\eta_1, \eta_2 \in(0,1)$, 使得 $f^{\prime}\left(\eta_1\right) f^{\prime}\left(\eta_2\right)=1$.
+ 设 $f(x)$ 在 $[0,1]$ 上连续, 在 $(0,1)$ 上可导, 且 $f(0)=0, f(1)=1$, 证明
+
+ (1) 存在 $\xi \in(0,1)$, 使得 $f(\xi)=1-\xi$;
+ (2) 存在两个互异的点 $\eta_1, \eta_2 \in(0,1)$, 使得 $f^{\prime}\left(\eta_1\right) f^{\prime}\left(\eta_2\right)=1$.
 
 
 
@@ -399,14 +399,14 @@ $$
 
 这类题目关键是用拉格朗日把中值点求出来
 
->  设 $f(x)$ 在 $U(a ; \delta)$ 上 $n+2$ 阶连续可徽, 且 $f^{(n+2)}(a) \neq 0$, 已知对任意的 $h \in(0, \delta), f(a+h)$在 $U(a ; \delta)$ 的泰勒公式为
->
-> $$
-> f(a+h)=f(a)+f^{\prime}(a) h+\cdots+\frac{f^{(n)}(a)}{n!} h^n+\frac{f^{(n+1)}(a+\theta h)}{(n+1)!} h^{n+1}(0<\theta<1) .
-> $$
->
->
-> 证明 $\lim _{h \rightarrow 0} \theta=\frac{1}{n+2}$.
+  设 $f(x)$ 在 $U(a ; \delta)$ 上 $n+2$ 阶连续可徽, 且 $f^{(n+2)}(a) \neq 0$, 已知对任意的 $h \in(0, \delta), f(a+h)$在 $U(a ; \delta)$ 的泰勒公式为
+
+ $$
+ f(a+h)=f(a)+f^{\prime}(a) h+\cdots+\frac{f^{(n)}(a)}{n!} h^n+\frac{f^{(n+1)}(a+\theta h)}{(n+1)!} h^{n+1}(0<\theta<1) .
+ $$
+
+
+ 证明 $\lim _{h \rightarrow 0} \theta=\frac{1}{n+2}$.
 
 
 
@@ -420,14 +420,14 @@ $$
 
 
 
->  设 $f(x)$ 在 $\left(x_0-\delta, x_0+\delta\right)$ 上 $n$ 阶连续可微, 已知 $f^{(2)}\left(x_0\right)=f^{(3)}\left(x_0\right)=\cdots=f^{(n-1)}\left(x_0\right)=0$,但 $f^{(n)}\left(x_0\right) \neq 0$, 若 $0 \neq|h|<\delta$ 时, 有
->
-> $$
-> \frac{f\left(x_0+h\right)-f\left(x_0\right)}{h}=f^{\prime}\left(x_0+\theta h\right)
-> $$
->
->
-> 证明 $\lim _{h \rightarrow 0} \theta=\sqrt[n-2]{\frac{1}{n}}$.
+  设 $f(x)$ 在 $\left(x_0-\delta, x_0+\delta\right)$ 上 $n$ 阶连续可微, 已知 $f^{(2)}\left(x_0\right)=f^{(3)}\left(x_0\right)=\cdots=f^{(n-1)}\left(x_0\right)=0$,但 $f^{(n)}\left(x_0\right) \neq 0$, 若 $0 \neq|h|<\delta$ 时, 有
+
+ $$
+ \frac{f\left(x_0+h\right)-f\left(x_0\right)}{h}=f^{\prime}\left(x_0+\theta h\right)
+ $$
+
+
+ 证明 $\lim _{h \rightarrow 0} \theta=\sqrt[n-2]{\frac{1}{n}}$.
 
 
 
@@ -437,14 +437,14 @@ $$
 
 
 
-> 设 $f(x)$ 在点 $a$ 处二阶可导, 且 $f^{\prime \prime}(a) \neq 0$, 证明当 $h$ 充分小时, 有等式
->
-> $$
-> f(a+h)-f(a)=f^{\prime}(a+\theta h) h
-> $$
->
->
-> 成立, 其中 $\theta \in(0,1)$, 并且 $\lim _{h \rightarrow 0} \theta=\frac{1}{2}$.
+ 设 $f(x)$ 在点 $a$ 处二阶可导, 且 $f^{\prime \prime}(a) \neq 0$, 证明当 $h$ 充分小时, 有等式
+
+ $$
+ f(a+h)-f(a)=f^{\prime}(a+\theta h) h
+ $$
+
+
+ 成立, 其中 $\theta \in(0,1)$, 并且 $\lim _{h \rightarrow 0} \theta=\frac{1}{2}$.
 
 
 
@@ -456,7 +456,7 @@ $$
 
 ### 大K法
 
-> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, 且 $f(a)=f(b)=0$, 证明对每个 $x \in(a, b)$, 都存在对应的 $\xi \in(a, b)$, 使得 $f(x)=\frac{f^{\prime \prime}(\xi)}{2}(x-a)(x-b)$.
+ 设 $f(x)$ 在 $[a, b]$ 上二阶可导, 且 $f(a)=f(b)=0$, 证明对每个 $x \in(a, b)$, 都存在对应的 $\xi \in(a, b)$, 使得 $f(x)=\frac{f^{\prime \prime}(\xi)}{2}(x-a)(x-b)$.
 
 
 
@@ -466,11 +466,11 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, $a<c<b$, 证明: 存在 $\xi \in(a, b)$, 使得
->
-> $$
-> \frac{f(b)-f(a)}{b-a}-\frac{f(c)-f(a)}{c-a}=\frac{1}{2} f^{\prime \prime}(\xi)(b-c)
-> $$
+ 设 $f(x)$ 在 $[a, b]$ 上二阶可导, $a<c<b$, 证明: 存在 $\xi \in(a, b)$, 使得
+
+ $$
+ \frac{f(b)-f(a)}{b-a}-\frac{f(c)-f(a)}{c-a}=\frac{1}{2} f^{\prime \prime}(\xi)(b-c)
+ $$
 
 
 
@@ -480,11 +480,11 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[a, b]$ 上三阶可导, 证明存在 $\xi \in(a, b)$, 使得
->
-> $$
-> f(b)=f(a)+\frac{1}{2}(b-a)\left[f^{\prime}(a)+f^{\prime}(b)\right]-\frac{1}{12}(b-a)^3 f^{\prime \prime \prime}(\xi)
-> $$
+ 设 $f(x)$ 在 $[a, b]$ 上三阶可导, 证明存在 $\xi \in(a, b)$, 使得
+
+ $$
+ f(b)=f(a)+\frac{1}{2}(b-a)\left[f^{\prime}(a)+f^{\prime}(b)\right]-\frac{1}{12}(b-a)^3 f^{\prime \prime \prime}(\xi)
+ $$
 
 
 
@@ -498,25 +498,24 @@ $$
 
 ### 带积分的问题
 
-> 设 $f(x)$ 是 $[0,1]$ 上的连续函数, 证明: 存在 $c \in(0,1)$ 使得
->
-> $$
-> \int_0^c f(x) d x=(1-c) f(c)
-> $$
->
-> 
->
-> 
->
-> 
->
-> 
->
-> 提示. 构造函数 $F(x)=(1-x) \int_0^x f(t) d t$, 然后使用罗尔中值定理.
+ 设 $f(x)$ 是 $[0,1]$ 上的连续函数, 证明: 存在 $c \in(0,1)$ 使得
+
+ $$
+ \int_0^c f(x) d x=(1-c) f(c)
+ $$
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 提示. 构造函数 $F(x)=(1-x) \int_0^x f(t) d t$, 然后使用罗尔中值定理.
 
 
-
-> 设 $f(x)$ 在 $[0,+\infty)$ 可微, $f(0)=0$, 且庚在 $A>0$, 满足 $\left|f^{\prime}(x)\right| \leq A|f(x)|$, 证明 $f(x) \equiv 0$.
+ 设 $f(x)$ 在 $[0,+\infty)$ 可微, $f(0)=0$, 且庚在 $A>0$, 满足 $\left|f^{\prime}(x)\right| \leq A|f(x)|$, 证明 $f(x) \equiv 0$.
 
 **解答**. 显然 $|f(x)|$ 在 $\left[0, \frac{1}{2 A}\right]$ 连续, 设其最大值为 $|f(c)|$, 其中 $c \in\left[0, \frac{1}{2 A}\right]$, 则由泰勒定理可知存在 $\xi \in\left(0, \frac{1}{2 A}\right)$, 使得
 $$
@@ -531,11 +530,11 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, 证明存在 $\xi \in(a, b)$, 使得
->
-> $$
-> \int_a^b f(x) d x=(b-a) f\left(\frac{a+b}{2}\right)+\frac{1}{24}(b-a)^3 f^{\prime \prime}(\xi)
-> $$
+ 设 $f(x)$ 在 $[a, b]$ 上二阶可导, 证明存在 $\xi \in(a, b)$, 使得
+
+ $$
+ \int_a^b f(x) d x=(b-a) f\left(\frac{a+b}{2}\right)+\frac{1}{24}(b-a)^3 f^{\prime \prime}(\xi)
+ $$
 
 
 
@@ -545,15 +544,15 @@ $$
 
 ### 中值与不等式
 
-> 设 $f(x)$ 在 $[a, b]$ 二阶可导, $f(a)=f(b)=0$, 记
->
-> $$
-> \max _{x \in[a, b]} f(x)=M, \min _{x \in[a, b]} f(x)=m, \max _{x \in[a, b]} f^{\prime \prime}(x)=S, \min _{x \in[a, b]} f^{\prime \prime}(x)=s
-> $$
->
-> 证明
-> (1) 若 $M>0$, 则 $s \leq-\frac{8 M}{(b-a)^2} \leq S$;
-> (2) 若 $m<0$, 則 $s \leq-\frac{8 m}{(b-a)^2} \leq S$.
+ 设 $f(x)$ 在 $[a, b]$ 二阶可导, $f(a)=f(b)=0$, 记
+
+ $$
+ \max _{x \in[a, b]} f(x)=M, \min _{x \in[a, b]} f(x)=m, \max _{x \in[a, b]} f^{\prime \prime}(x)=S, \min _{x \in[a, b]} f^{\prime \prime}(x)=s
+ $$
+
+ 证明
+ (1) 若 $M>0$, 则 $s \leq-\frac{8 M}{(b-a)^2} \leq S$;
+ (2) 若 $m<0$, 則 $s \leq-\frac{8 m}{(b-a)^2} \leq S$.
 
 
 
@@ -561,11 +560,11 @@ $$
 
 
 
-> 设 $f(x)$ 在 $[a, b]$ 上二阶可导, $f(a)=f(b)=0$, 且 $\left|f^{\prime \prime}(x)\right| \geq A>0$, 证明
->
-> $$
-> \max _{x \in[a, b]}|f(x)| \geq \frac{A}{8}(b-a)^2
-> $$
+ 设 $f(x)$ 在 $[a, b]$ 上二阶可导, $f(a)=f(b)=0$, 且 $\left|f^{\prime \prime}(x)\right| \geq A>0$, 证明
+
+ $$
+ \max _{x \in[a, b]}|f(x)| \geq \frac{A}{8}(b-a)^2
+ $$
 
 
 
@@ -577,8 +576,8 @@ $$
 
 
 
->  $f(x)$ 在 $[a, b]$ 二阶可导, $f^{\prime}(a)=f^{\prime}(b)=0$, 证明存在 $\xi \in(a, b)$, 使得
->
-> $$
-> \left|f^{\prime \prime}(\xi)\right| \geq \frac{4}{(b-a)^2}|f(b)-f(a)|
-> $$
+  $f(x)$ 在 $[a, b]$ 二阶可导, $f^{\prime}(a)=f^{\prime}(b)=0$, 证明存在 $\xi \in(a, b)$, 使得
+
+ $$
+ \left|f^{\prime \prime}(\xi)\right| \geq \frac{4}{(b-a)^2}|f(b)-f(a)|
+ $$
