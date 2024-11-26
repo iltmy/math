@@ -44,7 +44,7 @@ export const menuItems = [
       {
         id: "RicciFlow",  // Path to be in English
         text: "Ricci Flow",  // Keep Chinese text (already in English)
-        href: "/blog/categories/RicciFlow",  // English URL path
+        href: "/blog/categories/Ricci flow",  // English URL path
         svg: "cube",
         target: "_self",
       },

@@ -4,7 +4,7 @@ description: "Here is a sample of some basic Markdown syntax that can be used wh
 pubDate: "Jul 01 2024"
 image: "/index.webp"
 categories:
-  - Others
+  - others
 tags:
   - Makrdown
 badge: Pin
