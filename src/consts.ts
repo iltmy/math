@@ -1,6 +1,3 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the import keyword.
-
 // Site title and description
 export const SITE_LANG = "zh";  // 语言设置为中文
 export const SITE_TAB = "QTSM 数学笔记";  // 更新为数学笔记的名称
@@ -38,66 +35,53 @@ export const menuItems = [
     target: "_self",
     subItems: [
       {
-        id: "黎曼几何",
-        text: "黎曼几何",
-        href: "/blog/categories/%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95", // URL 编码后的路径
+        id: "RiemannGeometry",  // Path to be in English
+        text: "黎曼几何", // Keep Chinese text
+        href: "/blog/categories/RiemannGeometry",  // English URL path
         svg: "cube",
         target: "_self",
-      }, // Technology category
+      },
       {
-        id: "Ricci flow",
-        text: "Ricci Flow",
-        href: "/blog/categories/Ricci%20flow",  // URL 编码，空格变为 %20
+        id: "RicciFlow",  // Path to be in English
+        text: "Ricci Flow",  // Keep Chinese text (already in English)
+        href: "/blog/categories/RicciFlow",  // English URL path
         svg: "cube",
         target: "_self",
-      }, // Technology category
+      },
       {
-        id: "数学分析",
-        text: "数学分析",
-        href: "/blog/categories/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90",  // URL 编码后的路径
+        id: "MathematicalAnalysis",  // Path to be in English
+        text: "数学分析", // Keep Chinese text
+        href: "/blog/categories/MathematicalAnalysis",  // English URL path
         svg: "heart",
         target: "_self",
-      }, // Life category
+      },
       {
-        id: "高等代数",
-        text: "高等代数",
-        href: "/blog/categories/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0",  // URL 编码后的路径
+        id: "AdvancedAlgebra",  // Path to be in English
+        text: "高等代数", // Keep Chinese text
+        href: "/blog/categories/AdvancedAlgebra",  // English URL path
         svg: "heart",
         target: "_self",
       },
     ],
-  }, // Blog page with sub-items
+  },
   {
-    id: "其他",
-    text: "其他",
-    href: "/blog/categories/%E5%85%B6%E4%BB%96",  // URL 编码后的路径
+    id: "others",  // Path to be in English
+    text: "其他",  // Keep Chinese text
+    href: "/blog/categories/others",  // English URL path
     svg: "heart",
     target: "_self",
   },
   {
     id: "all",
-    text: "所有内容",
-    href: "/blog",
+    text: "所有内容",  // Keep Chinese text
+    href: "/blog",  // English URL path for all blog
     svg: "post",
     target: "_self",
-  }, // All blog
-  // {
-  //   id: "contact",
-  //   text: "Contact",
-  //   href: "mailto:contact.evesunmaple@outlook.com", // Contact email
-  //   target: "_blank", // Open in a new tab
-  //   svg: "contact",
-  // },
+  },
 ];
 
 // Social media and contact icons
 export const socialIcons = [
-  // {
-  //   href: "https://afdian.net/a/saroprock",
-  //   ariaLabel: "Support my work",
-  //   title: "Support my work",
-  //   svg: "support",
-  // },
   {
     href: "https://github.com/iltmy",
     ariaLabel: "Github",
@@ -110,10 +94,4 @@ export const socialIcons = [
     title: "BiliBili",
     svg: "bilibili",
   },
-  // {
-  //   href: "/rss.xml",
-  //   ariaLabel: "RSS Feed",
-  //   title: "RSS Feed",
-  //   svg: "rss",
-  // },
 ];
