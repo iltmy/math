@@ -16,7 +16,19 @@ a {
 }
 
 .katex-display {
+  max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  transform: scale(0.95);
+  transform-origin: left center;
+}
+
+@media (min-width: 768px) {
+  .katex-display {
+    max-width: 90%;
+    transform: scale(1);
+  }
 }
 
 .medium-zoom-image--opened {

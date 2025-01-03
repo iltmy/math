@@ -10,6 +10,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeExternalLinks from 'rehype-external-links';
 import playformCompress from "@playform/compress";
+import react from "@astrojs/react";
 
 import swup from "@swup/astro";
 import astroI18next from "astro-i18next";
@@ -45,7 +46,7 @@ export default defineConfig({
   }), terser({
     compress: true,
     mangle: true,
-  }), sitemap(), tailwind(), pagefind(), astroI18next(), playformCompress()],
+  }), sitemap(), tailwind(), pagefind(), astroI18next(), playformCompress(), react()],
   markdown: {
     shikiConfig: {
       themes: {

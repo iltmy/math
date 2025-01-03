@@ -1,6 +1,15 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/react/types",
+      "./node_modules/react-dom/types"
+    ],
+    "types": [
+      "react",
+      "react-dom"
+    ]
   }
 }
